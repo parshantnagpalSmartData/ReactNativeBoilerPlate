@@ -131,6 +131,7 @@ android {
         applicationId "com.proposalbuilder"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
         versionCode 1
         versionName "1.0"
     }
@@ -196,8 +197,14 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-vector-icons')
+    implementation project(':@react-native-community_async-storage')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-navigation')
+
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+
 
     if (enableHermes) {
       def hermesPath = "../../node_modules/hermesvm/android/";
@@ -205,6 +212,14 @@ dependencies {
       releaseImplementation files(hermesPath + "hermes-release.aar")
     } else {
       implementation jscFlavor
+    }
+}
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support' && requested.name != 'multidex') {
+            details.useVersion "${rootProject.ext.supportLibVersion}"
+        }
     }
 }
 
