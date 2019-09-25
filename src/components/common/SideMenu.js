@@ -17,6 +17,7 @@ import * as appActions from "../../actions";
 import Constants from "../../constants";
 // import SafeView from "../../components/common/SafeView";
 import { moderateScale } from "../../helpers/ResponsiveFonts";
+
 // import ajivarLogo from "../../assets/images/logo/logo.png";
 
 class SideMenu extends Component {
@@ -40,6 +41,7 @@ class SideMenu extends Component {
   pushToParticularScreen(screenName, enable, params = {}) {
     let { selectedtab } = this.props.app;
     this.closeToggle();
+    console.log("selectedtabselectedtab",selectedtab)
     // this.props.appActions.tabSelect("BottomTabsId", 3);
     setTimeout(
       () => {
@@ -116,13 +118,13 @@ class SideMenu extends Component {
         //   onPress: () => this.pushToParticularScreen("Journal", false)
         // },
         {
-          title: Constants.Strings.SideMenu.MyVideoLibrary,
+          title: Constants.Strings.SideMenu.Screen1,
           enable: true,
           marginTop: true,
-          onPress: () => this.pushToParticularScreen("VideoLibrary", false)
+          onPress: () => this.pushToParticularScreen("Screen1", false)
         },
         {
-          title: Constants.Strings.SideMenu.AjGuide,
+          title: Constants.Strings.SideMenu.Screen2,
           enable: AjivarGuideEnable,
           marginTop: true,
           onPress: () => this.pushToParticularScreen("Profile", false)
@@ -254,28 +256,7 @@ class SideMenu extends Component {
               : moderateScale(50)
           }}
         >
-          <Image
-            style={{
-              width:
-                Constants.BaseStyle.DEVICE_HEIGHT > 800
-                  ? moderateScale(80)
-                  : moderateScale(60),
-              height:
-                Constants.BaseStyle.DEVICE_HEIGHT > 800
-                  ? moderateScale(80)
-                  : moderateScale(60),
-              marginLeft:
-                Constants.BaseStyle.DEVICE_HEIGHT > 800
-                  ? moderateScale(15)
-                  : moderateScale(10),
-              marginTop:
-                Constants.BaseStyle.DEVICE_HEIGHT > 800
-                  ? moderateScale(0)
-                  : moderateScale(10)
-            }}
-            resizeMode="contain"
-            source={Constants.Images.ajivarPlain}
-          />
+         
           <View
             style={{
               flex: 1,
@@ -285,7 +266,7 @@ class SideMenu extends Component {
           >
             <TouchableOpacity
               onPress={() => {
-                this.socialIconClick("https://www.facebook.com/ajivar111/");
+                this.socialIconClick("https://www.facebook.com/");
               }}
               style={{ paddingHorizontal: moderateScale(5) }}
             >
@@ -306,7 +287,7 @@ class SideMenu extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                this.socialIconClick("https://www.instagram.com/ajivar111/");
+                this.socialIconClick("https://www.instagram.com/");
               }}
               style={{ paddingHorizontal: moderateScale(5) }}
             >

@@ -37,6 +37,10 @@ export const pushToParticularScreenBottomTabs = (
   bottomTabVisible
 ) => {
   return dispatch => {
+    console.log("pushToParticularScreenBottomTabs",  componentId,
+    screenNAme,
+    passProps,
+    bottomTabVisible)
     Navigation.push(componentId, {
       component: {
         name: screenNAme,

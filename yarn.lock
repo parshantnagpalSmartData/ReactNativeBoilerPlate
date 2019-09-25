@@ -2373,6 +2373,13 @@ eventemitter3@^3.0.0:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
   integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
 
+eventemitter4@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/eventemitter4/-/eventemitter4-0.2.4.tgz#0205404ec80ccfb9ff8872badd39c51b47ca64fb"
+  integrity sha1-AgVATsgMz7n/iHK63TnFG0fKZPs=
+  dependencies:
+    underscore jashkenas/underscore
+
 exec-sh@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/exec-sh/-/exec-sh-0.3.2.tgz#6738de2eb7c8e671d0366aea0b0db8c6f7d7391b"
@@ -6352,6 +6359,10 @@ ultron@~1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.1.1.tgz#9fe1536a10a664a65266a1e3ccf85fd36302bc9c"
   integrity sha512-UIEXBNeYmKptWH6z8ZnqTeS8fV74zG0/eRU9VGkpzz+LIJNs8W/zM/L+7ctCkRrgbNnnR0xxw4bKOr0cW0N0Og==
+
+"underscore@git://github.com/jashkenas/underscore":
+  version "1.9.1"
+  resolved "git://github.com/jashkenas/underscore#36eef3c118041ae6386b6bba2b48b099e57ca0e5"
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"

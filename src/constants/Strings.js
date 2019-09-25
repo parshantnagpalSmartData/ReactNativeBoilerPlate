@@ -133,8 +133,8 @@ let Strings = {
   SideMenu: {
     VersionCode: "VersionCode : ",
     NameResources: "Name Resources",
-    MyVideoLibrary: "My Video Library",
-    AjGuide: "Change my AJ Guide",
+    Screen1: "Screen1",
+    Screen2: "Screen2",
     Logout: "Log out",
     Home: "Home",
     Resources: "'s Resources",

@@ -22,7 +22,7 @@ import ChangePassword from "../container/auth/ChangePassword";
 import ConfirmPassword from "../container/auth/ConfirmPassword";
 import EnterOtpScreen from "../container/auth/EnterOtpScreen";
 
-// import EditProfile from "../container/auth/EditProfile";
+import EditProfile from "../container/auth/EditProfile";
 
 import NavBar from "../components/navBar";
 import CustomLeft from "../components/customLeft";
@@ -37,6 +37,9 @@ import Tab2 from "../container/dashboard/tabs/Tab2";
 import Tab3 from "../container/dashboard/tabs/Tab3";
 import Tab4 from "../container/dashboard/tabs/Tab4";
 import Tab5 from "../container/dashboard/tabs/Tab5";
+
+import Screen1 from "../container/dashboard/Screens/Screen1";
+
 // import Profile from "../container/dashboard/Profile";
 
 import WebView from "../container/dashboard/WebView";
@@ -228,17 +231,17 @@ export const registerScreens = store => {
       }),
     () => Institution
   );
-  // Navigation.registerComponent(
-  //   "EditProfile",
-  //   () =>
-  //     WrapScreen(EditProfile, store, {
-  //       disableHeader: false,
-  //       auth: true,
-  //       hideDrawer: true,
-  //       title: "Edit Profile"
-  //     }),
-  //   () => EditProfile
-  // );
+  Navigation.registerComponent(
+    "EditProfile",
+    () =>
+      WrapScreen(EditProfile, store, {
+        disableHeader: false,
+        auth: true,
+        hideDrawer: true,
+        title: "Edit Profile"
+      }),
+    () => EditProfile
+  );
   Navigation.registerComponent(
     "InstitutionCode",
     () =>
@@ -327,6 +330,7 @@ export const registerScreens = store => {
   //     }),
   //   () => Profile
   // );
+
   Navigation.registerComponent(
     "Tab5",
     () =>
@@ -337,7 +341,16 @@ export const registerScreens = store => {
       }),
     () => Tab5
   );
-
+  Navigation.registerComponent(
+    "Screen1",
+    () =>
+      WrapScreen(Screen1, store, {
+        title: "Screen1",
+        hideDrawer: true,
+        hideBack: false
+      }),
+    () => Screen1
+  );
  
   Navigation.registerComponent(
     "WebView",

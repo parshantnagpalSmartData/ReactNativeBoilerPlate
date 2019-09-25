@@ -21,7 +21,7 @@ import {
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import _ from "lodash";
 
-import ImagePicker from "react-native-image-picker";
+// import ImagePicker from "react-native-image-picker";
 
 import Constants from "../../constants";
 import * as AppAction from "../../actions";
@@ -52,12 +52,7 @@ class EditProfile extends Component {
     this.setProfile = this.setProfile.bind(this);
     this.editProfile = this.editProfile.bind(this);
   }
-  componentDidMount() {
-    let context = this;
-    this.props.AppAction.getProfile(res => {
-      context.setProfile(res, null);
-    });
-  }
+
 
   selectPhotoTapped = () => {
     let context = this;
@@ -70,29 +65,29 @@ class EditProfile extends Component {
       }
     };
 
-    ImagePicker.showImagePicker(options, response => {
-      // eslint-disable-next-line no-empty
-      if (response.didCancel) {
-      } else if (response.error) {
-        // eslint-disable-next-line no-empty
-      } else if (response.customButton) {
-      } else {
-        context.setState(
-          {
-            imageMain: "data:" + response.type + ";base64," + response.data,
-            imgUrl: response.uri
-          },
-          () => {
-            context.props.AppAction.uploadImage(
-              context.state.imageMain,
-              res => {
-                context.setState({ imgUrl: res });
-              }
-            );
-          }
-        );
-      }
-    });
+    // ImagePicker.showImagePicker(options, response => {
+    //   // eslint-disable-next-line no-empty
+    //   if (response.didCancel) {
+    //   } else if (response.error) {
+    //     // eslint-disable-next-line no-empty
+    //   } else if (response.customButton) {
+    //   } else {
+    //     context.setState(
+    //       {
+    //         imageMain: "data:" + response.type + ";base64," + response.data,
+    //         imgUrl: response.uri
+    //       },
+    //       () => {
+    //         context.props.AppAction.uploadImage(
+    //           context.state.imageMain,
+    //           res => {
+    //             context.setState({ imgUrl: res });
+    //           }
+    //         );
+    //       }
+    //     );
+    //   }
+    // });
   };
 
   setProfile(res, cb) {
@@ -367,7 +362,7 @@ const mapStateToProps = state => ({
   loader: state.loader
 });
 const mapDispatchToProps = dispatch => ({
-  AppAction: bindActionCreators(AppAction, dispatch)
+
 });
 
 export default connect(
