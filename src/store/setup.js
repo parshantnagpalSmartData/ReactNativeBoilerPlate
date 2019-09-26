@@ -15,7 +15,7 @@ import promise from "./promise";
 import array from "./array";
 import whitelist from "./whitelist";
 import { goToAuth, goHome } from "../config/navigation";
-// import { pushNotifificationInit } from "../helpers/pushnotification";
+import { pushNotifificationInit } from "../helpers/pushnotification";
 
 export const storeObj = {};
 const persistConfig = {
@@ -57,7 +57,7 @@ export default function setup() {
     if (Platform.OS == "android") {
       SplashScreen.hide();
     }
-    // pushNotifificationInit(store);
+    pushNotifificationInit(store);
 
     // on app loading the persit store loads and we have route from here
     // startApp(store.getState().app.root);
