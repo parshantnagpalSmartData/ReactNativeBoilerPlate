@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "913558565768",
+    "firebase_url": "https://proposalbuilder-aa504.firebaseio.com",
+    "project_id": "proposalbuilder-aa504",
+    "storage_bucket": "proposalbuilder-aa504.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913558565768:android:5dc1946717970a96e4403d",
+        "android_client_info": {
+          "package_name": "com.proposalbuilder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913558565768-5ghisgt0vlb3ted23pn4a3of98atg1ei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXl-T-b6flqeNoIYurXcx8u4etuMReNxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913558565768-5ghisgt0vlb3ted23pn4a3of98atg1ei.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
