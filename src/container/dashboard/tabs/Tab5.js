@@ -11,7 +11,7 @@ class Tab5 extends React.Component {
   }
   render() {
     return (
-      <View>
+      <View  style={styles.container}>
       </View>
     );
   }
@@ -31,5 +31,7 @@ export default connect(
 )(Tab5);
 
 const styles = StyleSheet.create({
-  
+  container: {
+    flex: 1
+  }
 });

@@ -17,12 +17,6 @@ class Tab1 extends React.Component {
     super(props);
     this.state = {
     };
-    Navigation.mergeOptions(this.props.componentId, {
-      bottomTabs: {
-        visible: false,
-        ...Platform.select({ android: { drawBehind: false } })
-      },
-    });
 
   }
   render() {

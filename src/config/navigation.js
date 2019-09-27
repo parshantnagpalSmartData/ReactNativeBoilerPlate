@@ -353,8 +353,8 @@ export const goHome = () =>
                 titleDisplayMode: "alwaysShow",
                 backgroundColor: "#537591",
                 visible: false,
-      animate: true,
-      drawBehind: false
+                animate: false,
+                drawBehind: true
               },
               topBar: {
                 visible: false

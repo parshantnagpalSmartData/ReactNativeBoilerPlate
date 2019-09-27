@@ -17,15 +17,12 @@ import { connect } from "react-redux";
 class Tab4 extends React.Component {
    render() {
       return (
-        <View>
+        <View  style={styles.container}>
         </View>
       );
   }
 }
 
-const styles = StyleSheet.create({
-
-});
 
 function mapStateToProps(state) {
   return {
@@ -41,3 +38,9 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Tab4);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+});
