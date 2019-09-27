@@ -15,9 +15,19 @@ import com.facebook.soloader.SoLoader;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 
 import java.util.List;
 import java.util.Arrays;
+// @react-native-community/async-storage
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
+// react-native-firebase
+import io.invertase.firebase.RNFirebasePackage;
+// react-native-splash-screen
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+// react-native-vector-icons
+import com.oblador.vectoricons.VectorIconsPackage;
 
 
 public class MainApplication extends NavigationApplication {
@@ -43,6 +53,12 @@ public class MainApplication extends NavigationApplication {
             // Add additional packages you require here
                     // No need to add RnnPackage and MainReactPackage
                             return Arrays.<ReactPackage>asList(
+                                    new AsyncStoragePackage(),
+                                    new RNFirebasePackage(),
+                                    new RNFirebaseNotificationsPackage(),
+                                    new RNFirebaseMessagingPackage(),
+                                    new SplashScreenReactPackage(),
+                                    new VectorIconsPackage()
                         // eg. new VectorIconsPackage()
                             );
         }

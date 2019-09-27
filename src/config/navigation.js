@@ -351,7 +351,10 @@ export const goHome = () =>
                 elevation: 8,
                 currentTabIndex: 2,
                 titleDisplayMode: "alwaysShow",
-                backgroundColor: "#537591"
+                backgroundColor: "#537591",
+                visible: false,
+      animate: true,
+      drawBehind: false
               },
               topBar: {
                 visible: false

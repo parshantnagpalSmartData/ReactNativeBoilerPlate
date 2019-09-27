@@ -10,12 +10,19 @@ import {
 } from "react-native";
 
 import { connect } from "react-redux";
+import { Navigation } from "react-native-navigation";
 
 class Tab1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
     };
+    Navigation.mergeOptions(this.props.componentId, {
+      bottomTabs: {
+        visible: false,
+        ...Platform.select({ android: { drawBehind: false } })
+      },
+    });
 
   }
   render() {

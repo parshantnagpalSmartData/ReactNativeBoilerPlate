@@ -34,25 +34,15 @@ var Events = {
       ({ componentId, componentName }) => {
         console.log("componentNamecomponentName", componentName, componentId);
         if (
-          componentName == "Posimations" ||
-          componentName == "Journal" ||
-          componentName == "Dashboard" ||
-          componentName == "OozChallenge" ||
-          componentName == "Bot"
+          componentName == "Tab1" ||
+          componentName == "Tab2" ||
+          componentName == "Tab3" ||
+          componentName == "Tab4" ||
+          componentName == "Tab5"
         ) {
           store.dispatch(selectTab(componentId));
         }
-        if (componentName == "Posimations") {
-          Event.emit("PosimationsGetAll");
-        } else if (componentName == "Journal") {
-          Event.emit("getJournal");
-        } else if (componentName == "Profile") {
-          Event.emit("fetchProfileImages");
-        } else if (componentName == "OozChallenge") {
-          Event.emit("setOozChallenge");
-        } else if (componentName == "Dashboard") {
-          Event.emit("callDashboard");
-        }
+       
         if (Platform.OS === "android") {
           let { backHandlingScreens } = store.getState().app;
 
@@ -73,18 +63,6 @@ var Events = {
     );
     Navigation.events().registerComponentDidDisappearListener(
       ({ componentId, componentName }) => {
-        if (componentId == "ooz") {
-          Event.emit("clearOozData");
-        } else if (componentName == "TotalCompletedOozChallange") {
-          Event.emit("clearTotalCompletedOozChallange");
-        } else if (componentId == "posimations") {
-          Event.emit("clearPosimationData");
-        } else if (componentId == "journal") {
-          Event.emit("clearJournalData");
-        } else if (componentId == "dashboard") {
-          Event.emit("clearDashboardData");
-        }
-
         if (sideMenu) {
           Navigation.mergeOptions(componentId, {
             sideMenu: {

@@ -15,12 +15,13 @@ Navigation.events().registerAppLaunchedListener(() => {
   Events.RegisterComponentDidAppearListener(store);
   addListeners();
   Navigation.setDefaultOptions({
-    topBar: {
+    topBar: { 
       visible: false,
       drawBehind: true
     },
     bottomTabs: {
       visible: false,
+      animate: true,
       drawBehind: false
     }
   });
