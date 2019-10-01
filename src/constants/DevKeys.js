@@ -5,7 +5,7 @@
  * */
 "use strict";
 const DevKeys = {
-  GoogleAPIKey: "AIzaSyBYCiYVIdYIz5XO4-gOZvUS3hto0jSEj7Y"
+  GoogleAPIKey: "AIzaSyBYCiYVIdYIz5XO4-gOZvUS3hto0jSEj7Y",
 };
 
 export default DevKeys;

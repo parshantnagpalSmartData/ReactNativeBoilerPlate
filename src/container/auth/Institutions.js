@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import {
   View,
   Text,
@@ -9,13 +9,13 @@ import {
   Platform,
   ActivityIndicator,
   ScrollView,
-  Alert
+  Alert,
 } from "react-native";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
 import * as AppAction from "../../actions";
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import AuthButton from "../../components/common/AuthButton";
 import Constants from "../../constants";
 // import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -23,7 +23,7 @@ class Institutions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: ""
+      selected: "",
     };
   }
 
@@ -32,21 +32,21 @@ class Institutions extends Component {
   }
 
   submitInstitute = () => {
-    let { selected } = this.state;
+    let {selected} = this.state;
     if (!selected) {
       Alert.alert(
         "Alert ",
         "Please Select Institution",
-        [{ text: "OK", onPress: () => {} }],
-        { cancelable: false }
+        [{text: "OK", onPress: () => {}}],
+        {cancelable: false},
       );
       return;
     }
-    let { AppAction, componentId } = this.props;
-    let { userData } = { ...this.props };
+    let {AppAction, componentId} = this.props;
+    let {userData} = {...this.props};
     userData.institutions = selected;
     AppAction.pushToParticularScreen(componentId, "InstitutionCode", {
-      userData
+      userData,
     });
   };
   backPress = () => {
@@ -54,14 +54,14 @@ class Institutions extends Component {
   };
   itemPress = item => {
     let name = item.institutionName;
-    this.setState({ selected: item }, () => {
+    this.setState({selected: item}, () => {
       if (name === "Other") {
         this.inputbox && this.inputbox.focus();
       }
     });
   };
-  renderItem = ({ item, index }) => {
-    let { selected, otherName } = this.state;
+  renderItem = ({item, index}) => {
+    let {selected, otherName} = this.state;
     let isSelected = item.idInstitutions === selected.idInstitutions;
     return (
       <TouchableOpacity
@@ -71,16 +71,15 @@ class Institutions extends Component {
           padding: moderateScale(5),
           backgroundColor: isSelected ? "#b1dbe3" : Constants.Colors.White,
           borderColor: isSelected ? Constants.Colors.Gray : null,
-          borderWidth: isSelected ? moderateScale(1.5) : null
+          borderWidth: isSelected ? moderateScale(1.5) : null,
         }}
-        key={index}
-      >
+        key={index}>
         {isSelected && item.institutionName === "Other" ? (
           <TextInput
             ref={ref => (this.inputbox = ref || "inputbox")}
             placeholder={"Type other institution..."}
             value={otherName}
-            onChangeText={otherName => this.setState({ otherName })}
+            onChangeText={otherName => this.setState({otherName})}
           />
         ) : (
           <Text
@@ -88,9 +87,8 @@ class Institutions extends Component {
               fontSize: moderateScale(16),
 
               fontFamily: "Cochin",
-              color: Constants.Colors.Black
-            }}
-          >
+              color: Constants.Colors.Black,
+            }}>
             {item.institutionName}
           </Text>
         )}
@@ -100,8 +98,8 @@ class Institutions extends Component {
 
   render() {
     let {
-      signUp: { institutions },
-      loader: { instiutionLoader }
+      signUp: {institutions},
+      loader: {instiutionLoader},
     } = this.props;
 
     if (instiutionLoader) {
@@ -109,9 +107,8 @@ class Institutions extends Component {
         <View
           style={[
             styles.container,
-            { justifyContent: "center", alignItems: "center" }
-          ]}
-        >
+            {justifyContent: "center", alignItems: "center"},
+          ]}>
           <ActivityIndicator size={"large"} color={Constants.Colors.Primary} />
         </View>
       );
@@ -126,8 +123,7 @@ class Institutions extends Component {
             // showsHorizontalScrollIndicator={false}
             // showsVerticalScrollIndicator={false}
             // keyboardShouldPersistTaps={"handled"}
-            style={{ paddingBottom: moderateScale(50) }}
-          >
+            style={{paddingBottom: moderateScale(50)}}>
             <View style={{}}>
               <View style={styles.welcomeView}>
                 <Text style={styles.welcomeText} numberOfLines={1}>
@@ -153,9 +149,8 @@ class Institutions extends Component {
                 maxHeight:
                   Platform.OS === "ios"
                     ? Constants.BaseStyle.DEVICE_HEIGHT * 0.4
-                    : Constants.BaseStyle.DEVICE_HEIGHT * 0.4
-              }}
-            >
+                    : Constants.BaseStyle.DEVICE_HEIGHT * 0.4,
+              }}>
               <FlatList
                 nestedScrollEnabled
                 data={institutions.length !== 0 ? institutions : []}
@@ -185,55 +180,55 @@ const mapStateToProps = state => ({
   user: state.user,
   app: state.app,
   signUp: state.signUp,
-  loader: state.loader
+  loader: state.loader,
 });
 const mapDispatchToProps = dispatch => ({
-  AppAction: bindActionCreators(AppAction, dispatch)
+  AppAction: bindActionCreators(AppAction, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Institutions);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: moderateScale(20),
-    backgroundColor: Constants.Colors.AuthYellow
+    backgroundColor: Constants.Colors.AuthYellow,
     // justifyContent: "space-between"
   },
 
-  stylesAuthContainer: { justifyContent: "center", alignItems: "center" },
+  stylesAuthContainer: {justifyContent: "center", alignItems: "center"},
   welcomeView: {
     justifyContent: "center",
     alignItems: "center",
     marginTop: moderateScale(25),
-    marginHorizontal: moderateScale(13)
+    marginHorizontal: moderateScale(13),
   },
   welcomeText: {
     fontSize: moderateScale(30),
     color: Constants.Colors.Black,
     // fontWeight: Platform.OS == "ios" ? "bold" : "normal",
-    fontFamily: Platform.OS == "ios" ? "Cochin-Bold" : "CochinBold"
+    fontFamily: Platform.OS == "ios" ? "Cochin-Bold" : "CochinBold",
   },
   centerView: {
     justifyContent: "center",
     marginTop: moderateScale(30),
-    alignItems: "center"
+    alignItems: "center",
   },
   signUpButtonStyle: {
     width: moderateScale(140),
-    height: moderateScale(40)
+    height: moderateScale(40),
   },
 
   gradientStyle: {
-    borderRadius: moderateScale(20)
+    borderRadius: moderateScale(20),
   },
   textStyle: {
     textAlign: "center",
     fontFamily: "Charter",
     fontWeight: "bold",
-    fontSize: moderateScale(18)
-  }
+    fontSize: moderateScale(18),
+  },
 });

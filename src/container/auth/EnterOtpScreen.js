@@ -4,17 +4,17 @@
  * @date: 9.Oct.2018
  * @author: Suraj Sanwal
  * */
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { View, Text, StyleSheet, Platform } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {View, Text, StyleSheet, Platform} from "react-native";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 import Constants from "../../constants";
 import * as AppAction from "../../actions";
 import FloatingInput from "../../components/common/FloatingInput";
 
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import AuthButton from "../../components/common/AuthButton";
 
 class ConfirmPassword extends Component {
@@ -27,27 +27,27 @@ class ConfirmPassword extends Component {
 
       newPassword: "",
       verificationCode: "",
-      hidePassword: true
+      hidePassword: true,
     };
   }
 
   showPassword = () => {
     this.setState({
-      hidePassword: !this.state.hidePassword
+      hidePassword: !this.state.hidePassword,
     });
   };
 
   confirmPassword = () => {
-    const { verificationCode } = this.state;
+    const {verificationCode} = this.state;
 
     if (!verificationCode) {
-      this.setState({ codeError: "Enter Verification Code" });
+      this.setState({codeError: "Enter Verification Code"});
       return;
     }
     this.props.AppAction.pushToParticularScreen(
       this.props.componentId,
       "ConfirmPassword",
-      { OTP: verificationCode, email: this.props.email }
+      {OTP: verificationCode, email: this.props.email},
     );
   };
 
@@ -58,7 +58,7 @@ class ConfirmPassword extends Component {
     this.props.AppAction.pop(this.props.componentId);
   };
   render() {
-    let { codeError } = this.state;
+    let {codeError} = this.state;
     return (
       <View style={styles.container}>
         <KeyboardAwareScrollView
@@ -66,8 +66,7 @@ class ConfirmPassword extends Component {
           style={styles.scrollStyle}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ flex: 1 }}
-        >
+          contentContainerStyle={{flex: 1}}>
           <View style={styles.signInView}>
             <Text style={styles.signInText}>Verification Code</Text>
           </View>
@@ -76,14 +75,14 @@ class ConfirmPassword extends Component {
               Please enter your Verification Code.
             </Text>
           </View>
-          <View style={{ flex: 1 }}>
+          <View style={{flex: 1}}>
             <FloatingInput
               ref={ref => (this.email = ref)}
               inputWrapper={styles.inputWrapper}
               label={"Enter Verification Code"}
               value={this.state.verificationCode}
               onChangeText={code => {
-                this.setState({ verificationCode: code });
+                this.setState({verificationCode: code});
               }}
               keyboardType={"numeric"}
               returnKey={"next"}
@@ -107,7 +106,7 @@ class ConfirmPassword extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  app: state.app
+  app: state.app,
 });
 const mapDispatchToProps = dispatch => {
   return {
@@ -116,39 +115,39 @@ const mapDispatchToProps = dispatch => {
     },
     confirmPassword: (email, code, password, componentId) =>
       dispatch(AppAction.confirmPassword(email, code, password, componentId)),
-    AppAction: bindActionCreators(AppAction, dispatch)
+    AppAction: bindActionCreators(AppAction, dispatch),
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ConfirmPassword);
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: Constants.Colors.AuthYellow },
-  scrollStyle: { paddingHorizontal: moderateScale(20) },
+  container: {flex: 1, backgroundColor: Constants.Colors.AuthYellow},
+  scrollStyle: {paddingHorizontal: moderateScale(20)},
   signUpText: {
     fontSize: moderateScale(21),
     color: "gray",
     fontFamily: "Cochin",
-    textAlign: "center"
+    textAlign: "center",
   },
 
   forgotButton: {
     paddingTop: moderateScale(5),
-    paddingBottom: moderateScale(20)
+    paddingBottom: moderateScale(20),
   },
   signInText: {
     fontSize: moderateScale(30),
     color: Constants.Colors.Black,
     fontWeight: Platform.OS == "ios" ? "bold" : "normal",
-    fontFamily: "Cochin-Bold"
+    fontFamily: "Cochin-Bold",
   },
   signInInSubContainerText: {
     color: Constants.Colors.SignInBlack,
     fontFamily: "Charter",
-    fontSize: moderateScale(20)
+    fontSize: moderateScale(20),
   },
 
   inputWrapper: {
@@ -156,37 +155,37 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(20),
     borderBottomColor: Constants.Colors.Gray,
     fontFamily: "Charter",
-    height: moderateScale(48)
+    height: moderateScale(48),
   },
 
   signUpButtonStyle: {
     width: moderateScale(140),
     height: moderateScale(40),
     marginTop: moderateScale(20),
-    alignSelf: "center"
+    alignSelf: "center",
   },
 
   gradientStyle: {
-    borderRadius: moderateScale(20)
+    borderRadius: moderateScale(20),
   },
   textStyle: {
     textAlign: "center",
     fontFamily: "Charter",
     fontWeight: "bold",
-    fontSize: moderateScale(18)
+    fontSize: moderateScale(18),
   },
   signInView: {
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: moderateScale(30)
+    marginVertical: moderateScale(30),
   },
-  forgotView: { justifyContent: "center" },
+  forgotView: {justifyContent: "center"},
 
   forgotText: {
     color: Constants.Colors.Gray,
     fontSize: moderateScale(20),
     fontFamily: "Helvetica",
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   forgotTextBlack: {
     fontSize: moderateScale(19),
@@ -195,6 +194,6 @@ const styles = StyleSheet.create({
     fontFamily: "Helvetica",
     fontWeight: "normal",
     alignSelf: "center",
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });

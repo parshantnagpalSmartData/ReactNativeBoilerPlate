@@ -5,7 +5,7 @@
  * @author: Suraj Sanwal
  * */
 "use strict";
-import { Linking } from "react-native";
+import {Linking} from "react-native";
 
 export function openLinkingURL(checkone, url) {
   let appendOne;

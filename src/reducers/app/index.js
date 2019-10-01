@@ -12,7 +12,7 @@ const initialState = Immutable({
   tabPushed: false,
   endOfValidationTimestamp: null,
   AjivarGuideEnable: false,
-  ooZChallengeShow: 0
+  ooZChallengeShow: 0,
 });
 
 export default function app(state = initialState, action = {}) {
@@ -20,27 +20,27 @@ export default function app(state = initialState, action = {}) {
     case types.ROOT_CHANGED:
       return {
         ...state,
-        root: action.root
+        root: action.root,
       };
     case types.TEXT_INPUT_CHAT: {
-      return { ...state, textInput: action.payload };
+      return {...state, textInput: action.payload};
     }
     case types.TEXT_INPUT_TEN_NUMBER: {
-      return { ...state, textInputTenNumber: action.payload };
+      return {...state, textInputTenNumber: action.payload};
     }
     case types.TEXT_INPUT_NUMBER: {
-      return { ...state, textInputNumber: action.payload };
+      return {...state, textInputNumber: action.payload};
     }
     case types.TEXT_INPUT_ADD_MESSAGE: {
-      return { ...state, textAddMessage: action.payload };
+      return {...state, textAddMessage: action.payload};
     }
     case types.AJIVAR_GUIDE_SHOW_OR_NOT: {
-      return { ...state, AjivarGuideEnable: action.payload };
+      return {...state, AjivarGuideEnable: action.payload};
     }
     case types.OOZ_CHALLENGE_SHOW:
       return {
         ...state,
-        ooZChallengeShow: action.payload.ooZChallengeShow
+        ooZChallengeShow: action.payload.ooZChallengeShow,
       };
     case types.TEXT_INPUT_CHAT_CLOSE_ALL: {
       return {
@@ -48,22 +48,22 @@ export default function app(state = initialState, action = {}) {
         textInput: false,
         textInputTenNumber: false,
         textInputNumber: false,
-        textAddMessage: false
+        textAddMessage: false,
       };
     }
     case types.LOADING: {
-      return { ...state, loading: action.payload };
+      return {...state, loading: action.payload};
     }
     case types.SELECTED_TAB: {
-      return { ...state, selectedtab: action.selectedtab };
+      return {...state, selectedtab: action.selectedtab};
     }
     case types.CHALLENGE_TAB_PUSHED: {
-      return { ...state, tabPushed: action.tabPushed };
+      return {...state, tabPushed: action.tabPushed};
     }
     case types.END_OF_VALIDATION_TIMESTAMP: {
       return {
         ...state,
-        endOfValidationTimestamp: action.endOfValidationTimestamp
+        endOfValidationTimestamp: action.endOfValidationTimestamp,
       };
     }
 
@@ -79,7 +79,7 @@ export default function app(state = initialState, action = {}) {
         tabPushed: false,
         endOfValidationTimestamp: null,
         AjivarGuideEnable: true,
-        ooZChallengeShow: 0
+        ooZChallengeShow: 0,
       };
     default:
       return state;

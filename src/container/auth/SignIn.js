@@ -4,25 +4,24 @@
  * @date: 9.Oct.2018
  * @author: Suraj Sanwal
  * */
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-  Platform,
   Dimensions,
-  Keyboard
+  Keyboard,
 } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import _ from "lodash";
 
 import Constants from "../../constants";
 import * as AppAction from "../../actions";
 import FloatingInput from "../../components/common/FloatingInput";
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import AuthButton from "../../components/common/AuthButton";
 import Icon from "../../components/common/Icon";
 import Regex from "../../helpers/Regex";
@@ -35,37 +34,37 @@ class SignInCustom extends Component {
       password: "",
       hidePassword: true,
       emailError: "",
-      passwordError: ""
+      passwordError: "",
     };
     this.signUp = this.signUp.bind(this);
   }
 
   showPassword = () => {
     this.setState({
-      hidePassword: !this.state.hidePassword
+      hidePassword: !this.state.hidePassword,
     });
   };
 
   signIn = () => {
     Keyboard.dismiss();
-    const { email, password } = this.state;
+    const {email, password} = this.state;
     if (_.isEmpty(email.trim())) {
       this.setState({
-        emailError: "Email is required"
+        emailError: "Email is required",
       });
       return;
     }
 
     if (!Regex.validateEmail(email.trim())) {
       this.setState({
-        emailError: "Invalid Email format"
+        emailError: "Invalid Email format",
       });
       return;
     }
 
     if (_.isEmpty(password.trim())) {
       this.setState({
-        passwordError: "Password is required"
+        passwordError: "Password is required",
       });
       return;
     }
@@ -73,20 +72,20 @@ class SignInCustom extends Component {
     this.props.AppAction.loginUser(
       emailValue,
       password,
-      this.props.componentId
+      this.props.componentId,
     );
   };
   signUp() {
     this.props.AppAction.pushToParticularScreen(
       this.props.componentId,
-      "SignUp"
+      "SignUp",
     );
   }
 
   forgotPassword = () => {
     this.props.AppAction.pushToParticularScreen(
       this.props.componentId,
-      "ForgotPassword"
+      "ForgotPassword",
     );
   };
   focusNext(next) {
@@ -95,15 +94,9 @@ class SignInCustom extends Component {
 
   render() {
     let {
-      loader: { loginLoader }
+      loader: {loginLoader},
     } = this.props;
-    let {
-      hidePassword,
-      email,
-      password,
-      emailError,
-      passwordError
-    } = this.state;
+    let {hidePassword, email, password, emailError, passwordError} = this.state;
     return (
       <View style={styles.container}>
         <KeyboardAwareScrollView
@@ -113,10 +106,9 @@ class SignInCustom extends Component {
           keyboardShouldPersistTaps={"handled"}
           contentContainerStyle={
             Dimensions.get("window").height > 800
-              ? { flex: 1, marginTop: moderateScale(40) }
+              ? {flex: 1, marginTop: moderateScale(40)}
               : {}
-          }
-        >
+          }>
           <View style={styles.signInView}>
             <Text style={styles.signInText}>Welcome</Text>
           </View>
@@ -132,7 +124,7 @@ class SignInCustom extends Component {
               label={"UserName"}
               value={email}
               onChangeText={email => {
-                this.setState({ email, emailError: "" });
+                this.setState({email, emailError: ""});
               }}
               onSubmitEditing={() => {
                 this.focusNext("password");
@@ -148,7 +140,7 @@ class SignInCustom extends Component {
               label={"Password"}
               value={password}
               onChangeText={password => {
-                this.setState({ password, passwordError: "" });
+                this.setState({password, passwordError: ""});
               }}
               icon={
                 <Icon name={!hidePassword ? "eye" : "eye-slash"} size={20} />
@@ -166,8 +158,7 @@ class SignInCustom extends Component {
                 style={styles.forgotButton}
                 onPress={() => {
                   this.forgotPassword();
-                }}
-              >
+                }}>
                 <Text style={styles.forgotText}>Forgot Password?</Text>
               </TouchableOpacity>
             </View>
@@ -185,8 +176,7 @@ class SignInCustom extends Component {
           <View style={styles.signUpView}>
             <TouchableOpacity
               style={styles.signUpButton}
-              onPress={() => this.signUp()}
-            >
+              onPress={() => this.signUp()}>
               <Text style={styles.signUpText}>
                 {Constants.Strings.signUp.signUpButton}
               </Text>
@@ -201,47 +191,47 @@ class SignInCustom extends Component {
 const mapStateToProps = state => ({
   user: state.user,
   app: state.app,
-  loader: state.loader
+  loader: state.loader,
 });
 const mapDispatchToProps = dispatch => ({
-  AppAction: bindActionCreators(AppAction, dispatch)
+  AppAction: bindActionCreators(AppAction, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(SignInCustom);
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: Constants.Colors.AuthYellow },
+  container: {flex: 1, backgroundColor: Constants.Colors.AuthYellow},
   scrollStyle: {
-    flex: 1
+    flex: 1,
   },
   signUpButtonStyle: {
-    backgroundColor : 'red',
+    backgroundColor: "red",
     width: moderateScale(140),
-    height: moderateScale(40)
+    height: moderateScale(40),
   },
 
   gradientStyle: {
-    borderRadius: moderateScale(20)
+    borderRadius: moderateScale(20),
   },
   textStyle: {
     textAlign: "center",
     fontFamily: "Charter",
     fontWeight: "bold",
-    fontSize: moderateScale(18)
+    fontSize: moderateScale(18),
   },
   paddingInputText: {
-    paddingHorizontal: moderateScale(20)
+    paddingHorizontal: moderateScale(20),
   },
   stylesAuthContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: moderateScale(35)
+    marginTop: moderateScale(35),
   },
 
-  forgotView: { justifyContent: "flex-start", alignItems: "flex-start" },
+  forgotView: {justifyContent: "flex-start", alignItems: "flex-start"},
   signUpView: {
     backgroundColor: "white",
     width: Constants.BaseStyle.DEVICE_WIDTH - moderateScale(2),
@@ -249,14 +239,14 @@ const styles = StyleSheet.create({
     borderWidth: moderateScale(1),
     paddingVertical: moderateScale(5),
     marginVertical: moderateScale(35),
-    marginHorizontal: moderateScale(1)
+    marginHorizontal: moderateScale(1),
   },
   inputWrapper: {
     borderBottomWidth: moderateScale(1),
     borderBottomColor: Constants.Colors.Gray,
     color: Constants.Colors.SignInBlack,
     // fontFamily: "Charter",
-    height: moderateScale(48)
+    height: moderateScale(48),
   },
   signUpButton: {
     // margin: moderateScale(0),
@@ -266,17 +256,17 @@ const styles = StyleSheet.create({
   signUpText: {
     fontSize: moderateScale(21),
     color: "gray",
-    textAlign: "center"
+    textAlign: "center",
   },
 
   forgotButton: {
     paddingTop: moderateScale(5),
-    paddingBottom: moderateScale(20)
+    paddingBottom: moderateScale(20),
   },
   signInView: {
     justifyContent: "center",
     alignItems: "center",
-    padding: moderateScale(48)
+    padding: moderateScale(48),
   },
 
   signInText: {
@@ -290,17 +280,17 @@ const styles = StyleSheet.create({
     color: "gray",
     fontFamily: "Charter",
     textAlign: "center",
-    fontSize: moderateScale(20)
+    fontSize: moderateScale(20),
   },
 
   signInSubContainerView: {
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    paddingBottom: moderateScale(15)
+    paddingBottom: moderateScale(15),
   },
   forgotText: {
     color: Constants.Colors.Gray,
     fontFamily: "Charter",
-    fontSize: moderateScale(18)
-  }
+    fontSize: moderateScale(18),
+  },
 });

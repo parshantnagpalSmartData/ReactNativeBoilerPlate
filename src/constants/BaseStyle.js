@@ -6,7 +6,7 @@
 
 "use-strict";
 
-import { Platform } from "react-native";
+import {Platform} from "react-native";
 import Dimensions from "Dimensions";
 
 // Precalculate Device Dimensions for better performance
@@ -70,11 +70,11 @@ const BaseStyle = {
 
   HEADER_HEIGHT: (x / 100) * 15,
 
-  HIT_SLOP: { top: 10, left: 10, right: 10, bottom: 10 },
+  HIT_SLOP: {top: 10, left: 10, right: 10, bottom: 10},
 
-  HALF_HIT_SLOP: { top: 5, left: 5, right: 5, bottom: 5 },
+  HALF_HIT_SLOP: {top: 5, left: 5, right: 5, bottom: 5},
   isIphoneX,
-  aspectRatio
+  aspectRatio,
 };
 
 module.exports = BaseStyle;

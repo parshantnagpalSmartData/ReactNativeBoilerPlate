@@ -4,11 +4,11 @@
  * @date: 9.Oct.2018
  * @author: Suraj Sanwal
  * */
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { View, Text, StyleSheet } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {View, Text, StyleSheet} from "react-native";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 //import _ from "lodash";
 import Icon from "../../components/common/Icon";
 
@@ -16,7 +16,7 @@ import Icon from "../../components/common/Icon";
 import Constants from "../../constants";
 import * as AppAction from "../../actions";
 import FloatingInput from "../../components/common/FloatingInput";
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import AuthButton from "../../components/common/AuthButton";
 
 class ForgotPassword extends Component {
@@ -25,7 +25,7 @@ class ForgotPassword extends Component {
     this.state = {
       //email: "",
       password: "",
-      hidePassword: true
+      hidePassword: true,
       //emailError: ""
     };
   }
@@ -67,15 +67,14 @@ class ForgotPassword extends Component {
           style={styles.scrollStyle}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ flex: 1 }}
-        >
+          contentContainerStyle={{flex: 1}}>
           <View style={styles.signInView}>
-            <Text style={{ ...styles.signInText, color: "black" }}>
+            <Text style={{...styles.signInText, color: "black"}}>
               Change Password
             </Text>
           </View>
 
-          <View style={{ flex: 1 }}>
+          <View style={{flex: 1}}>
             <FloatingInput
               ref={ref => (this.password = ref)}
               inputWrapper={styles.inputWrapper}
@@ -125,54 +124,54 @@ class ForgotPassword extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  app: state.app
+  app: state.app,
 });
 const mapDispatchToProps = dispatch => ({
-  AppAction: bindActionCreators(AppAction, dispatch)
+  AppAction: bindActionCreators(AppAction, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ForgotPassword);
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: Constants.Colors.AuthYellow },
-  scrollStyle: { paddingHorizontal: moderateScale(20) },
-  forgotView: { justifyContent: "flex-start", alignItems: "flex-start" },
-  signUpView: { justifyContent: "center", alignItems: "center" },
+  container: {flex: 1, backgroundColor: Constants.Colors.AuthYellow},
+  scrollStyle: {paddingHorizontal: moderateScale(20)},
+  forgotView: {justifyContent: "flex-start", alignItems: "flex-start"},
+  signUpView: {justifyContent: "center", alignItems: "center"},
 
   inputWrapper: {
     borderBottomWidth: 1,
     borderBottomColor: Constants.Colors.Black,
-    height: moderateScale(50)
+    height: moderateScale(50),
   },
   signUpButton: {
     margin: moderateScale(5),
-    padding: moderateScale(20)
+    padding: moderateScale(20),
   },
   signUpText: {
     fontSize: moderateScale(20),
     color: Constants.Colors.Primary,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   forgotButton: {
     paddingTop: moderateScale(5),
-    paddingBottom: moderateScale(20)
+    paddingBottom: moderateScale(20),
   },
   signInText: {
     fontSize: moderateScale(25),
     color: Constants.Colors.Primary,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   signInView: {
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    marginBottom: moderateScale(30)
+    marginBottom: moderateScale(30),
   },
-  forgotText: { color: Constants.Colors.Primary },
+  forgotText: {color: Constants.Colors.Primary},
   gradientStyle: {
     borderRadius: moderateScale(15),
-    top: moderateScale(30)
-  }
+    top: moderateScale(30),
+  },
 });

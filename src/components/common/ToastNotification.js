@@ -4,7 +4,7 @@
  * Description : Contains the toast Notificaitons of the app
  * Date : 25 Sept 2018
  */
-import React, { Component } from "react";
+import React, {Component} from "react";
 import {
   Text,
   View,
@@ -13,17 +13,17 @@ import {
   TouchableOpacity,
   Animated,
   Platform,
-  Easing
+  Easing,
 } from "react-native";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
 import * as appAction from "../../actions";
 import Constants from "../../constants";
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 
 const MyToastNotification = props => {
-  let { type, message, closeToast } = props; // type 1 for error, 2=for Notification
+  let {type, message, closeToast} = props; // type 1 for error, 2=for Notification
   let primaryColor =
     type == Constants.AppConstants.Notificaitons.Error
       ? Constants.Colors.Error
@@ -40,15 +40,13 @@ const MyToastNotification = props => {
         style={{
           alignItems: "center",
           justifyContent: "center",
-          marginHorizontal: moderateScale(40)
-        }}
-      >
+          marginHorizontal: moderateScale(40),
+        }}>
         <View className={"toastWidget"}>
           <View
-            style={[Styles.notificationView, { backgroundColor: primaryColor }]}
-          >
+            style={[Styles.notificationView, {backgroundColor: primaryColor}]}>
             <View className={"ToastText"}>
-              <View style={{ flexDirection: "row" }}>
+              <View style={{flexDirection: "row"}}>
                 <View className={"ToastLeftIcon"}>
                   <View style={Styles.imageView}>
                     <Image
@@ -65,17 +63,15 @@ const MyToastNotification = props => {
                       justifyContent: "flex-start",
                       ...Platform.select({
                         web: {
-                          width: moderateScale(170)
-                        }
-                      })
-                    }}
-                  >
+                          width: moderateScale(170),
+                        },
+                      }),
+                    }}>
                     <Text style={Styles.heading}>{heading}</Text>
                     <Text
                       numberOfLines={2}
                       ellipsizeMode="tail"
-                      style={Styles.message}
-                    >
+                      style={Styles.message}>
                       {message}
                     </Text>
                   </View>
@@ -107,7 +103,7 @@ class ToastNotification extends Component {
   callToast() {
     Animated.timing(this.animatedValue, {
       toValue: 0,
-      duration: 100
+      duration: 100,
     }).start(this.closeToast());
   }
 
@@ -116,7 +112,7 @@ class ToastNotification extends Component {
       Animated.timing(this.animatedValue, {
         toValue: -100,
         duration: 100,
-        easing: Easing.linear
+        easing: Easing.linear,
       }).start();
       this.hideToast();
     }, 5000);
@@ -127,15 +123,15 @@ class ToastNotification extends Component {
   };
 
   render() {
-    let { notification } = this.props;
-    let { isVisible, type, message } = notification;
+    let {notification} = this.props;
+    let {isVisible, type, message} = notification;
     if (isVisible) {
       this.callToast();
       return (
         <Animated.View
           style={[
             {
-              transform: [{ translateY: this.animatedValue }],
+              transform: [{translateY: this.animatedValue}],
               height: 0,
               position: "relative",
               left: 0,
@@ -149,17 +145,16 @@ class ToastNotification extends Component {
                   position: "absolute",
                   height: moderateScale(200),
                   opacity: 1,
-                  bottom: moderateScale(10)
+                  bottom: moderateScale(10),
                 },
                 web: {
                   position: "absolute",
-                  top: 0
+                  top: 0,
                 },
-                ios: { top: 0 }
-              })
-            }
-          ]}
-        >
+                ios: {top: 0},
+              }),
+            },
+          ]}>
           <MyToastNotification
             type={type}
             message={message}
@@ -188,13 +183,13 @@ const Styles = StyleSheet.create({
         right:
           Constants.BaseStyle.DEVICE_WIDTH <= 767
             ? Constants.BaseStyle.DEVICE_WIDTH * 0.05
-            : moderateScale(0)
+            : moderateScale(0),
       },
       ios: {
-        bottom: moderateScale(50)
+        bottom: moderateScale(50),
       },
-      android: { bottom: moderateScale(10) }
-    })
+      android: {bottom: moderateScale(10)},
+    }),
   },
   notificationView: {
     flexDirection: "row",
@@ -202,41 +197,41 @@ const Styles = StyleSheet.create({
     alignItems: "flex-start",
     ...Platform.select({
       ios: {
-        width: Constants.BaseStyle.DEVICE_WIDTH * 0.95
+        width: Constants.BaseStyle.DEVICE_WIDTH * 0.95,
       },
-      android: { width: Constants.BaseStyle.DEVICE_WIDTH * 0.95 },
+      android: {width: Constants.BaseStyle.DEVICE_WIDTH * 0.95},
       web: {
         width:
           Constants.BaseStyle.DEVICE_WIDTH <= 767
             ? Constants.BaseStyle.DEVICE_WIDTH / 1.5
-            : Constants.BaseStyle.DEVICE_WIDTH / 4
-      }
+            : Constants.BaseStyle.DEVICE_WIDTH / 4,
+      },
     }),
 
     paddingVertical: moderateScale(14),
     paddingHorizontal: moderateScale(20),
-    borderRadius: moderateScale(10)
+    borderRadius: moderateScale(10),
   },
   imageView: {
     height: moderateScale(30),
     width: moderateScale(30),
     alignItems: "flex-end",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
   image: {
     ...Platform.select({
       web: {
         height: moderateScale(20),
-        width: moderateScale(20)
-      }
-    })
+        width: moderateScale(20),
+      },
+    }),
   },
   heading: {
     ...Constants.Fonts.Medium,
     fontSize: moderateScale(16),
     color: Constants.Colors.White,
     paddingHorizontal: moderateScale(10),
-    paddingBottom: moderateScale(5)
+    paddingBottom: moderateScale(5),
   },
   message: {
     ...Constants.Fonts.Regular,
@@ -247,23 +242,23 @@ const Styles = StyleSheet.create({
     paddingBottom: moderateScale(5),
     ...Platform.select({
       ios: {
-        width: Constants.BaseStyle.DEVICE_WIDTH * 0.7
+        width: Constants.BaseStyle.DEVICE_WIDTH * 0.7,
       },
       android: {
-        width: Constants.BaseStyle.DEVICE_WIDTH * 0.7
-      }
-    })
-  }
+        width: Constants.BaseStyle.DEVICE_WIDTH * 0.7,
+      },
+    }),
+  },
 });
 
 const mapStateToProps = state => ({
-  notification: state.app.notification
+  notification: state.app.notification,
 });
 const mapDispatchToProps = dispatch => ({
-  appAction: bindActionCreators(appAction, dispatch)
+  appAction: bindActionCreators(appAction, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ToastNotification);

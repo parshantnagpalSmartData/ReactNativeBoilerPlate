@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet, Platform, Keyboard } from "react-native";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import React, {Component} from "react";
+import {View, Text, StyleSheet, Platform, Keyboard} from "react-native";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import _ from "lodash";
 import * as AppAction from "../../actions";
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import AuthButton from "../../components/common/AuthButton";
 import Constants from "../../constants";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import SafeView from "../../components/common/SafeView";
 import FloatingInput from "../../components/common/FloatingInput";
-import { TouchableOpacity } from "react-native-ui-lib";
+import {TouchableOpacity} from "react-native-ui-lib";
 
 class EmailVerification extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class EmailVerification extends Component {
     this.state = {
       code: "",
       codeSend: 0,
-      codeError: ""
+      codeError: "",
     };
     this.resendCode = this.resendCode.bind(this);
     this.resendCodeLoop = this.resendCodeLoop.bind(this);
@@ -28,7 +28,7 @@ class EmailVerification extends Component {
 
   resendCodeLoop(data) {
     let context = this;
-    this.setState({ codeSend: data });
+    this.setState({codeSend: data});
     setTimeout(() => {
       data = data - 1;
       if (data >= 0) {
@@ -37,7 +37,7 @@ class EmailVerification extends Component {
     }, 1000);
   }
   resendCode(data) {
-    let { AppAction, email } = this.props;
+    let {AppAction, email} = this.props;
     AppAction.resendCode(email, res => {
       if (res) {
         this.resendCodeLoop(data);
@@ -46,12 +46,12 @@ class EmailVerification extends Component {
   }
 
   submitEmailVarification = () => {
-    let { AppAction, password, email } = this.props;
-    let { code } = this.state;
+    let {AppAction, password, email} = this.props;
+    let {code} = this.state;
     Keyboard.dismiss();
     if (_.isEmpty(code.trim())) {
       this.setState({
-        codeError: "Please enter code"
+        codeError: "Please enter code",
       });
       return;
     }
@@ -59,10 +59,10 @@ class EmailVerification extends Component {
   };
 
   render() {
-    let { code, codeSend, codeError } = this.state;
+    let {code, codeSend, codeError} = this.state;
     let {
       email,
-      loader: { loginLoader }
+      loader: {loginLoader},
       // user: {userData : {user : {username}}}
     } = this.props;
     return (
@@ -74,8 +74,7 @@ class EmailVerification extends Component {
           scrollEnabled={false}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps={"handled"}
-        >
+          keyboardShouldPersistTaps={"handled"}>
           <View style={{}}>
             <View style={styles.welcomeView}>
               <Text style={styles.welcomeText} numberOfLines={1}>
@@ -89,7 +88,7 @@ class EmailVerification extends Component {
               keyboardType={"numeric"}
               inputWrapper={styles.inputWrapper}
               value={code}
-              onChangeText={code => this.setState({ code, codeError: "" })}
+              onChangeText={code => this.setState({code, codeError: ""})}
               onSubmitEditing={() => {
                 this.submitEmailVarification();
               }}
@@ -121,12 +120,11 @@ class EmailVerification extends Component {
                 <Text
                   style={[
                     styles.confirmationCodeText,
-                    styles.confirmationCodeText2
-                  ]}
-                >
+                    styles.confirmationCodeText2,
+                  ]}>
                   {Constants.Strings.EmailVerification.ResendCode.replace(
                     "120",
-                    codeSend
+                    codeSend,
                   )}
                 </Text>
               </View>
@@ -136,12 +134,10 @@ class EmailVerification extends Component {
               style={styles.centerView}
               onPress={() => {
                 this.resendCode(120);
-              }}
-            >
+              }}>
               <Text
                 style={[styles.centerText, styles.confirmationCodeText2]}
-                numberOfLines={3}
-              >
+                numberOfLines={3}>
                 Resend confirmation code
               </Text>
             </TouchableOpacity>
@@ -154,22 +150,22 @@ class EmailVerification extends Component {
 const mapStateToProps = state => ({
   user: state.user,
   app: state.app,
-  loader: state.loader
+  loader: state.loader,
 });
 const mapDispatchToProps = dispatch => ({
-  AppAction: bindActionCreators(AppAction, dispatch)
+  AppAction: bindActionCreators(AppAction, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(EmailVerification);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     // paddingHorizontal: moderateScale(20)
-    backgroundColor: Constants.Colors.AuthYellow
+    backgroundColor: Constants.Colors.AuthYellow,
     // justifyContent: "space-between"
   },
 
@@ -177,23 +173,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: moderateScale(25),
-    marginHorizontal: moderateScale(13)
+    marginHorizontal: moderateScale(13),
   },
   welcomeText: {
     fontSize: moderateScale(22),
     color: Constants.Colors.Black,
     fontWeight: Platform.OS == "ios" ? "bold" : "normal",
-    fontFamily: "Cochin-Bold"
+    fontFamily: "Cochin-Bold",
   },
   centerView: {
     justifyContent: "center",
     marginTop: moderateScale(30),
-    alignItems: "center"
+    alignItems: "center",
   },
   centerText: {
     fontSize: moderateScale(16),
     textAlign: "center",
-    paddingHorizontal: moderateScale(30)
+    paddingHorizontal: moderateScale(30),
   },
   inputWrapper: {
     borderWidth: 1,
@@ -201,45 +197,45 @@ const styles = StyleSheet.create({
     height: moderateScale(50),
     marginTop: moderateScale(25),
     backgroundColor: Constants.Colors.White,
-    paddingLeft: moderateScale(10)
+    paddingLeft: moderateScale(10),
   },
   signUpButtonStyle: {
     width: moderateScale(200),
-    height: moderateScale(40)
+    height: moderateScale(40),
   },
 
   gradientStyle: {
-    borderRadius: moderateScale(20)
+    borderRadius: moderateScale(20),
   },
   textStyle: {
     textAlign: "center",
     fontFamily: "Charter",
     fontWeight: "bold",
-    fontSize: moderateScale(18)
+    fontSize: moderateScale(18),
   },
   marginHorizontal: {
     paddingHorizontal: moderateScale(20),
-    marginBottom: moderateScale(18)
+    marginBottom: moderateScale(18),
   },
   bottomText: {
     fontSize: moderateScale(18),
     paddingVertical: moderateScale(5),
-    textAlign: "center"
+    textAlign: "center",
   },
 
   confirmationCodeSent: {},
-  stylesAuthContainer: { justifyContent: "center", alignItems: "center" },
+  stylesAuthContainer: {justifyContent: "center", alignItems: "center"},
   confirmationCodeText: {
     fontSize: moderateScale(16),
     marginTop: moderateScale(18),
     textAlign: "center",
     fontFamily: "Cochin",
-    paddingHorizontal: moderateScale(25)
+    paddingHorizontal: moderateScale(25),
   },
   confirmationCodeText2: {
     color: Constants.Colors.NavyBlueDark,
     fontSize: moderateScale(16),
 
-    fontFamily: "Cochin"
-  }
+    fontFamily: "Cochin",
+  },
 });

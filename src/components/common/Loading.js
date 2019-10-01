@@ -12,14 +12,14 @@
       *                                                            *
 */
 
-import React, { Component } from "react";
-import { View, ActivityIndicator, StyleSheet } from "react-native";
+import React, {Component} from "react";
+import {View, ActivityIndicator, StyleSheet} from "react-native";
 import Constants from "../../constants";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 
 class Loading extends Component {
   render() {
-    let { loading } = this.props;
+    let {loading} = this.props;
     if (!loading) {
       return null;
     }
@@ -43,14 +43,14 @@ const Styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: Constants.BaseStyle.DEVICE_HEIGHT,
-    width: "100%"
+    width: "100%",
   },
-  innerView: { flex: 1, justifyContent: "center", alignItems: "center" }
+  innerView: {flex: 1, justifyContent: "center", alignItems: "center"},
 });
 const mapStateToProps = state => ({
-  loading: state.app.loading
+  loading: state.app.loading,
 });
 export default connect(
   mapStateToProps,
-  null
+  null,
 )(Loading);

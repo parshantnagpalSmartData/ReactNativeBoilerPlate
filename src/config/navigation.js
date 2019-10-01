@@ -4,8 +4,8 @@
  * @date: 9.Oct.2018
  * @author: Suraj Sanwal
  * */
-import { Navigation } from "react-native-navigation";
-import { Platform } from "react-native";
+import {Navigation} from "react-native-navigation";
+import {Platform} from "react-native";
 import Constants from "../constants/";
 const tabs = [
   //DashBoard
@@ -28,43 +28,43 @@ const tabs = [
                 // selectedTextColor: "black",
                 selectedTextColor: "rgba(0,0,0,0.3)",
                 // selectedIconColor: "black"
-                selectedIconColor: "rgba(255,255,255,0.3)"
+                selectedIconColor: "rgba(255,255,255,0.3)",
               },
               topBar: {
                 hideOnScroll: false,
                 title: {
                   text: "Tab1",
                   color: "#000",
-                  alignment: "center"
+                  alignment: "center",
                 },
                 background: {
-                  color: "transparent"
+                  color: "transparent",
                 },
                 drawBehind: Platform.OS == "ios" ? false : true,
-                visible: false
+                visible: false,
               },
               sideMenu: {
                 // right: {
                 //   visible: false,
                 //   enabled: false
                 // }
-              }
-            }
-          }
-        }
+              },
+            },
+          },
+        },
       ],
       options: {
         bottomTab: {
           iconColor: "#e2471fff",
           textColor: "#ffffff",
           selectedTextColor: "black",
-          selectedIconColor: "black"
+          selectedIconColor: "black",
         },
         layout: {
-          orientation: ["portrait"]
-        }
-      }
-    }
+          orientation: ["portrait"],
+        },
+      },
+    },
   },
   //Posimation
   {
@@ -84,43 +84,43 @@ const tabs = [
                 // selectedTextColor: "black",
                 selectedTextColor: "rgba(255,255,255,0.3)",
                 // selectedIconColor: "black"
-                selectedIconColor: "rgba(243,169,4,0.3)"
+                selectedIconColor: "rgba(243,169,4,0.3)",
               },
               topBar: {
                 hideOnScroll: false,
                 title: {
                   text: "Tab2",
                   color: "#000",
-                  alignment: "center"
+                  alignment: "center",
                 },
                 background: {
-                  color: "transparent"
+                  color: "transparent",
                 },
                 drawBehind: Platform.OS == "ios" ? false : true,
-                visible: false
+                visible: false,
               },
               sideMenu: {
                 // right: {
                 //   visible: false,
                 //   enabled: false
                 // }
-              }
-            }
-          }
-        }
+              },
+            },
+          },
+        },
       ],
       options: {
         bottomTab: {
           // iconColor: "#ffffff",
           textColor: "#ffffff",
           selectedTextColor: "black",
-          selectedIconColor: "black"
+          selectedIconColor: "black",
         },
         layout: {
-          orientation: ["portrait"]
-        }
-      }
-    }
+          orientation: ["portrait"],
+        },
+      },
+    },
   },
   //bot
   {
@@ -142,45 +142,45 @@ const tabs = [
                 icon:
                   Platform.OS == "ios"
                     ? Constants.Images.Tabs.botLogoIos
-                    : Constants.Images.Tabs.botLogoAndroid
+                    : Constants.Images.Tabs.botLogoAndroid,
               },
               topBar: {
                 hideOnScroll: false,
                 title: {
                   text: "Tab3",
                   color: "#000",
-                  alignment: "center"
+                  alignment: "center",
                 },
                 background: {
-                  color: "transparent"
+                  color: "transparent",
                 },
                 overlay: {
-                  interceptTouchOutside: true
+                  interceptTouchOutside: true,
                 },
                 drawBehind: Platform.OS == "ios" ? false : true,
-                visible: false
+                visible: false,
               },
               sideMenu: {
                 // right: {
                 //   visible: false,
                 //   enabled: false
                 // }
-              }
-            }
-          }
-        }
+              },
+            },
+          },
+        },
       ],
       options: {
         bottomTab: {
-          iconInsets: { top: 5, bottom: -5 }
+          iconInsets: {top: 5, bottom: -5},
 
           // iconInsets: { top: 5, bottom: -100 },
         },
         layout: {
-          orientation: ["portrait"]
-        }
-      }
-    }
+          orientation: ["portrait"],
+        },
+      },
+    },
   },
   //Journal
   {
@@ -202,43 +202,43 @@ const tabs = [
                 selectedTextColor: "rgba(255,242,204,0.3)",
                 // selectedTextColor: "black",
                 // selectedIconColor: "black"
-                selectedIconColor: "rgba(255,255,255,0.3)"
+                selectedIconColor: "rgba(255,255,255,0.3)",
               },
               topBar: {
                 hideOnScroll: false,
                 title: {
                   text: "Tab4",
                   color: "#000",
-                  alignment: "center"
+                  alignment: "center",
                 },
                 background: {
-                  color: "transparent"
+                  color: "transparent",
                 },
                 drawBehind: Platform.OS == "ios" ? false : true,
-                visible: false
+                visible: false,
               },
               sideMenu: {
                 // right: {
                 //   visible: false,
                 //   enabled: false
                 // }
-              }
-            }
-          }
-        }
+              },
+            },
+          },
+        },
       ],
       options: {
         bottomTab: {
           iconColor: "#fff2ccff",
           textColor: "#ffffff",
           selectedTextColor: "black",
-          selectedIconColor: "black"
+          selectedIconColor: "black",
         },
         layout: {
-          orientation: ["portrait"]
-        }
-      }
-    }
+          orientation: ["portrait"],
+        },
+      },
+    },
   },
   //Profile OozChallenge  OzzChallengeCompleted  TotalCompletedOozChallange RateScalePage
   {
@@ -258,44 +258,44 @@ const tabs = [
                 // selectedTextColor: "black",
                 // selectedIconColor: "black"
                 selectedTextColor: "rgba(255,255,255,0.3)",
-                selectedIconColor: "rgba(210,109,214,0.3)"
+                selectedIconColor: "rgba(210,109,214,0.3)",
               },
               topBar: {
                 hideOnScroll: false,
                 title: {
                   text: "Tab5",
                   color: "#000",
-                  alignment: "center"
+                  alignment: "center",
                 },
                 background: {
-                  color: "transparent"
+                  color: "transparent",
                 },
                 drawBehind: Platform.OS == "ios" ? false : true,
-                visible: false
+                visible: false,
               },
               sideMenu: {
                 // right: {
                 //   visible: false,
                 //   enabled: false
                 // }
-              }
-            }
-          }
-        }
+              },
+            },
+          },
+        },
       ],
       options: {
         bottomTab: {
           // iconColor: "#ffffff",
           textColor: "#ffffff",
           selectedTextColor: "black",
-          selectedIconColor: "black"
+          selectedIconColor: "black",
         },
         layout: {
-          orientation: ["portrait"]
-        }
-      }
-    }
-  }
+          orientation: ["portrait"],
+        },
+      },
+    },
+  },
 ];
 export const goToAuth = () =>
   Navigation.setRoot({
@@ -307,28 +307,28 @@ export const goToAuth = () =>
             component: {
               name: "AppIntro",
               passProps: {
-                text: "React Native"
+                text: "React Native",
               },
               options: {
                 statusBar: {
                   visible: true,
                   style: "light",
                   hideWithTopBar: true,
-                  blur: true
+                  blur: true,
                 },
                 topBar: {
                   visible: false,
-                  drawBehind: true
+                  drawBehind: true,
                 },
                 layout: {
-                  orientation: ["portrait"]
-                }
-              }
-            }
-          }
-        ]
-      }
-    }
+                  orientation: ["portrait"],
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
   });
 
 export const goHome = () =>
@@ -338,8 +338,8 @@ export const goHome = () =>
         right: {
           component: {
             id: "sideDrawer",
-            name: "SideMenu"
-          }
+            name: "SideMenu",
+          },
         },
         center: {
           bottomTabs: {
@@ -347,21 +347,20 @@ export const goHome = () =>
             children: tabs,
             options: {
               bottomTabs: {
-                animate: false,
                 elevation: 8,
                 currentTabIndex: 2,
                 titleDisplayMode: "alwaysShow",
                 backgroundColor: "#537591",
                 visible: false,
                 animate: false,
-                drawBehind: true
+                drawBehind: true,
               },
               topBar: {
-                visible: false
-              }
-            }
-          }
-        }
-      }
-    }
+                visible: false,
+              },
+            },
+          },
+        },
+      },
+    },
   });

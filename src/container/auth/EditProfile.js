@@ -5,9 +5,8 @@
  * @author: Suraj Sanwal
  * */
 
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 import {
   View,
   Text,
@@ -16,17 +15,17 @@ import {
   Alert,
   TextInput,
   TouchableOpacity,
-  Platform
+  Platform,
 } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import _ from "lodash";
 
 // import ImagePicker from "react-native-image-picker";
 
 import Constants from "../../constants";
-import * as AppAction from "../../actions";
+// import * as AppAction from '../../actions';
 
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import AuthButton from "../../components/common/AuthButton";
 // import Icon from "../../components/common/Icon";
 
@@ -47,24 +46,22 @@ class EditProfile extends Component {
       phoneError: "",
       imageMain: "",
       imgUrl: null,
-      profileShow: false
+      profileShow: false,
     };
     this.setProfile = this.setProfile.bind(this);
     this.editProfile = this.editProfile.bind(this);
   }
 
-
   selectPhotoTapped = () => {
-    let context = this;
-    const options = {
-      quality: 0.3,
-      maxWidth: 800,
-      maxHeight: 800,
-      storageOptions: {
-        skipBackup: true
-      }
-    };
-
+    // let context = this;
+    // const options = {
+    //   quality: 0.3,
+    //   maxWidth: 800,
+    //   maxHeight: 800,
+    //   storageOptions: {
+    //     skipBackup: true,
+    //   },
+    // };
     // ImagePicker.showImagePicker(options, response => {
     //   // eslint-disable-next-line no-empty
     //   if (response.didCancel) {
@@ -93,7 +90,7 @@ class EditProfile extends Component {
   setProfile(res, cb) {
     let context = this,
       {
-        attributes: { family_name, name, phone_number, profile, email }
+        attributes: {family_name, name, phone_number, profile, email},
       } = res,
       phoneNumber = phone_number ? phone_number.slice(-10) : "";
 
@@ -104,38 +101,38 @@ class EditProfile extends Component {
         lastName: family_name,
         phone: phoneNumber,
         imgUrl: profile,
-        profileShow: true
+        profileShow: true,
       },
       () => {
         if (cb) {
           cb();
         }
-      }
+      },
     );
   }
 
   showPassword = () => {
     this.setState({
-      hidePassword: !this.state.hidePassword
+      hidePassword: !this.state.hidePassword,
     });
   };
 
   editProfile() {
-    let { firstName, lastName, phone, imgUrl } = this.state,
+    let {firstName, lastName, phone, imgUrl} = this.state,
       {
         user: {
-          userData: { username }
-        }
+          userData: {username},
+        },
       } = this.props;
     if (_.isEmpty(firstName.trim())) {
       this.setState({
-        firstNameError: "First name is required"
+        firstNameError: "First name is required",
       });
       return;
     }
     if (_.isEmpty(lastName.trim())) {
       this.setState({
-        lastNameError: "Last name is required"
+        lastNameError: "Last name is required",
       });
       return;
     }
@@ -146,7 +143,7 @@ class EditProfile extends Component {
         lastName,
         phone,
         picture: imgUrl,
-        username
+        username,
       },
       () => {
         // context.setProfile(res, () => {
@@ -158,13 +155,13 @@ class EditProfile extends Component {
               text: "OK",
               onPress: () => {
                 this.props.AppAction.pop(this.props.componentId);
-              }
-            }
+              },
+            },
           ],
-          { cancelable: false }
+          {cancelable: false},
         );
         // });
-      }
+      },
     );
   }
 
@@ -173,19 +170,18 @@ class EditProfile extends Component {
   }
 
   renderProfileImage() {
-    let { profileShow } = this.state;
+    let {profileShow} = this.state;
     return (
       <TouchableOpacity
         // onPress={() => this.actionSheet.show()}
         onPress={() => this.selectPhotoTapped()}
-        style={styles.image_container}
-      >
+        style={styles.image_container}>
         {profileShow && (
           <Image
             source={
               this.state.imgUrl
                 ? {
-                    uri: this.state.imgUrl
+                    uri: this.state.imgUrl,
                   }
                 : require("../../assets/images/ajivarLogo/tabcenter.png")
             }
@@ -193,7 +189,7 @@ class EditProfile extends Component {
               width: moderateScale(70),
               height: moderateScale(70),
               borderRadius: moderateScale(70) / 2,
-              alignContent: "center"
+              alignContent: "center",
             }}
           />
         )}
@@ -213,10 +209,10 @@ class EditProfile extends Component {
       email,
       phoneError,
       firstNameError,
-      lastNameError
+      lastNameError,
     } = this.state;
     let {
-      loader: { signupLoader }
+      loader: {signupLoader},
     } = this.props;
     return (
       <View style={[styles.container]}>
@@ -224,8 +220,7 @@ class EditProfile extends Component {
           keyboardShouldPersistTaps={"handled"}
           style={styles.scrollStyle}
           showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
-        >
+          showsVerticalScrollIndicator={false}>
           <View style={styles.signInView}>
             <Text style={styles.signInText}>Edit Profile</Text>
           </View>
@@ -278,7 +273,7 @@ class EditProfile extends Component {
               returnKey={"next"}
               error={phoneError}
             /> */}
-            <View style={{ paddingVertical: moderateScale(8) }}>
+            <View style={{paddingVertical: moderateScale(8)}}>
               <Text style={styles.textInputHeader}>Email</Text>
               <TextInput
                 value={email}
@@ -286,13 +281,13 @@ class EditProfile extends Component {
                 style={styles.textInputRoundStyle}
               />
             </View>
-            <View style={{ paddingVertical: moderateScale(8) }}>
+            <View style={{paddingVertical: moderateScale(8)}}>
               <Text style={styles.textInputHeader}>First Name</Text>
               <TextInput
                 ref={ref => (this.firstName = ref)}
                 value={firstName}
                 onChangeText={firstName => {
-                  this.setState({ firstName, firstNameError: "" });
+                  this.setState({firstName, firstNameError: ""});
                 }}
                 onSubmitEditing={() => {
                   this.focusNext("lastName");
@@ -303,13 +298,13 @@ class EditProfile extends Component {
               />
             </View>
 
-            <View style={{ paddingVertical: moderateScale(8) }}>
+            <View style={{paddingVertical: moderateScale(8)}}>
               <Text style={styles.textInputHeader}>Last Name</Text>
               <TextInput
                 ref={ref => (this.lastName = ref)}
                 value={lastName}
                 onChangeText={lastName => {
-                  this.setState({ lastName, lastNameError: "" });
+                  this.setState({lastName, lastNameError: ""});
                 }}
                 onSubmitEditing={() => {
                   this.focusNext("phone");
@@ -320,13 +315,13 @@ class EditProfile extends Component {
               />
             </View>
 
-            <View style={{ paddingVertical: moderateScale(8) }}>
+            <View style={{paddingVertical: moderateScale(8)}}>
               <Text style={styles.textInputHeader}>Phone Number</Text>
               <TextInput
                 ref={ref => (this.phone = ref)}
                 value={phone}
                 onChangeText={phone => {
-                  this.setState({ phone, phoneError: "" });
+                  this.setState({phone, phoneError: ""});
                 }}
                 onSubmitEditing={() => {
                   this.editProfile();
@@ -337,7 +332,7 @@ class EditProfile extends Component {
               />
             </View>
           </View>
-          <View style={{ padding: moderateScale(10) }} />
+          <View style={{padding: moderateScale(10)}} />
           <View style={styles.stylesAuthContainer}>
             <AuthButton
               // buttonName={!signupLoader ? "Sign Up" : "Signing Up..."}
@@ -359,75 +354,73 @@ class EditProfile extends Component {
 const mapStateToProps = state => ({
   user: state.user,
   app: state.app,
-  loader: state.loader
+  loader: state.loader,
 });
-const mapDispatchToProps = dispatch => ({
-
-});
+// const mapDispatchToProps = dispatch => ({});
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null,
 )(EditProfile);
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: Constants.Colors.AuthYellow },
+  container: {flex: 1, backgroundColor: Constants.Colors.AuthYellow},
   scrollStyle: {
-    flex: 1
+    flex: 1,
   },
   image_container: {
     height: moderateScale(70),
     width: moderateScale(70),
     justifyContent: "center",
     alignItems: "center",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   signUpButtonStyle: {
     width: moderateScale(160),
     height: moderateScale(40),
     marginTop: moderateScale(10),
-    alignSelf: "center"
+    alignSelf: "center",
   },
 
   gradientStyle: {
-    borderRadius: moderateScale(20)
+    borderRadius: moderateScale(20),
   },
   textStyle: {
     textAlign: "center",
     fontFamily: "Charter",
     fontWeight: "bold",
-    fontSize: moderateScale(18)
+    fontSize: moderateScale(18),
   },
   paddingInputText: {
-    paddingHorizontal: moderateScale(20)
+    paddingHorizontal: moderateScale(20),
   },
   forgotView: {
     justifyContent: "center",
     alignItems: "center",
     marginTop: moderateScale(15),
-    padding: moderateScale(15)
+    padding: moderateScale(15),
   },
   inputWrapper: {
     borderBottomWidth: moderateScale(1),
     borderBottomColor: Constants.Colors.Gray,
     fontFamily: "Charter",
     fontWeight: "normal",
-    height: moderateScale(50)
+    height: moderateScale(50),
   },
   stylesAuthContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: moderateScale(15)
+    marginTop: moderateScale(15),
   },
   nameField: {
-    width: Constants.BaseStyle.DEVICE_WIDTH * 0.43
+    width: Constants.BaseStyle.DEVICE_WIDTH * 0.43,
   },
 
-  marginRightName: { marginRight: Constants.BaseStyle.DEVICE_WIDTH * 0.02 },
+  marginRightName: {marginRight: Constants.BaseStyle.DEVICE_WIDTH * 0.02},
 
-  marginLeftName: { marginLeft: Constants.BaseStyle.DEVICE_WIDTH * 0.02 },
+  marginLeftName: {marginLeft: Constants.BaseStyle.DEVICE_WIDTH * 0.02},
 
   nameContainer: {
-    flexDirection: "row"
+    flexDirection: "row",
   },
   signUpView: {
     backgroundColor: "white",
@@ -436,7 +429,7 @@ const styles = StyleSheet.create({
     borderWidth: moderateScale(1),
     paddingVertical: moderateScale(4),
     marginTop: moderateScale(35),
-    marginHorizontal: moderateScale(1)
+    marginHorizontal: moderateScale(1),
   },
 
   signUpButton: {
@@ -448,42 +441,42 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(21),
     color: "gray",
     fontFamily: "Cochin",
-    textAlign: "center"
+    textAlign: "center",
   },
 
   forgotButton: {
     paddingTop: moderateScale(5),
-    paddingBottom: moderateScale(20)
+    paddingBottom: moderateScale(20),
   },
 
   signInText: {
     fontSize: moderateScale(30),
     color: Constants.Colors.Black,
     fontWeight: Platform.OS == "ios" ? "bold" : "normal",
-    fontFamily: "Cochin-Bold"
+    fontFamily: "Cochin-Bold",
   },
   signInView: {
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: moderateScale(25)
+    marginVertical: moderateScale(25),
   },
   forgotText: {
     color: Constants.Colors.Black,
     fontSize: moderateScale(20),
     fontFamily: "Helvetica",
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   forgotTextBlack: {
     fontSize: moderateScale(19),
     paddingHorizontal: moderateScale(5),
     fontFamily: "Helvetica",
-    fontWeight: "normal"
+    fontWeight: "normal",
   },
   textInputHeader: {
     fontSize: moderateScale(14),
     color: "#1D2226",
     fontFamily: "Cochin",
-    padding: moderateScale(5)
+    padding: moderateScale(5),
   },
   textInputRoundStyle: {
     height: moderateScale(40),
@@ -494,6 +487,6 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     color: "#1D2226",
     fontFamily: "Cochin-Bold",
-    backgroundColor: "#FFFFFF"
-  }
+    backgroundColor: "#FFFFFF",
+  },
 });

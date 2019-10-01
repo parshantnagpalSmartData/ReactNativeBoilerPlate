@@ -6,7 +6,7 @@
  * */
 
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {View, Text, StyleSheet} from "react-native";
 
 export default class AppContainer extends React.Component {
   componentWillUnmount() {}
@@ -22,11 +22,11 @@ export default class AppContainer extends React.Component {
 
 const styles = StyleSheet.create({
   welcome: {
-    fontSize: 28
+    fontSize: 28,
   },
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });

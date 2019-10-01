@@ -11,7 +11,7 @@ const initialState = {
   loginLoader: false,
   signupLoader: false,
   posimationLoader: false,
-  posimationDelLoader: false
+  posimationDelLoader: false,
 };
 
 const user = (state = initialState, action) => {
@@ -19,48 +19,46 @@ const user = (state = initialState, action) => {
     case Types.LOGIN_REQUEST:
       return {
         ...state,
-        loginLoader: true
+        loginLoader: true,
       };
     case Types.LOGIN:
       return {
         ...state,
-        loginLoader: false
+        loginLoader: false,
       };
     case Types.LOGIN_REQUEST_FAIL:
       return {
         ...state,
-        loginLoader: false
+        loginLoader: false,
       };
     case Types.REGISTER_REQUEST:
       return {
         ...state,
-        signupLoader: true
+        signupLoader: true,
       };
     case Types.REGISTER_REQUEST_SUCCESS:
       return {
         ...state,
-        signupLoader: false
+        signupLoader: false,
       };
     case Types.REGISTER_REQUEST_FAIL:
       return {
         ...state,
-        signupLoader: false
+        signupLoader: false,
       };
     case Types.LOGOUT_REQUEST:
       return {
         ...state,
-        loginLoader: true
+        loginLoader: true,
       };
     case Types.LOGOUT:
       return {
         ...state,
-        loginLoader: false
+        loginLoader: false,
       };
 
- 
-
     case "RESET":
-      return { initialState };
+      return {initialState};
     default:
       return state;
   }

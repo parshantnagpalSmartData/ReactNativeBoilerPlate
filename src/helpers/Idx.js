@@ -10,7 +10,7 @@
  * @providesModule idx
  */
 
-"use strict"; // eslint-disable-line strict
+'use strict'; // eslint-disable-line strict
 
 /**
  * Traverses properties on objects and arrays. If an intermediate property is
@@ -72,7 +72,7 @@ function idx<Ti, Tv>(input: Ti, accessor: (input: Ti) => Tv): ?Tv {
 }
 
 let nullPattern: ?RegExp;
-function isNullPropertyAccessError({ message }: TypeError): boolean {
+function isNullPropertyAccessError({message}: TypeError): boolean {
   if (!nullPattern) {
     nullPattern = getInvalidPropertyAccessErrorPattern(null);
   }
@@ -80,7 +80,7 @@ function isNullPropertyAccessError({ message }: TypeError): boolean {
 }
 
 let undefinedPattern: ?RegExp;
-function isUndefinedPropertyAccessError({ message }: TypeError): boolean {
+function isUndefinedPropertyAccessError({message}: TypeError): boolean {
   if (!undefinedPattern) {
     undefinedPattern = getInvalidPropertyAccessErrorPattern(undefined);
   }
@@ -92,7 +92,7 @@ function isUndefinedPropertyAccessError({ message }: TypeError): boolean {
  */
 // eslint-disable-next-line no-new-func, flowtype/no-weak-types
 const getInvalidPropertyAccessErrorPattern: any = new Function(
-  "$object$",
+  '$object$',
   `
   try {
     $object$.$property$;
@@ -105,7 +105,7 @@ const getInvalidPropertyAccessErrorPattern: any = new Function(
     );
   }
   throw new Error('Expected property access on ' + $object$ + ' to throw.');
-`
+`,
 );
 
 module.exports = idx;

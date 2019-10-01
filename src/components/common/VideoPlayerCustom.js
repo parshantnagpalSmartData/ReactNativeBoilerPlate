@@ -4,7 +4,7 @@
  * Description : "Conatins the custom Video package module"
  */
 /* eslint-disable */
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   Platform,
   StyleSheet,
@@ -19,20 +19,20 @@ import {
   Modal,
   TouchableWithoutFeedback,
   Image,
-  BackHandler
-} from "react-native";
+  BackHandler,
+} from 'react-native';
 
-import Icon from "react-native-vector-icons/MaterialIcons";
-import IconEntypo from "react-native-vector-icons/Entypo";
-import Video from "react-native-video";
-import { Slider } from "react-native-elements";
-import PropsTypes from "prop-types";
-var { height, width } = Dimensions.get("window");
-import AnimatedHideView from "react-native-animated-hide-view";
-import isEqual from "lodash/isEqual";
-import Constants from "../../constants";
-import Events from "../../utilities/Events";
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import IconEntypo from 'react-native-vector-icons/Entypo';
+import Video from 'react-native-video';
+import {Slider} from 'react-native-elements';
+import PropsTypes from 'prop-types';
+var {height, width} = Dimensions.get('window');
+import AnimatedHideView from 'react-native-animated-hide-view';
+import isEqual from 'lodash/isEqual';
+import Constants from '../../constants';
+import Events from '../../utilities/Events';
+import {moderateScale} from '../../helpers/ResponsiveFonts';
 
 class VideoPlayer extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class VideoPlayer extends Component {
     // this.handleBackPress = this.handleBackPress.bind(this);
   }
   get initialState() {
-    let { defaultMuted, playing, posterImage, muted } = this.props;
+    let {defaultMuted, playing, posterImage, muted} = this.props;
 
     return {
       playing,
@@ -68,17 +68,17 @@ class VideoPlayer extends Component {
       // spinValue: new Animated.Value(0),
       rotate: false,
       spin: null,
-      clearId: "",
-      clearId1: "",
+      clearId: '',
+      clearId1: '',
       defaultMuted,
-      posterImage
+      posterImage,
     };
   }
   componentDidMount() {
-    Events.on("VideoSoundDisable", this.VideoSoundDisable);
+    Events.on('VideoSoundDisable', this.VideoSoundDisable);
   }
   componentWillUnmount() {
-    Events.removeListener("VideoSoundDisable", this.VideoSoundDisable);
+    Events.removeListener('VideoSoundDisable', this.VideoSoundDisable);
   }
 
   handleBackButtonClick() {
@@ -86,16 +86,16 @@ class VideoPlayer extends Component {
   }
 
   componentWillMount() {
-    if (Platform.OS === "")
+    if (Platform.OS === '')
       this.setState({
         statusBarHeight:
-          Platform.OS === "android" ? StatusBar.currentHeight : 20
+          Platform.OS === 'android' ? StatusBar.currentHeight : 20,
       });
     // StatusBar.setHidden(true);
   }
 
   VideoSoundDisable() {
-    this.setState({ playing: false });
+    this.setState({playing: false});
   }
 
   componentWillReceiveProps(nextProps) {
@@ -108,24 +108,24 @@ class VideoPlayer extends Component {
 
   togglePlay() {
     if (this.state.posterImage) {
-      this.setState({ posterImage: false });
+      this.setState({posterImage: false});
     }
     if (this.state.playFromBeginning) {
       this.refs.audio.seek(0);
       this.setState({
         playFromBeginning: false,
-        onEnd: false
+        onEnd: false,
       });
     }
-    this.setState({ playing: !this.state.playing, isLoading: false });
+    this.setState({playing: !this.state.playing, isLoading: false});
   }
 
   toggleVolume() {
-    this.setState({ muted: !this.state.muted });
+    this.setState({muted: !this.state.muted});
   }
 
   randomSongIndex() {
-    const { params } = this.props.navigation.state;
+    const {params} = this.props.navigation.state;
     let maxIndex = params.songs.length - 1;
     return Math.floor(Math.random() * (maxIndex - 0 + 1)) + 0;
   }
@@ -134,50 +134,50 @@ class VideoPlayer extends Component {
     let context = this;
     if (!this.state.onEnd) {
       if (!this.state.sliding) {
-        this.setState({ currentTime: params.currentTime });
+        this.setState({currentTime: params.currentTime});
       }
       if (this.state.songDuration !== undefined) {
         this.setState(
           {
-            songPercentage: this.state.currentTime / this.state.songDuration
+            songPercentage: this.state.currentTime / this.state.songDuration,
           },
           () => {
             if (context.props.videoPercentage) {
               context.props.videoPercentage(context.state.songPercentage);
             }
-          }
+          },
         );
       } else {
-        this.setState({ songPercentage: 0 });
+        this.setState({songPercentage: 0});
       }
     }
   }
 
   onLoad(params) {
     this.refs.audio.seek(this.state.currentTime);
-    this.setState({ isLoading: false, songDuration: params.duration });
+    this.setState({isLoading: false, songDuration: params.duration});
   }
 
   onLoadStart() {
-    this.setState({ isLoading: true });
+    this.setState({isLoading: true});
   }
 
   onSlidingStart() {
-    this.setState({ sliding: true, currentTime: this.state.currentTime });
+    this.setState({sliding: true, currentTime: this.state.currentTime});
   }
 
   onSlidingChange(value) {
-    console.log("valuevaluevalue", value);
+    console.log('valuevaluevalue', value);
     let newPosition = value * this.state.songDuration;
     this.refs.audio.seek(newPosition);
-    this.setState({ currentTime: newPosition });
+    this.setState({currentTime: newPosition});
     this.childVisible();
   }
 
   onSlidingComplete() {
-    console.log("this.state.currentTime");
+    console.log('this.state.currentTime');
     this.refs.audio.seek(this.state.currentTime);
-    this.setState({ sliding: false });
+    this.setState({sliding: false});
   }
 
   toggleFullScreen() {
@@ -188,40 +188,40 @@ class VideoPlayer extends Component {
     }
 
     this.setState(
-      { fullScreen: !this.state.fullScreen, rotate: !this.state.rotate },
+      {fullScreen: !this.state.fullScreen, rotate: !this.state.rotate},
       () => {
         if (this.state.fullScreen) {
           StatusBar.setHidden(true);
 
           var clearId = setTimeout(() => {
-            this.setState({ isChildVisible: false });
+            this.setState({isChildVisible: false});
           }, 5000);
-          this.setState({ clearId: clearId }, () => {});
+          this.setState({clearId: clearId}, () => {});
 
           Animated.timing(this.state.spinValue, {
             toValue: 1,
             duration: 250,
-            easing: Easing.linear
+            easing: Easing.linear,
           }).start();
           // this.refs.audio.seek(this.state.songDuration)
         } else {
           StatusBar.setHidden(false);
           clearTimeout(this.state.clearId);
-          this.setState({ isChildVisible: true });
+          this.setState({isChildVisible: true});
           setTimeout(() => {
-            this.setState({ isChildVisible: false });
+            this.setState({isChildVisible: false});
           }, 5000);
 
           Animated.timing(this.state.spinValue, {
             toValue: 0,
             duration: 250,
-            easing: Easing.linear
+            easing: Easing.linear,
           }).start();
 
-          console.log("this.state.songDuration", this.state.songDuration);
+          console.log('this.state.songDuration', this.state.songDuration);
           // this.refs.audio.seek(this.state.songDuration)
         }
-      }
+      },
     );
   }
   onEnd() {
@@ -230,9 +230,9 @@ class VideoPlayer extends Component {
       currentTime: 0,
       playFromBeginning: true,
       songPercentage: 0,
-      onEnd: true
+      onEnd: true,
     });
-    Events.emit("videoCompleteWatch");
+    Events.emit('videoCompleteWatch');
   }
 
   toggleForward() {
@@ -242,9 +242,9 @@ class VideoPlayer extends Component {
           this.state.currentTime + 10 <= this.state.songDuration
             ? this.state.currentTime + 10
             : this.state.currentTime +
-              (this.state.songDuration - this.state.currentTime)
+              (this.state.songDuration - this.state.currentTime),
       },
-      () => {}
+      () => {},
     );
   }
 
@@ -253,11 +253,11 @@ class VideoPlayer extends Component {
       currentTime:
         this.state.currentTime - 10 >= 0
           ? this.state.currentTime - 10
-          : this.state.currentTime - this.state.currentTime
+          : this.state.currentTime - this.state.currentTime,
     });
   }
   playButtonThumbnail() {
-    this.setState({ posterImage: false, playing: true, isLoading: false });
+    this.setState({posterImage: false, playing: true, isLoading: false});
   }
 
   renderButton() {
@@ -280,7 +280,7 @@ class VideoPlayer extends Component {
         onPress={() => {
           this.toggleForward();
         }}
-        style={{ marginTop: 20 }}
+        style={{marginTop: 20}}
         name="forward-10"
         size={30}
         color="#999"
@@ -292,7 +292,7 @@ class VideoPlayer extends Component {
         onPress={() => {
           this.toggleBackward();
         }}
-        style={{ marginTop: 20 }}
+        style={{marginTop: 20}}
         name="replay-10"
         size={30}
         color="#999"
@@ -308,7 +308,7 @@ class VideoPlayer extends Component {
     let backButton = (
       <Icon
         onPress={() => this.toggleBack()}
-        style={{ left: 15 }}
+        style={{left: 15}}
         name="chevron-left"
         size={35}
         color="#999"
@@ -319,8 +319,7 @@ class VideoPlayer extends Component {
       <AnimatedHideView
         duration={200}
         visible={this.state.isChildVisible}
-        style={[styles.controlsSmall]}
-      >
+        style={[styles.controlsSmall]}>
         <View style={styles.controls}>
           <View>
             <Animated.View style={[styles.sliderContainer]}>
@@ -342,9 +341,9 @@ class VideoPlayer extends Component {
                   {formattedTime(this.state.currentTime)}
                 </Text>
                 <Text style={styles.VideotimeTxt}>
-                  -{" "}
+                  -{' '}
                   {formattedTime(
-                    this.state.songDuration - this.state.currentTime
+                    this.state.songDuration - this.state.currentTime,
                   )}
                 </Text>
               </View>
@@ -353,17 +352,16 @@ class VideoPlayer extends Component {
               style={{
                 width:
                   width -
-                  (Platform.OS == "ios"
+                  (Platform.OS == 'ios'
                     ? width > 800
                       ? width * 0.075
                       : width * 0.08
                     : width * 0.08),
-                flexDirection: "row",
-                backgroundColor: "#222",
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
+                flexDirection: 'row',
+                backgroundColor: '#222',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
               <Animated.View style={[styles.vCntrlBtn]}>
                 <TouchableOpacity onPress={this.toggleVolume.bind(this)}>
                   <Text>{volumeButton}</Text>
@@ -400,7 +398,7 @@ class VideoPlayer extends Component {
     this.refs.audio.seek(this.state.currentTime);
   }
   childVisible() {
-    let { clearId, clearId1 } = this.state;
+    let {clearId, clearId1} = this.state;
     if (clearId) {
       clearTimeout(clearId);
     }
@@ -409,9 +407,9 @@ class VideoPlayer extends Component {
     }
 
     let clearId1Copy = setTimeout(() => {
-      this.setState({ isChildVisible: false });
+      this.setState({isChildVisible: false});
     }, 5000);
-    this.setState({ clearId1: clearId1Copy });
+    this.setState({clearId1: clearId1Copy});
   }
 
   renderButtonFull() {
@@ -463,12 +461,7 @@ class VideoPlayer extends Component {
     }
 
     let fullscreenButton = (
-      <Icon
-        style={{ marginTop: 20 }}
-        name="fullscreen"
-        size={30}
-        color="#999"
-      />
+      <Icon style={{marginTop: 20}} name="fullscreen" size={30} color="#999" />
     );
 
     let forwardButton = (
@@ -476,7 +469,7 @@ class VideoPlayer extends Component {
         onPress={() => {
           this.toggleForward();
         }}
-        style={{ marginTop: 20 }}
+        style={{marginTop: 20}}
         name="forward-10"
         size={30}
         color="#999"
@@ -488,7 +481,7 @@ class VideoPlayer extends Component {
         onPress={() => {
           this.toggleBackward();
         }}
-        style={{ marginTop: 20 }}
+        style={{marginTop: 20}}
         name="replay-10"
         size={30}
         color="#999"
@@ -513,19 +506,17 @@ class VideoPlayer extends Component {
       <AnimatedHideView
         duration={200}
         visible={this.state.isChildVisible}
-        style={[styles.controlsFull]}
-      >
+        style={[styles.controlsFull]}>
         <View
           style={{
             width: 60,
-            alignSelf: "flex-start",
-            justifyContent: "space-around",
-            alignItems: "center",
+            alignSelf: 'flex-start',
+            justifyContent: 'space-around',
+            alignItems: 'center',
             height: height,
-            position: "relative",
-            zIndex: 99
-          }}
-        >
+            position: 'relative',
+            zIndex: 99,
+          }}>
           <Animated.View style={[styles.vCntrlBtn, styles.vCntrlBtnFull]}>
             <TouchableOpacity onPress={this.toggleVolume.bind(this)}>
               <Text>{volumeButton}</Text>
@@ -569,7 +560,7 @@ class VideoPlayer extends Component {
               {formattedTime(this.state.currentTime)}
             </Text>
             <Text style={styles.VideotimeTxt}>
-              -{" "}
+              -{' '}
               {formattedTime(this.state.songDuration - this.state.currentTime)}
             </Text>
           </View>
@@ -583,8 +574,7 @@ class VideoPlayer extends Component {
       <Modal
         animationType="slide"
         transparent={false}
-        visible={this.state.fullScreen}
-      >
+        visible={this.state.fullScreen}>
         <StatusBar hidden={true} />
         {this.renderView()}
       </Modal>
@@ -601,15 +591,15 @@ class VideoPlayer extends Component {
     );
   }
   renderView() {
-    let { defaultMuted, posterImage } = this.state,
-      { thumbnailLinks } = this.props;
+    let {defaultMuted, posterImage} = this.state,
+      {thumbnailLinks} = this.props;
     const spin = this.state.spinValue.interpolate({
       inputRange: [0, 1],
-      outputRange: ["-90deg", "0deg"]
+      outputRange: ['-90deg', '0deg'],
     });
     const spin1 = this.state.spinValue.interpolate({
       inputRange: [0, 1],
-      outputRange: ["0deg", "90deg"]
+      outputRange: ['0deg', '90deg'],
     });
     let songPercentage;
     if (this.state.songDuration !== undefined) {
@@ -622,54 +612,53 @@ class VideoPlayer extends Component {
       <TouchableWithoutFeedback
         onPress={() => {
           if (this.state.defaultMuted) {
-            this.setState({ defaultMuted: false, muted: false });
+            this.setState({defaultMuted: false, muted: false});
             return;
           }
 
           if (this.state.fullScreen) {
             this.props.hideStatusBar();
           }
-          this.setState({ isChildVisible: !this.state.isChildVisible }, () => {
+          this.setState({isChildVisible: !this.state.isChildVisible}, () => {
             if (this.state.isChildVisible) {
               let clearId = setTimeout(() => {
-                this.setState({ isChildVisible: false });
+                this.setState({isChildVisible: false});
               }, 5000);
-              this.setState({ clearId });
+              this.setState({clearId});
             }
           });
-        }}
-      >
+        }}>
         <Animated.View
           style={[
             styles.container,
-            { transform: [{ rotate: this.state.fullScreen ? spin : spin1 }] }
-          ]}
-        >
+            {transform: [{rotate: this.state.fullScreen ? spin : spin1}]},
+          ]}>
           <View style={styles.containerInner}>
             <View
-              style={!this.state.fullScreen ? styles.view : styles.topViewStyle}
-            >
+              style={
+                !this.state.fullScreen ? styles.view : styles.topViewStyle
+              }>
               <Video
-                source={{ uri: this.props.url }}
+                source={{uri: this.props.url}}
                 // poster={"https://baconmockup.com/300/200/"}
                 // posterResizeMode={"contain"}
                 ref="audio"
                 style={[
-                  !this.state.fullScreen ? styles.video : styles.videoFull
+                  !this.state.fullScreen ? styles.video : styles.videoFull,
                 ]}
                 volume={this.state.muted ? 0 : 1.0}
                 muted={defaultMuted ? true : false}
                 fullscreen={true}
                 paused={!this.state.playing}
                 selectedVideoTrack={{
-                  type: "resolution",
-                  value: 480
+                  type: 'resolution',
+                  value: 480,
                 }}
                 onFullscreenPlayerDidPresent={this.onFullscreenPlayerDidPresent.bind(
-                  this
+                  this,
                 )}
                 onFullscreenPlayerDidDismiss={this.onFullscreenPlayerDidDismiss.bind(
-                  this
+                  this,
                 )}
                 fullscreenAutorotate={true}
                 onLoadStart={this.onLoadStart.bind(this)}
@@ -697,10 +686,10 @@ class VideoPlayer extends Component {
               {posterImage && (
                 <Image
                   source={{
-                    uri: thumbnailLinks
+                    uri: thumbnailLinks,
                   }}
-                  resizeMethod={"resize"}
-                  resizeMode={"contain"}
+                  resizeMethod={'resize'}
+                  resizeMode={'contain'}
                   style={styles.posterImage}
                 />
               )}
@@ -709,11 +698,10 @@ class VideoPlayer extends Component {
                   style={[styles.playButton]}
                   onPress={() => {
                     this.playButtonThumbnail();
-                  }}
-                >
+                  }}>
                   <Image
                     source={Constants.Images.playButton}
-                    resizeMode={"contain"}
+                    resizeMode={'contain'}
                     style={styles.playButtonHeight}
                   />
                   {/* <IconEntypo name="sound-mute" size={26} color="#999" /> */}
@@ -730,246 +718,246 @@ class VideoPlayer extends Component {
 }
 
 const styles = StyleSheet.create({
-  ActivityIndicator: { position: "absolute" },
+  ActivityIndicator: {position: 'absolute'},
   muteButton: {
-    position: "absolute",
+    position: 'absolute',
     right: moderateScale(20),
-    bottom: moderateScale(10)
+    bottom: moderateScale(10),
   },
   playButton: {
-    position: "absolute",
+    position: 'absolute',
     right: Constants.BaseStyle.DEVICE_WIDTH * 0.35,
-    bottom: Constants.BaseStyle.DEVICE_WIDTH * 0.28
+    bottom: Constants.BaseStyle.DEVICE_WIDTH * 0.28,
   },
   vCntrlBtn: {
     width: 44,
     height: 44,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginHorizontal: 10,
-    marginBottom: 4
+    marginBottom: 4,
   },
   vCntrlBtnFull: {
     transform: [
       {
-        rotateZ: "90deg"
-      }
+        rotateZ: '90deg',
+      },
     ],
-    zIndex: 1000
+    zIndex: 1000,
   },
   posterImage: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
     left: 0,
     height: width * 0.7,
-    width: width - width * 0.08
+    width: width - width * 0.08,
   },
   playButtonHeight: {
     height: width * 0.2,
-    width: width * 0.2
+    width: width * 0.2,
   },
   view: {
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column"
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
   },
   video: {
     height: width * 0.7,
     width: width - width * 0.08,
-    backgroundColor: Constants.Colors.Black
+    backgroundColor: Constants.Colors.Black,
   },
   videoFull: {
     height: height,
     width: height,
-    backgroundColor: Constants.Colors.Black
+    backgroundColor: Constants.Colors.Black,
   },
   container: {
     // flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   topViewStyle: {
-    transform: [{ rotateZ: "90deg" }],
+    transform: [{rotateZ: '90deg'}],
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     height: width,
-    width: height
+    width: height,
   },
   videoStyle: {
     height: width,
-    width: height
+    width: height,
   },
   header: {
     marginTop: 17,
     marginBottom: 17,
-    width: width
+    width: width,
   },
   headerClose: {
-    position: "absolute",
+    position: 'absolute',
     top: 10,
     left: 0,
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
   },
   headerText: {
-    color: "#FFF",
+    color: '#FFF',
     fontSize: 18,
-    textAlign: "center"
+    textAlign: 'center',
   },
   songImage: {
-    marginBottom: 20
+    marginBottom: 20,
   },
   songTitle: {
     marginRight: 20,
     marginLeft: 20,
-    color: "white",
-    fontFamily: "Helvetica Neue",
+    color: 'white',
+    fontFamily: 'Helvetica Neue',
     marginBottom: 10,
     marginTop: 13,
-    fontSize: 19
+    fontSize: 19,
   },
   albumTitle: {
-    color: "#BBB",
-    fontFamily: "Helvetica Neue",
+    color: '#BBB',
+    fontFamily: 'Helvetica Neue',
     fontSize: 14,
-    marginBottom: 20
+    marginBottom: 20,
   },
   play: {},
   playFull: {
-    transform: [{ rotateZ: "90deg" }]
+    transform: [{rotateZ: '90deg'}],
   },
 
   playRotate: {
-    transform: [{ rotateZ: "90deg" }]
+    transform: [{rotateZ: '90deg'}],
   },
 
   controls: {
     width: width - 30,
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
     bottom: 0,
-    zIndex: 99
+    zIndex: 99,
   },
 
   controlsFull: {
-    alignSelf: "flex-start",
-    justifyContent: "center",
-    backgroundColor: "rgba(0,0,0,0.8)",
-    alignItems: "center",
-    position: "absolute",
+    alignSelf: 'flex-start',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    alignItems: 'center',
+    position: 'absolute',
 
-    width: 120
+    width: 120,
   },
   controlsSmall: {
     // alignSelf: "flex-start",
     // justifyContent: "center",
     // backgroundColor: "rgba(0,0,0,0.8)",
     // alignItems: "center",
-    position: "absolute",
-    bottom: 0
+    position: 'absolute',
+    bottom: 0,
   },
 
   controlsFullscreen: {
-    position: "absolute",
-    flexDirection: "row"
+    position: 'absolute',
+    flexDirection: 'row',
   },
   back: {
     marginTop: 22,
-    marginLeft: 45
+    marginLeft: 45,
   },
   play: {
     marginLeft: 50,
-    marginRight: 50
+    marginRight: 50,
   },
   forward: {
     marginTop: 22,
-    marginRight: 45
+    marginRight: 45,
   },
   shuffle: {
-    marginTop: 26
+    marginTop: 26,
   },
   volume: {},
 
   volumeFull: {
-    transform: [{ rotateZ: "90deg" }]
+    transform: [{rotateZ: '90deg'}],
   },
   volumeRotate: {
     marginTop: 26,
-    transform: [{ rotateZ: "90deg" }]
+    transform: [{rotateZ: '90deg'}],
   },
   sliderContainer: {
     width:
       width -
-      (Platform.OS == "ios"
+      (Platform.OS == 'ios'
         ? width > 800
           ? width * 0.075
           : width * 0.08
         : width * 0.08),
-    backgroundColor: "#222",
+    backgroundColor: '#222',
     paddingHorizontal: 10,
-    paddingTop: 5
+    paddingTop: 5,
   },
   sliderContainerFull: {
-    position: "absolute",
+    position: 'absolute',
     paddingHorizontal: 90,
     width: height,
 
     // backgroundColor: 'rgba(0,0,0,0.6)',
     transform: [
       {
-        rotateZ: "90deg"
+        rotateZ: '90deg',
       },
       {
-        translateY: -20
+        translateY: -20,
       },
       {
-        translateX: 0
-      }
+        translateX: 0,
+      },
     ],
-    paddingVertical: 10
+    paddingVertical: 10,
     // flex:1
   },
   sliderContainerFullInner: {},
   timeInfo: {
-    flexDirection: "row",
-    justifyContent: "space-between"
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   VideotimeTxt: {
     fontSize: 12,
-    color: "#aaa"
+    color: '#aaa',
   },
   time: {
-    color: "#FFF",
+    color: '#FFF',
     flex: 1,
-    fontSize: 10
+    fontSize: 10,
   },
   timeRight: {
-    color: "#FFF",
-    textAlign: "right",
+    color: '#FFF',
+    textAlign: 'right',
     flex: 1,
-    fontSize: 10
+    fontSize: 10,
   },
   sliderFull: {
     // height : 100
     transform: [
       {
-        rotateZ: "0deg"
-      }
-    ]
+        rotateZ: '0deg',
+      },
+    ],
   },
   sliderTrack: {
     height: 3,
-    backgroundColor: "#444"
+    backgroundColor: '#444',
   },
   sliderThumb: {
     marginBottom: 50,
     width: 14,
     height: 14,
-    backgroundColor: "#aaa",
-    borderRadius: 7
-  }
+    backgroundColor: '#aaa',
+    borderRadius: 7,
+  },
 });
 
 function withLeadingZero(amount) {
@@ -985,7 +973,7 @@ function formattedTime(timeInSeconds) {
   let seconds = timeInSeconds - minutes * 60;
 
   if (isNaN(minutes) || isNaN(seconds)) {
-    return "";
+    return '';
   } else {
     return `${withLeadingZero(minutes)}:${withLeadingZero(seconds.toFixed(0))}`;
   }
@@ -1001,9 +989,9 @@ function formatTime(second) {
   }
   // 补零
   let zero = function(v) {
-    return v >> 0 < 10 ? "0" + v : v;
+    return v >> 0 < 10 ? '0' + v : v;
   };
-  return [zero(h), zero(i), zero(s)].join(":");
+  return [zero(h), zero(i), zero(s)].join(':');
 }
 
 /*
@@ -1013,7 +1001,7 @@ VideoPlayer.propsTypes = {
   defaultMuted: PropsTypes.bool,
   playing: PropsTypes.bool,
   thumbnailLinks: PropsTypes.string,
-  videoPercentage: PropsTypes.func
+  videoPercentage: PropsTypes.func,
 };
 /*
 Default props from Button 
@@ -1023,8 +1011,8 @@ VideoPlayer.defaultProps = {
   defaultMuted: true,
   playing: true,
   posterImage: false,
-  thumbnailLinks: "",
-  videoPercentage: () => {}
+  thumbnailLinks: '',
+  videoPercentage: () => {},
 };
 
 export default VideoPlayer;

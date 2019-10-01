@@ -16,5 +16,5 @@ export default {
   AppConstants,
   Strings,
   DevKeys,
-  Url
+  Url,
 };

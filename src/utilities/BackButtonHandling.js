@@ -7,8 +7,8 @@
 
 "use strict";
 
-import { BackHandler } from "react-native";
-import { Dialog } from "../helpers/common";
+import {BackHandler} from "react-native";
+import {Dialog} from "../helpers/common";
 /**
  * Function for handling back preess function
  */
@@ -19,16 +19,16 @@ export function handleBackPress() {
       {
         text: "Cancel",
         onPress: () => {},
-        style: "cancel"
+        style: "cancel",
       },
       {
         text: "OK",
         onPress: () => {
           BackHandler.exitApp();
-        }
-      }
+        },
+      },
     ],
-    { cancelable: false }
+    {cancelable: false},
   );
   return true;
 }

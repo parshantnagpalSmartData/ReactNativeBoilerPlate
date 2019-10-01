@@ -5,9 +5,9 @@
  * @author: Suraj Sanwal
  * */
 import React from "react";
-import { Navigation } from "react-native-navigation";
-import { View, Image } from "react-native";
-import { Provider } from "react-redux";
+import {Navigation} from "react-native-navigation";
+import {View, Image} from "react-native";
+import {Provider} from "react-redux";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 import SideMenu from "../components/common/SideMenu";
@@ -44,7 +44,7 @@ import Screen1 from "../container/dashboard/Screens/Screen1";
 
 import WebView from "../container/dashboard/WebView";
 
-import { tabSelect } from "../actions/app";
+import {tabSelect} from "../actions/app";
 
 // import ToastNotification from "../components/common/ToastNotification";
 
@@ -57,25 +57,24 @@ import background from "../assets/iOS/App_Background.png";
 
 const WrapScreen = (ReduxScreen, store, headerProps) => props => (
   <Provider store={store}>
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <View
         style={{
           flex: 1,
-          position: "absolute",
+          position: 'absolute',
           top: 0,
-          height: "100%",
-          width: "100%"
-        }}
-      >
-        <Image source={background} style={{ height: "100%", width: "100%" }} />
+          height: '100%',
+          width: '100%',
+        }}>
+        <Image source={background} style={{height: '100%', width: '100%'}} />
       </View>
-      <View style={{ flex: 1, zIndex: 99 }}>
+      <View style={{flex: 1, zIndex: 99}}>
         {!headerProps.disableHeader ? (
           <Header
             title={headerProps.title}
             hideBack={headerProps.hideBack}
             hideDrawer={headerProps.hideDrawer}
-            color={headerProps.color || "#fff"}
+            color={headerProps.color || '#fff'}
             rightIcon={headerProps.rightIcon}
             onRightPress={headerProps.onRightPress}
             rightText={headerProps.rightText}
@@ -90,9 +89,9 @@ const WrapScreen = (ReduxScreen, store, headerProps) => props => (
               Navigation.mergeOptions(props.componentId, {
                 sideMenu: {
                   right: {
-                    visible: true
-                  }
-                }
+                    visible: true,
+                  },
+                },
               })
             }
           />
@@ -103,11 +102,11 @@ const WrapScreen = (ReduxScreen, store, headerProps) => props => (
         <Loading />
         {headerProps.enableTabs ? (
           <Footer
-            backgroundColor={"#537591"}
+            backgroundColor={'#537591'}
             title={headerProps.title}
             hideBack={headerProps.hideBack}
             hideDrawer={headerProps.hideDrawer}
-            color={headerProps.color || "#fff"}
+            color={headerProps.color || '#fff'}
             rightIcon={headerProps.rightIcon}
             onRightPress={headerProps.onRightPress}
             rightText={headerProps.rightText}
@@ -141,14 +140,14 @@ const WrapScreen = (ReduxScreen, store, headerProps) => props => (
 export const registerScreens = store => {
   Navigation.registerComponent(
     "AppIntro",
-    () => WrapScreen(AppIntro, store, { disableHeader: true }),
-    () => AppIntro
+    () => WrapScreen(AppIntro, store, {disableHeader: true}),
+    () => AppIntro,
   );
   // Loader Stack
   Navigation.registerComponent(
     "Loader",
     () => WrapScreen(Loader, store),
-    () => Loader
+    () => Loader,
   );
   // Auth stack
   Navigation.registerComponent(
@@ -159,9 +158,9 @@ export const registerScreens = store => {
         auth: true,
         hideDrawer: true,
         hideBack: true,
-        title: "Sign In"
+        title: "Sign In",
       }),
-    () => SignIn
+    () => SignIn,
   );
   Navigation.registerComponent(
     "SignUp",
@@ -171,9 +170,9 @@ export const registerScreens = store => {
         auth: true,
         hideDrawer: true,
         hideBack: true,
-        title: "Sign Up"
+        title: "Sign Up",
       }),
-    () => SignUp
+    () => SignUp,
   );
   Navigation.registerComponent(
     "ForgotPassword",
@@ -182,9 +181,9 @@ export const registerScreens = store => {
         disableHeader: false,
         auth: true,
         hideDrawer: true,
-        title: "Forgot Password"
+        title: "Forgot Password",
       }),
-    () => ForgotPassword
+    () => ForgotPassword,
   );
   Navigation.registerComponent(
     "EnterOtpScreen",
@@ -193,9 +192,9 @@ export const registerScreens = store => {
         disableHeader: false,
         auth: true,
         hideDrawer: true,
-        title: "Enter OtpScreen"
+        title: "Enter OtpScreen",
       }),
-    () => EnterOtpScreen
+    () => EnterOtpScreen,
   );
 
   Navigation.registerComponent(
@@ -205,9 +204,9 @@ export const registerScreens = store => {
         disableHeader: false,
         auth: true,
         hideDrawer: true,
-        title: "Change Password"
+        title: "Change Password",
       }),
-    () => ChangePassword
+    () => ChangePassword,
   );
   Navigation.registerComponent(
     "ConfirmPassword",
@@ -216,9 +215,9 @@ export const registerScreens = store => {
         disableHeader: false,
         auth: true,
         hideDrawer: true,
-        title: "Confirm Password"
+        title: "Confirm Password",
       }),
-    () => ConfirmPassword
+    () => ConfirmPassword,
   );
   Navigation.registerComponent(
     "Institution",
@@ -227,9 +226,9 @@ export const registerScreens = store => {
         disableHeader: false,
         auth: true,
         hideDrawer: true,
-        title: "Institution"
+        title: "Institution",
       }),
-    () => Institution
+    () => Institution,
   );
   Navigation.registerComponent(
     "EditProfile",
@@ -238,9 +237,9 @@ export const registerScreens = store => {
         disableHeader: false,
         auth: true,
         hideDrawer: true,
-        title: "Edit Profile"
+        title: "Edit Profile",
       }),
-    () => EditProfile
+    () => EditProfile,
   );
   Navigation.registerComponent(
     "InstitutionCode",
@@ -249,35 +248,35 @@ export const registerScreens = store => {
         disableHeader: false,
         auth: true,
         hideDrawer: true,
-        title: "Institution Code"
+        title: "Institution Code",
       }),
-    () => InstitutionCode
+    () => InstitutionCode,
   );
   Navigation.registerComponentWithRedux(
     "SideMenu",
     () => SideMenu,
     Provider,
-    store
+    store,
   );
   Navigation.registerComponent(
     "NavBar",
     () => WrapScreen(NavBar, store),
-    () => NavBar
+    () => NavBar,
   );
   Navigation.registerComponent(
     "CustomButton",
     () => WrapScreen(CustomLeft, store),
-    () => CustomLeft
+    () => CustomLeft,
   );
-  Navigation.registerComponent(
-    "EmailVerification",
-    () =>
-      WrapScreen(EmailVerification, store, {
-        disableHeader: false,
-        hideDrawer: true
-      }),
-    () => EmailVerification
-  );
+  // Navigation.registerComponent(
+  //   'EmailVerification',
+  //   () =>
+  //     WrapScreen(EmailVerification, store, {
+  //       disableHeader: false,
+  //       hideDrawer: true,
+  //     }),
+  //   () => EmailVerification,
+  // );
 
   // Dashboard Stack
   Navigation.registerComponent(
@@ -286,9 +285,9 @@ export const registerScreens = store => {
       WrapScreen(Tab1, store, {
         title: "Home",
         enableTabs: true,
-        selected: 0
+        selected: 0,
       }),
-    () => Tab1
+    () => Tab1,
   );
   Navigation.registerComponent(
     "Tab2",
@@ -296,9 +295,9 @@ export const registerScreens = store => {
       WrapScreen(Tab2, store, {
         title: "Posimations",
         enableTabs: true,
-        selected: 1
+        selected: 1,
       }),
-    () => Tab2
+    () => Tab2,
   );
   Navigation.registerComponent(
     "Tab3",
@@ -306,9 +305,9 @@ export const registerScreens = store => {
       WrapScreen(Tab3, store, {
         title: "Ajivar",
         enableTabs: true,
-        selected: 2
+        selected: 2,
       }),
-    () => Tab3
+    () => Tab3,
   );
   Navigation.registerComponent(
     "Tab4",
@@ -316,9 +315,9 @@ export const registerScreens = store => {
       WrapScreen(Tab4, store, {
         title: "Tab1",
         enableTabs: true,
-        selected: 3
+        selected: 3,
       }),
-    () => Tab4
+    () => Tab4,
   );
   // Navigation.registerComponent(
   //   "Profile",
@@ -337,9 +336,9 @@ export const registerScreens = store => {
       WrapScreen(Tab5, store, {
         title: "Tab5",
         enableTabs: true,
-        selected: 4
+        selected: 4,
       }),
-    () => Tab5
+    () => Tab5,
   );
   Navigation.registerComponent(
     "Screen1",
@@ -347,19 +346,19 @@ export const registerScreens = store => {
       WrapScreen(Screen1, store, {
         title: "Screen1",
         hideDrawer: true,
-        hideBack: false
+        hideBack: false,
       }),
-    () => Screen1
+    () => Screen1,
   );
- 
+
   Navigation.registerComponent(
     "WebView",
     () =>
       WrapScreen(WebView, store, {
         title: "WebView",
         hideDrawer: true,
-        hideBack: false
+        hideBack: false,
       }),
-    () => WebView
+    () => WebView,
   );
 };

@@ -1,18 +1,18 @@
 import * as types from "../../actionTypes";
-import * as AppActions from "../index";
+// import * as AppActions from '../index';
 // import { Alert } from "react-native";
-import { goHome, goToAuth } from "../../config/navigation";
+import {goHome, goToAuth} from "../../config/navigation";
 
-import RestClient from "../../helpers/RestClient";
+// import RestClient from '../../helpers/RestClient';
 // import { getCallingCode } from "../../helpers/country";
 // import { Navigation } from "react-native-navigation";
 // import { handleLoader } from "../app";
-import Constants from "../../constants";
-
+// import Constants from '../../constants';
+//eslint-disable-next-line
 export const loginUser = (username, password, componentId) => {
   return dispatch => {
-        dispatch({ type: types.LOGIN });
-        goHome();
+    dispatch({type: types.LOGIN});
+    goHome();
   };
 };
 
@@ -112,11 +112,12 @@ export const loginUser = (username, password, componentId) => {
 // //       .catch(() => alert(Constants.AppConstants.Error.internetConnectivity));
 // //   };
 // // };
-
+//eslint-disable-next-line
 export const registerUser = (user, componentId) => {
+  //eslint-disable-line
   return dispatch => {
-        dispatch({ type: types.LOGIN });
-        goHome();
+    dispatch({type: types.LOGIN});
+    goHome();
   };
 };
 // export const getProfile = cb => {
@@ -335,16 +336,13 @@ export const registerUser = (user, componentId) => {
 
 export const logOut = () => {
   return dispatch => {
-            goToAuth();
-              dispatch({
-                type: types.LOGOUT
-              });
-              dispatch({
-                type: "RESET"
-              });
-       
-       
-
+    goToAuth();
+    dispatch({
+      type: types.LOGOUT,
+    });
+    dispatch({
+      type: "RESET",
+    });
   };
 };
 

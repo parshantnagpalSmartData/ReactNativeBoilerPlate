@@ -65,7 +65,7 @@ let colors = {
   DotRed: "#CF240B",
   InActiveDotRed: "#F5EDED",
   toggleColor: "#356282",
-  circleBackGroundColor: "#AACCCE"
+  circleBackGroundColor: "#AACCCE",
 };
 
 module.exports = colors;

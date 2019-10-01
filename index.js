@@ -2,10 +2,9 @@
  * @format
  */
 
-import { Navigation } from "react-native-navigation";
-import { registerScreens } from "./src/config/routes";
-import { addListeners } from "./src/helpers/listeners";
-import PermissionApi from "./src/helpers/Permissions";
+import {Navigation} from "react-native-navigation";
+import {registerScreens} from "./src/config/routes";
+import {addListeners} from "./src/helpers/listeners";
 import Events from "./src/helpers/registerevents";
 import setup from "./src/store/setup";
 Navigation.events().registerAppLaunchedListener(() => {
@@ -15,14 +14,14 @@ Navigation.events().registerAppLaunchedListener(() => {
   Events.RegisterComponentDidAppearListener(store);
   addListeners();
   Navigation.setDefaultOptions({
-    topBar: { 
+    topBar: {
       visible: false,
-      drawBehind: true
+      drawBehind: true,
     },
     bottomTabs: {
       visible: false,
       animate: true,
-      drawBehind: false
-    }
+      drawBehind: false,
+    },
   });
 });

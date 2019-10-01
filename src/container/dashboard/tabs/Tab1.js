@@ -4,41 +4,32 @@
  * @author: Amit Singh Phartiyal
  * */
 import React from "react";
-import {
-  View,
-  StyleSheet
-} from "react-native";
+import {View, StyleSheet} from "react-native";
 
-import { connect } from "react-redux";
-import { Navigation } from "react-native-navigation";
+import {connect} from "react-redux";
 
 class Tab1 extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
-
+    this.state = {};
   }
   render() {
-    return (<View style={styles.container}></View>)
+    return <View style={styles.container}></View>;
   }
 }
-function mapStateToProps(state) {
-  return {
-
-  };
-}
-const mapDispatchToProps = dispatch => {
-  return {
-  };
-};
+// function mapStateToProps(state) {
+//   return {};
+// }
+// const mapDispatchToProps = dispatch => {
+//   return {};
+// };
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  null,
+  null,
 )(Tab1);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });

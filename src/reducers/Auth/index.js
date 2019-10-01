@@ -8,7 +8,7 @@ Date : 11 Sept 2018
 import * as Types from "../../actionTypes";
 const initialState = {
   loading: false,
-  institutions: []
+  institutions: [],
 };
 
 const signUp = (state = initialState, action) => {
@@ -16,21 +16,21 @@ const signUp = (state = initialState, action) => {
     case Types.GET_INSTITUTIONS:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case Types.INSTITUTIONS:
       return {
         ...state,
         institutions: action.payload,
-        loading: false
+        loading: false,
       };
     case Types.INSTITUTIONS_FAIL:
       return {
         ...state,
-        loading: false
+        loading: false,
       };
     case "RESET":
-      return { ...initialState };
+      return {...initialState};
     default:
       return state;
   }

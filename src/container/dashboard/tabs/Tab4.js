@@ -6,41 +6,29 @@
  * */
 
 import React from "react";
-import {
-  View,
-  StyleSheet
-} from "react-native";
+import {View, StyleSheet} from "react-native";
 
-import { connect } from "react-redux";
-
+import {connect} from "react-redux";
 
 class Tab4 extends React.Component {
-   render() {
-      return (
-        <View  style={styles.container}>
-        </View>
-      );
+  render() {
+    return <View style={styles.container}></View>;
   }
 }
 
-
-function mapStateToProps(state) {
-  return {
-  
-  };
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    
-  };
-};
+// function mapStateToProps(state) {
+//   return {};
+// }
+// const mapDispatchToProps = dispatch => {
+//   return {};
+// };
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  null,
+  null,
 )(Tab4);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });

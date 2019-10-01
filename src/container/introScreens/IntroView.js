@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Platform } from "react-native";
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {View, Text, StyleSheet, Platform} from "react-native";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import Constants from "../../constants";
 
 /*
@@ -37,12 +37,12 @@ export default IntroView;
 const styles = StyleSheet.create({
   container: {
     height: Constants.BaseStyle.DEVICE_HEIGHT,
-    width: Constants.BaseStyle.DEVICE_WIDTH
+    width: Constants.BaseStyle.DEVICE_WIDTH,
     // paddingHorizontal: moderateScale(20)
   },
   tickImage: {
     width: moderateScale(15),
-    height: moderateScale(15)
+    height: moderateScale(15),
   },
   welcomeView: {
     marginVertical: moderateScale(20),
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         ? moderateScale(10)
         : moderateScale(30),
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   welcomeText: {
     fontSize: moderateScale(32),
@@ -64,16 +64,16 @@ const styles = StyleSheet.create({
     fontFamily: "Charter",
     // fontFamily: "Cochin",
     textAlign: "center",
-    width: "100%"
+    width: "100%",
   },
   centerView: {
     justifyContent: "center",
     alignItems: "center",
-    textAlign: "justify"
+    textAlign: "justify",
   },
 
   flexDirction: {
-    flexDirection: "row"
+    flexDirection: "row",
   },
   centerText: {
     fontSize:
@@ -90,12 +90,12 @@ const styles = StyleSheet.create({
         : moderateScale(10),
     textAlign: "center",
     fontFamily: "Charter",
-    color: Constants.Colors.IntroSubBlack
+    color: Constants.Colors.IntroSubBlack,
   },
   centerText2: {
     paddingHorizontal: 0,
-    paddingVertical: 0
+    paddingVertical: 0,
   },
-  img: { height: moderateScale(200), width: moderateScale(200) },
-  imageView: { justifyContent: "center", alignItems: "center", flex: 1 }
+  img: {height: moderateScale(200), width: moderateScale(200)},
+  imageView: {justifyContent: "center", alignItems: "center", flex: 1},
 });

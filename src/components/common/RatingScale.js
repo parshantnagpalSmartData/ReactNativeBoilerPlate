@@ -5,28 +5,28 @@
  * */
 /* eslint-disable */
 
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
   Image,
   StyleSheet,
   Platform,
-  Dimensions
-} from "react-native";
-var { width } = Dimensions.get("window");
-import { moderateScale, verticalScale } from "../../helpers/ResponsiveFonts";
-import { TouchableOpacity } from "react-native-ui-lib";
-import Triangle from "react-native-triangle";
-import constants from "../../constants";
+  Dimensions,
+} from 'react-native';
+var {width} = Dimensions.get('window');
+import {moderateScale, verticalScale} from '../../helpers/ResponsiveFonts';
+import {TouchableOpacity} from 'react-native-ui-lib';
+import Triangle from 'react-native-triangle';
+import constants from '../../constants';
 
 class RatingScale extends React.Component {
   constructor(props) {
     super(props);
-    let { options } = this.props;
+    let {options} = this.props;
     this.state = {
       selectedOption: null,
-      hidden: false
+      hidden: false,
     };
   }
 
@@ -36,16 +36,15 @@ class RatingScale extends React.Component {
     // }, 3000);
   }
   lineIcon = () => {
-    let { options } = this.props;
+    let {options} = this.props;
     return (
       <View
         style={{
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
         <Image
-          source={require("../../assets/icons/minus-symbol-black.png")}
+          source={require('../../assets/icons/minus-symbol-black.png')}
           style={{
             height: moderateScale(2),
             width:
@@ -53,15 +52,15 @@ class RatingScale extends React.Component {
                 ? moderateScale(80)
                 : constants.BaseStyle.DEVICE_WIDTH > 330
                 ? moderateScale(60)
-                : moderateScale(51)
+                : moderateScale(51),
           }}
         />
       </View>
     );
   };
   scale = widthLine => {
-    const { scaleView } = styles;
-    let { options } = this.props;
+    const {scaleView} = styles;
+    let {options} = this.props;
 
     return (
       <View style={scaleView}>
@@ -80,11 +79,10 @@ class RatingScale extends React.Component {
                       ? moderateScale(80)
                       : moderateScale(70)
                     : moderateScale(20),
-                alignItems: "flex-start"
+                alignItems: 'flex-start',
                 // borderBottomWidth: moderateScale(2),
                 // borderBottomColor: constants.Colors.Primary
-              }}
-            >
+              }}>
               {this.radioIcon(index.toString(), widthLine, isLast, item)}
 
               {/* {options.lenght > index ? this.lineIcon() : null} */}
@@ -100,7 +98,7 @@ class RatingScale extends React.Component {
       value: action.value,
       trigger: this.props.trigger,
       message: action.title,
-      stepId: this.props.step.id
+      stepId: this.props.step.id,
     });
   };
 
@@ -111,90 +109,85 @@ class RatingScale extends React.Component {
     width,
     arrowDirection,
     marginLeft,
-    marginRight
+    marginRight,
   ) => {
-    let { options } = this.props;
+    let {options} = this.props;
     return (
       <TouchableOpacity
         style={{
           marginLeft: pos,
           top:
             options.length == 4
-              ? Platform.OS == "ios"
+              ? Platform.OS == 'ios'
                 ? constants.BaseStyle.DEVICE_WIDTH > 330
                   ? moderateScale(3)
                   : moderateScale(0)
                 : moderateScale(0)
-              : Platform.OS == "ios"
+              : Platform.OS == 'ios'
               ? width > 330
                 ? moderateScale(16)
                 : moderateScale(14)
               : verticalScale(16),
-          position: "absolute",
+          position: 'absolute',
           ...Platform.select({
             android: {
-              zIndex: 999
-            }
-          })
+              zIndex: 999,
+            },
+          }),
         }}
         onPress={() => {
           //   this.handleBot({ value, title });
-        }}
-      >
+        }}>
         <View
           style={{
-            backgroundColor: "#00b3b7",
+            backgroundColor: '#00b3b7',
             padding: 10,
             borderRadius: 10,
             width: width,
-            alignItems: "center"
-          }}
-        >
-          <Text style={{ color: "#fff" }}>{title}</Text>
+            alignItems: 'center',
+          }}>
+          <Text style={{color: '#fff'}}>{title}</Text>
         </View>
         <View
           style={{
             flex: 1,
-            backgroundColor: "transparent",
+            backgroundColor: 'transparent',
             alignItems: arrowDirection,
             marginLeft: marginLeft,
-            marginRight: marginRight
-          }}
-        >
+            marginRight: marginRight,
+          }}>
           <Triangle
             width={10}
             height={10}
-            color={"#000000"}
-            direction={"down"}
+            color={'#000000'}
+            direction={'down'}
           />
         </View>
       </TouchableOpacity>
     );
   };
   radioIcon = (action, width, isLast) => {
-    let { selectedOption } = this.state;
+    let {selectedOption} = this.state;
     return (
       <View
         style={{
           width: width,
-          flexDirection: "row",
-          justifyContent: "flex-start"
-        }}
-      >
+          flexDirection: 'row',
+          justifyContent: 'flex-start',
+        }}>
         <TouchableOpacity
           style={{
             width: moderateScale(20),
-            height: moderateScale(20)
+            height: moderateScale(20),
           }}
           onPress={() => {
-            this.setState({ selectedOption: action });
+            this.setState({selectedOption: action});
             this.props.onPress(action);
-          }}
-        >
+          }}>
           {action === selectedOption ? (
             <Image
-              source={require("../../assets/icons/radio-on-button-black.png")}
-              style={{ height: moderateScale(20), width: moderateScale(20) }}
+              source={require('../../assets/icons/radio-on-button-black.png')}
+              style={{height: moderateScale(20), width: moderateScale(20)}}
             />
           ) : (
             <View
@@ -203,7 +196,7 @@ class RatingScale extends React.Component {
                 width: moderateScale(20),
                 borderRadius: moderateScale(100),
                 borderColor: constants.Colors.Placehoder,
-                borderWidth: moderateScale(2)
+                borderWidth: moderateScale(2),
               }}
             />
           )}
@@ -213,9 +206,9 @@ class RatingScale extends React.Component {
     );
   };
   render() {
-    let { options } = this.props;
-    let { anchorText } = styles;
-    let { selectedOption, hidden } = this.state;
+    let {options} = this.props;
+    let {anchorText} = styles;
+    let {selectedOption, hidden} = this.state;
     // let { width } = selectedOptionPosition[selectedOption];
     // if (options.length === 4) {
     //   pos = selectedOptionPosition2[selectedOption].pos;
@@ -234,19 +227,17 @@ class RatingScale extends React.Component {
         <View
           style={{
             height: moderateScale(100),
-            justifyContent: "flex-end",
-            paddingVertical: moderateScale(20)
+            justifyContent: 'flex-end',
+            paddingVertical: moderateScale(20),
             // position: "absolute",
             // top: constants.BaseStyle.DEVICE_HEIGHT * 0.23
-          }}
-        >
+          }}>
           <View
             style={{
               ...Platform.select({
-                ios: { zIndex: 999 }
-              })
-            }}
-          >
+                ios: {zIndex: 999},
+              }),
+            }}>
             {/* {this.floatingButton(
               options[selectedOption].value,
               options[selectedOption].label,
@@ -280,21 +271,21 @@ class RatingScale extends React.Component {
 }
 const styles = StyleSheet.create({
   anchorText: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-end",
-    padding: moderateScale(15)
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    padding: moderateScale(15),
   },
-  textWidth: { width: moderateScale(90), fontSize: moderateScale(12) },
-  textAlignLeft: { textAlign: "left" },
-  textAlignRight: { textAlign: "right" },
+  textWidth: {width: moderateScale(90), fontSize: moderateScale(12)},
+  textAlignLeft: {textAlign: 'left'},
+  textAlignRight: {textAlign: 'right'},
   scaleView: {
     // flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: moderateScale(10)
-  }
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: moderateScale(10),
+  },
 });
 
 export default RatingScale;

@@ -5,20 +5,20 @@ Description : Contains all ios net event listeners
 Date : 16 Jan 2019
 */
 
-import { AppState } from "react-native";
+import {AppState} from "react-native";
 import {
   handleBot,
   endOfValidationTimestamp,
   handleInputTextCloseAll,
   skipPromtSet,
-  clearSteps
+  clearSteps,
 } from "../actions";
-import { storeObj } from "../store/setup";
+import {storeObj} from "../store/setup";
 
 const _handleAppStateChange = nextAppState => {
   // eslint-disable-next-line no-console
   console.log("appstate,", nextAppState, storeObj);
-  let { dispatch, getState } = storeObj.store;
+  let {dispatch, getState} = storeObj.store;
   if (nextAppState === "active") {
     // console.log(
     //   "new Date(getState().app.endOfValidationTimestamp)",
@@ -53,7 +53,7 @@ const handleFirstConnectivityChange = connectionInfo => {
     "First change, type: " +
       connectionInfo.type +
       ", effectiveType: " +
-      connectionInfo.effectiveType
+      connectionInfo.effectiveType,
   );
 };
 export const addListeners = () => {

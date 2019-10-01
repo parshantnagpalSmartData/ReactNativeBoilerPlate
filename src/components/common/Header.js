@@ -1,6 +1,6 @@
 import React from "react";
-import { TouchableOpacity, View, Image, Text, StyleSheet } from "react-native";
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {TouchableOpacity, View, Image, Text, StyleSheet} from "react-native";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import Constants from "../../constants";
 import SafeView from "./SafeView";
 import FormTextInput from "./FormTextInput";
@@ -25,27 +25,25 @@ const Header = props => {
     searchText,
     searchPlaceHolder,
     onDrawerPress,
-    centerImage
+    centerImage,
     // auth
   } = props;
 
   return (
-    <View style={[Styles.shadowProps, { justifyContent: "center" }]}>
+    <View style={[Styles.shadowProps, {justifyContent: "center"}]}>
       <SafeView />
       <View
         style={[
           Styles.container,
           {
             backgroundColor: color,
-            flexDirection: hideDrawer ? "row" : "row-reverse"
-          }
-        ]}
-      >
+            flexDirection: hideDrawer ? "row" : "row-reverse",
+          },
+        ]}>
         {!hideDrawer ? (
           <TouchableOpacity
-            style={[Styles.iconBtn, { alignItems: "flex-end" }]}
-            onPress={onDrawerPress}
-          >
+            style={[Styles.iconBtn, {alignItems: "flex-end"}]}
+            onPress={onDrawerPress}>
             <Icon
               name="bars"
               color={Constants.Colors.toggleColor}
@@ -57,8 +55,7 @@ const Header = props => {
             style={Styles.iconBtn}
             onPress={() => {
               onBackPress ? onBackPress() : navigator.pop();
-            }}
-          >
+            }}>
             <Icon name="chevron-left" size={20} />
           </TouchableOpacity>
         ) : null}
@@ -67,10 +64,9 @@ const Header = props => {
             Styles.header,
             {
               justifyContent: searchBox ? "flex-start" : "center",
-              alignItems: searchBox ? "flex-start" : "center"
-            }
-          ]}
-        >
+              alignItems: searchBox ? "flex-start" : "center",
+            },
+          ]}>
           {searchBox ? (
             <FormTextInput
               onChangeText={text => onChangeSearchText(text)}
@@ -98,8 +94,7 @@ const Header = props => {
             style={Styles.iconBtn}
             onPress={() => {
               onRightPress ? onRightPress() : false;
-            }}
-          >
+            }}>
             <Image source={rightIcon} resizeMode={"contain"} />
           </TouchableOpacity>
         ) : rightText ? (
@@ -107,8 +102,7 @@ const Header = props => {
             style={Styles.iconBtn}
             onPress={() => {
               onRightPress ? onRightPress() : false;
-            }}
-          >
+            }}>
             <Text style={Styles.skip}>{rightText}</Text>
           </TouchableOpacity>
         ) : null}
@@ -121,7 +115,7 @@ const Styles = StyleSheet.create({
   container: {
     paddingVertical: moderateScale(5),
     backgroundColor: "#FFFFFF",
-    justifyContent: "center"
+    justifyContent: "center",
     // shadowOffset: { width: 2, height: 2 },
     // shadowColor: "black",
     // shadowOpacity: 0.5,
@@ -131,33 +125,33 @@ const Styles = StyleSheet.create({
     // // borderWidth:1
   },
   shadowProps: {
-    shadowOffset: { width: 2, height: 2 },
+    shadowOffset: {width: 2, height: 2},
     shadowColor: "black",
     shadowOpacity: 0.1,
     // shadowRadius: 2,
     backgroundColor: "#FFFFFF",
-    elevation: 3
+    elevation: 3,
     // borderWidth:1
   },
   iconBtn: {
     height: moderateScale(40),
     width: moderateScale(40),
     justifyContent: "center",
-    alignItems: "flex-start"
+    alignItems: "flex-start",
   },
   header: {
     justifyContent: "center",
     alignItems: "center",
     fontWeight: "bold",
     height: moderateScale(40),
-    width: Constants.BaseStyle.DEVICE_WIDTH - moderateScale(135)
+    width: Constants.BaseStyle.DEVICE_WIDTH - moderateScale(135),
   },
   headerText: {
     // ...Constants.Fonts.TitilliumWebSemiBold,
     color: Constants.Colors.Black,
     fontSize: moderateScale(21),
     textAlign: "center",
-    textAlignVertical: "center"
+    textAlignVertical: "center",
   },
   searchBox: {
     borderColor: Constants.Colors.transparent,
@@ -168,35 +162,35 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     height: moderateScale(40),
     flexDirection: "row",
-    width: Constants.BaseStyle.DEVICE_WIDTH / 1.4
+    width: Constants.BaseStyle.DEVICE_WIDTH / 1.4,
   },
   inputStyle: {
     color: Constants.Colors.Primary,
     flex: 1,
     paddingHorizontal: moderateScale(5),
     // ...Constants.Fonts.TitilliumWebRegular,
-    fontSize: moderateScale(17)
+    fontSize: moderateScale(17),
   },
   skip: {
     color: Constants.Colors.gray,
     paddingHorizontal: moderateScale(5),
     // ...Constants.Fonts.TitilliumWebRegular,
     fontSize: moderateScale(16),
-    textAlign: "right"
-  }
+    textAlign: "right",
+  },
 });
 
 /*
 PropsTypes defined for Button 
 */
 Header.propsTypes = {
-  centerImage: PropsTypes.bool
+  centerImage: PropsTypes.bool,
 };
 /*
 Default props from Button 
 */
 Header.defaultProps = {
-  centerImage: true
+  centerImage: true,
 };
 
 export default Header;

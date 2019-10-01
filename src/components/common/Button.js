@@ -11,14 +11,14 @@ import {
   Platform,
   TouchableNativeFeedback,
   View,
-  Text
+  Text,
 } from "react-native";
 import PropsTypes from "prop-types";
 
 import Constants from "../../constants";
 
 const Button = props => {
-  let { disabled, onPress, buttonStyle, buttonName, textStyle } = props;
+  let {disabled, onPress, buttonStyle, buttonName, textStyle} = props;
   if (Platform.OS == "ios") {
     return (
       <TouchableOpacity onPress={props.onPress}>
@@ -32,8 +32,7 @@ const Button = props => {
       <TouchableNativeFeedback
         activeOpacity={0.9}
         disabled={disabled}
-        onPress={onPress}
-      >
+        onPress={onPress}>
         <View style={buttonStyle}>
           <Text style={textStyle}>{buttonName}</Text>
         </View>
@@ -50,7 +49,7 @@ Button.propsTypes = {
   textStyle: PropsTypes.object.isRequired,
   buttonName: PropsTypes.string.isRequired,
   onPress: PropsTypes.func.isRequired,
-  textColor: PropsTypes.string
+  textColor: PropsTypes.string,
 };
 /*
 Default props from Button 
@@ -60,7 +59,7 @@ Button.defaultProps = {
   buttonStyle: {},
   textStyle: {},
   buttonName: "",
-  textColor: Constants.Colors.White
+  textColor: Constants.Colors.White,
 };
 
 export default Button;

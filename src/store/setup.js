@@ -3,25 +3,25 @@
  * Description: Contains all redux store configuration of app
  * date: 7 Seopt 2018
  */
-import { applyMiddleware, createStore, combineReducers, compose } from "redux";
+import {applyMiddleware, createStore, combineReducers, compose} from "redux";
 import thunk from "redux-thunk";
 import SplashScreen from "react-native-splash-screen";
-import { Platform } from "react-native";
+import {Platform} from "react-native";
 import * as reducers from "./../reducers";
-import { persistStore, persistReducer } from "redux-persist";
-import AsyncStorage from '@react-native-community/async-storage';
-import { createLogger } from "redux-logger";
+import {persistStore, persistReducer} from "redux-persist";
+import AsyncStorage from "@react-native-community/async-storage";
+import {createLogger} from "redux-logger";
 import promise from "./promise";
 import array from "./array";
 import whitelist from "./whitelist";
-import { goToAuth, goHome } from "../config/navigation";
-import { pushNotifificationInit } from "../helpers/pushnotification";
+import {goToAuth, goHome} from "../config/navigation";
+import {pushNotifificationInit} from "../helpers/pushnotification";
 
 export const storeObj = {};
 const persistConfig = {
   key: "root",
-  storage :AsyncStorage,
-  whitelist
+  storage: AsyncStorage,
+  whitelist,
 };
 // import startApp from '../config/navigators'
 export default function setup() {
@@ -33,7 +33,7 @@ export default function setup() {
 
   if (isDev) {
     middleware.push(
-      applyMiddleware(require("redux-immutable-state-invariant").default())
+      applyMiddleware(require("redux-immutable-state-invariant").default()),
     );
   }
   const reducer = combineReducers(reducers);

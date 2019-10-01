@@ -5,7 +5,7 @@ Description : Contains the header for auth screens.
 Date : 12 Sept 2018
 */
 
-import React, { Component } from "react";
+import React, {Component} from "react";
 import {
   View,
   TextInput,
@@ -14,11 +14,11 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   StyleSheet,
-  Platform
+  Platform,
 } from "react-native";
 import PropsTypes from "prop-types";
 import Constants from "../../constants";
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import Icon from "./Icon";
 
 import ErrorToast from "./ErrorToast";
@@ -28,7 +28,7 @@ class FloatingInput extends Component {
     super(props);
     this.state = {
       isFocused: false,
-      value: this.props.value
+      value: this.props.value,
     };
   }
 
@@ -40,11 +40,11 @@ class FloatingInput extends Component {
 
   handleFocus = () => {
     this.toolTip && this.toolTip.hideModal();
-    this.setState({ isFocused: true });
+    this.setState({isFocused: true});
   };
   handleBlur = () => {
     this.toolTip && this.toolTip.hideModal();
-    this.setState({ isFocused: false });
+    this.setState({isFocused: false});
   };
   focus() {
     this.inputBox.focus();
@@ -72,7 +72,7 @@ class FloatingInput extends Component {
       keyboardType,
       ...props
     } = this.props;
-    const { isFocused } = this.state;
+    const {isFocused} = this.state;
     // const labelStyle = {
     //   fontFamily: "Helvetica",
     //   //position: "absolute",
@@ -95,19 +95,17 @@ class FloatingInput extends Component {
             {
               borderColor: error
                 ? Constants.Colors.Red
-                : Constants.Colors.Primary
+                : Constants.Colors.Primary,
             },
-            inputWrapper
-          ]}
-        >
+            inputWrapper,
+          ]}>
           <View
             style={{
               flex: 1,
               flexDirection: "row",
               justifyContent: "space-between",
-              alignItems: "center"
-            }}
-          >
+              alignItems: "center",
+            }}>
             <TextInput
               ref={ref => (this.inputBox = ref || "inputbox")}
               style={[
@@ -115,8 +113,8 @@ class FloatingInput extends Component {
                 {
                   color: editable
                     ? Constants.Colors.Primary
-                    : Constants.Colors.Placehoder
-                }
+                    : Constants.Colors.Placehoder,
+                },
               ]}
               autoFocus={autoFocus}
               onFocus={this.handleFocus}
@@ -147,7 +145,7 @@ class FloatingInput extends Component {
             ) : null}
           </View>
           {value1 !== value && editable ? (
-            <View style={{ flexDirection: "row" }}>
+            <View style={{flexDirection: "row"}}>
               <TouchableOpacity style={Styles.pad5} onPress={onCancel}>
                 <View style={Styles.cancelImg}>
                   <Image
@@ -178,7 +176,7 @@ class FloatingInput extends Component {
 
 const Styles = StyleSheet.create({
   container: {
-    paddingVertical: moderateScale(10)
+    paddingVertical: moderateScale(10),
   },
   inputStyle: {
     flex: 1,
@@ -186,13 +184,13 @@ const Styles = StyleSheet.create({
     fontFamily: "Helvetica",
     ...Platform.select({
       ios: {
-        height: moderateScale(30)
-      }
-    })
+        height: moderateScale(30),
+      },
+    }),
   },
   inputWrapper: {
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
     // borderWidth: 1,
     // borderColor: Constants.Colors.Secondary,
     // borderRadius: moderateScale(10),
@@ -204,7 +202,7 @@ const Styles = StyleSheet.create({
     height: 30,
     borderRadius: 100,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   submitImg: {
     backgroundColor: "#F6CF65",
@@ -212,9 +210,9 @@ const Styles = StyleSheet.create({
     height: 30,
     borderRadius: 100,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
-  pad5: { padding: 5 }
+  pad5: {padding: 5},
 });
 
 /*
@@ -224,7 +222,7 @@ FloatingInput.propsTypes = {
   container: PropsTypes.object,
   inputWrapper: PropsTypes.object,
   autoFocus: PropsTypes.bool,
-  keyboardType: PropsTypes.string
+  keyboardType: PropsTypes.string,
 };
 /*
 Default props from Button 
@@ -233,7 +231,7 @@ FloatingInput.defaultProps = {
   container: {},
   inputWrapper: {},
   autoFocus: false,
-  keyboardType: "default"
+  keyboardType: "default",
 };
 
 export default FloatingInput;

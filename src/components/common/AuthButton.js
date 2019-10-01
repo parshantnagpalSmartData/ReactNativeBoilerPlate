@@ -12,13 +12,13 @@ import {
   Image,
   Text,
   ActivityIndicator,
-  StyleSheet
+  StyleSheet,
 } from "react-native";
 // import LinearGradient from "react-native-linear-gradient";
 import PropsTypes from "prop-types";
 
 import Constants from "../../constants";
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 const Button = props => {
   let {
     buttonName,
@@ -27,18 +27,17 @@ const Button = props => {
     textStyle,
     onPress,
     arrow,
-    gradientColors,
+    // gradientColors,
     loading,
     icon,
-    disabled
+    disabled,
   } = props;
 
   return (
     <TouchableOpacity
       style={[Styles.buttonContainer, buttonStyle]}
       onPress={onPress}
-      disabled={disabled}
-    >
+      disabled={disabled}>
       {/* <LinearGradient
         colors={
           gradientColors || [
@@ -48,19 +47,19 @@ const Button = props => {
         }
         style={[Styles.gradientStyle, gradientStyle]}
       > */}
-      <View  style={[Styles.gradientStyle, gradientStyle]}>
+      <View style={[Styles.gradientStyle, gradientStyle]}>
         {loading ? (
           <ActivityIndicator size="large" color={Constants.Colors.White} />
         ) : (
           <View>
-            <View style={{ flexDirection: "row" }}>
+            <View style={{flexDirection: "row"}}>
               {icon ? icon : null}
               <Text style={[Styles.buttonText, textStyle]}>{buttonName}</Text>
             </View>
             {arrow ? <Image source={Constants.Images.Common.Next} /> : null}
           </View>
         )}
-        </View>
+      </View>
       {/* </LinearGradient> */}
       {/* <View style={{ flex: 0.7 }} /> */}
     </TouchableOpacity>
@@ -73,7 +72,7 @@ const Styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    padding: moderateScale(8)
+    padding: moderateScale(8),
   },
   buttonText: {
     fontFamily: "Helvetica",
@@ -83,21 +82,21 @@ const Styles = StyleSheet.create({
     textAlignVertical: "center",
     paddingHorizontal: moderateScale(5),
     textAlign: "center",
-    width: "100%"
-  }
+    width: "100%",
+  },
 });
 
 /*
 PropsTypes defined for Button 
 */
 Button.propsTypes = {
-  textStyle: PropsTypes.object
+  textStyle: PropsTypes.object,
 };
 /*
 Default props from Button 
 */
 Button.defaultProps = {
-  textStyle: {}
+  textStyle: {},
 };
 
 export default Button;

@@ -1,13 +1,13 @@
 /*
   eslint-disable
 */
-import * as types from "../../actionTypes";
-import { Navigation } from "react-native-navigation";
+import * as types from '../../actionTypes';
+import {Navigation} from 'react-native-navigation';
 
 export const pushToParticularScreen = (
   componentId,
   screenNAme,
-  passProps = {}
+  passProps = {},
 ) => {
   return dispatch => {
     Navigation.push(componentId, {
@@ -18,14 +18,14 @@ export const pushToParticularScreen = (
           sideMenu: {
             right: {
               visible: false,
-              enabled: false
-            }
+              enabled: false,
+            },
           },
           layout: {
-            orientation: ["portrait"]
-          }
-        }
-      }
+            orientation: ['portrait'],
+          },
+        },
+      },
     });
   };
 };
@@ -34,13 +34,16 @@ export const pushToParticularScreenBottomTabs = (
   componentId,
   screenNAme,
   passProps = {},
-  bottomTabVisible
+  bottomTabVisible,
 ) => {
   return dispatch => {
-    console.log("pushToParticularScreenBottomTabs",  componentId,
-    screenNAme,
-    passProps,
-    bottomTabVisible)
+    console.log(
+      'pushToParticularScreenBottomTabs',
+      componentId,
+      screenNAme,
+      passProps,
+      bottomTabVisible,
+    );
     Navigation.push(componentId, {
       component: {
         name: screenNAme,
@@ -49,18 +52,18 @@ export const pushToParticularScreenBottomTabs = (
           sideMenu: {
             right: {
               visible: false,
-              enabled: false
-            }
+              enabled: false,
+            },
           },
           bottomTabs: {
             visible: bottomTabVisible,
-            drawBehind: true
+            drawBehind: true,
           },
           layout: {
-            orientation: ["portrait"]
-          }
-        }
-      }
+            orientation: ['portrait'],
+          },
+        },
+      },
     });
   };
 };
@@ -69,7 +72,7 @@ export const pushToParticularScreenWithoutBottomTabs = (
   componentId,
   screenNAme,
   passProps = {},
-  bottomTabVisible
+  bottomTabVisible,
 ) => {
   return dispatch => {
     Navigation.setStackRoot(componentId, {
@@ -79,24 +82,24 @@ export const pushToParticularScreenWithoutBottomTabs = (
         options: {
           animations: {
             setStackRoot: {
-              enabled: true
-            }
+              enabled: true,
+            },
           },
           sideMenu: {
             right: {
               visible: false,
-              enabled: false
-            }
+              enabled: false,
+            },
           },
           bottomTabs: {
             visible: bottomTabVisible,
-            drawBehind: true
+            drawBehind: true,
           },
           layout: {
-            orientation: ["portrait"]
-          }
-        }
-      }
+            orientation: ['portrait'],
+          },
+        },
+      },
     });
   };
 };
@@ -123,14 +126,14 @@ export const resetTo = (screen, componentId) => {
         options: {
           topBar: {
             title: {
-              text: "Home"
-            }
+              text: 'Home',
+            },
           },
           layout: {
-            orientation: ["portrait"]
-          }
-        }
-      }
+            orientation: ['portrait'],
+          },
+        },
+      },
     });
   };
 };
@@ -141,9 +144,9 @@ export const mergeOptions = (componentId, draweropen) => {
       sideMenu: {
         right: {
           visible: draweropen,
-          enabled: false
-        }
-      }
+          enabled: false,
+        },
+      },
     });
   };
 };
@@ -153,8 +156,8 @@ export const mergeBottomTabs = (componentId, visible) => {
     Navigation.mergeOptions(componentId, {
       bottomTabs: {
         visible: false,
-        drawBehind: false
-      }
+        drawBehind: false,
+      },
     });
   };
 };
@@ -163,8 +166,8 @@ export const tabSelect = (componentId, switchToWhich) => {
   return dispatch => {
     Navigation.mergeOptions(componentId, {
       bottomTabs: {
-        currentTabIndex: switchToWhich
-      }
+        currentTabIndex: switchToWhich,
+      },
     });
   };
 };
@@ -176,18 +179,18 @@ export const setScrenStack = (componentId, screen, visible) => {
         options: {
           topBar: {
             title: {
-              text: "Home"
-            }
+              text: 'Home',
+            },
           },
           bottomTabs: {
             visible,
-            drawBehind: true
+            drawBehind: true,
           },
           layout: {
-            orientation: ["portrait"]
-          }
-        }
-      }
+            orientation: ['portrait'],
+          },
+        },
+      },
     });
   };
 };
@@ -199,7 +202,7 @@ export const navigate = (newScreen: string, reset: boolean) => {
   return {
     type: t.SCREEN,
     screen: newScreen,
-    isReset: reset
+    isReset: reset,
   };
 };
 
@@ -210,27 +213,27 @@ export const navigate = (newScreen: string, reset: boolean) => {
 export const handleLoader = loading => {
   return {
     type: types.LOADING,
-    payload: loading
+    payload: loading,
   };
 };
 
 export const selectTab = selectedtab => {
   return {
     type: types.SELECTED_TAB,
-    selectedtab
+    selectedtab,
   };
 };
 
 export const challengeTabPushed = tabPushed => {
   return {
     type: types.CHALLENGE_TAB_PUSHED,
-    tabPushed
+    tabPushed,
   };
 };
 
 export const endOfValidationTimestampSet = endOfValidationTimestamp => {
   return {
     type: types.END_OF_VALIDATION_TIMESTAMP,
-    endOfValidationTimestamp
+    endOfValidationTimestamp,
   };
 };

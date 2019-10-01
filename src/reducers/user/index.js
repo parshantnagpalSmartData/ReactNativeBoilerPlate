@@ -20,7 +20,7 @@ const initialState = {
   loginData: null,
   botChatImageUrl: null,
   guideDescription: "",
-  GuideName: ""
+  GuideName: "",
 };
 
 const user = (state = initialState, action) => {
@@ -29,13 +29,12 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         userData: action.payload,
-        isLoggedIn: true
+        isLoggedIn: true,
       };
     case Types.LOGIN:
-      return { ...state, isLoggedIn: true };
+      return {...state, isLoggedIn: true};
     case Types.LOGIN_USER:
-      return { ...state, loginData: action.payload };
-
+      return {...state, loginData: action.payload};
 
     case "LOGOUT":
       return {

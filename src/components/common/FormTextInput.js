@@ -6,10 +6,10 @@
  */
 "use strict";
 
-import React, { Component } from "react";
-import { Image, View, TextInput, StyleSheet } from "react-native";
+import React, {Component} from "react";
+import {Image, View, TextInput, StyleSheet} from "react-native";
 
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import Constants from "../../constants";
 
 class FormTextInput extends Component {
@@ -18,7 +18,7 @@ class FormTextInput extends Component {
     this.state = {
       isFocused: false,
       focusColor: Constants.Colors.Primary,
-      borderWidth: 1
+      borderWidth: 1,
     };
   }
 
@@ -27,7 +27,7 @@ class FormTextInput extends Component {
     this.setState({
       isFocused: false,
       focusColor: Constants.Colors.Secondary,
-      borderWidth: 1
+      borderWidth: 1,
     });
     if (this.props.onBlur) {
       this.props.onBlur();
@@ -41,7 +41,7 @@ class FormTextInput extends Component {
     this.setState({
       isFocused: true,
       focusColor: colour,
-      borderWidth: 2
+      borderWidth: 2,
     });
     if (this.props.onFocus) this.props.onFocus();
   }
@@ -72,7 +72,7 @@ class FormTextInput extends Component {
       value,
       imageSource,
       maximumLength,
-      onChangeText
+      onChangeText,
     } = this.props;
     return (
       <View
@@ -80,11 +80,10 @@ class FormTextInput extends Component {
           Styles.viewStyle,
           {
             borderColor: this.state.focusColor,
-            borderWidth: this.state.borderWidth
+            borderWidth: this.state.borderWidth,
           },
-          this.props.style
-        ]}
-      >
+          this.props.style,
+        ]}>
         {this.props.imageSource && (
           <Image
             source={imageSource}
@@ -132,7 +131,7 @@ const Styles = StyleSheet.create({
     borderRadius: moderateScale(25),
     marginHorizontal: moderateScale(25),
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   inputStyle: {
     //marginLeft: moderateScale(10),
@@ -140,6 +139,6 @@ const Styles = StyleSheet.create({
     height: moderateScale(30),
     color: Constants.Colors.Primary,
     ...Constants.Fonts.Regular,
-    fontSize: moderateScale(16)
-  }
+    fontSize: moderateScale(16),
+  },
 });

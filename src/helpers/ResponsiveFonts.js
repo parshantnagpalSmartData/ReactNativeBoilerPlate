@@ -5,8 +5,8 @@
  * */
 "use strict";
 
-import { Dimensions, Platform } from "react-native";
-const { width, height } = Dimensions.get("window");
+import {Dimensions, Platform} from "react-native";
+const {width, height} = Dimensions.get("window");
 // console.log("height & width ===>os", height, width, Platform.OS);
 
 //Guideline sizes are based on standard ~5" screen mobile device
@@ -22,4 +22,4 @@ const moderateScale = (size, factor = 0.5) => {
   return size + (scale(size) - size) * factor;
 };
 
-export { scale, verticalScale, moderateScale };
+export {scale, verticalScale, moderateScale};

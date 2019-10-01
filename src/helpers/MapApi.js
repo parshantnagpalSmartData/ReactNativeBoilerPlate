@@ -6,40 +6,40 @@
  */
 /* eslint-disable */
 
-("use strict");
-import Geocoder from "react-native-geocoding";
-import Idx from "./Idx";
-import { Linking } from "react-native";
-import Constants from "../constants";
-import { Dimensions } from "react-native";
-import TimerMixin from "react-timer-mixin";
-import reactMixin from "react-mixin";
-import promise from "../store/promise";
+('use strict');
+import Geocoder from 'react-native-geocoding';
+import Idx from './Idx';
+import {Linking} from 'react-native';
+import Constants from '../constants';
+import {Dimensions} from 'react-native';
+import TimerMixin from 'react-timer-mixin';
+import reactMixin from 'react-mixin';
+import promise from '../store/promise';
 
 class MapApi {
   static getDirections(source, destination) {
     return new Promise((resolve, reject) => {
       let directionsUrl =
-        "https://maps.googleapis.com/maps/api/directions/json?origin=" +
+        'https://maps.googleapis.com/maps/api/directions/json?origin=' +
         source.latitude +
-        "," +
+        ',' +
         source.longitude +
-        "&destination=" +
+        '&destination=' +
         destination.latitude +
-        "," +
+        ',' +
         destination.longitude +
-        "&key=" +
+        '&key=' +
         Constants.DevKeys.GoogleAPIKey;
       fetch(directionsUrl)
         .then(response => response.json())
         .then(responseJson => {
-          if (responseJson.status === "OK") {
+          if (responseJson.status === 'OK') {
             if (
               responseJson.routes.length &&
               Idx(responseJson, _ => _.routes[0].legs[0].steps)
             ) {
               let steps = this.decodeMapPoints(
-                responseJson.routes[0].overview_polyline.points
+                responseJson.routes[0].overview_polyline.points,
               );
               return resolve(steps);
             }
@@ -48,7 +48,7 @@ class MapApi {
           }
         })
         .catch(error => {
-          console.log("location error", error);
+          console.log('location error', error);
           reject(error);
         });
     });
@@ -84,7 +84,7 @@ class MapApi {
     return (d = d.map(function(t) {
       return {
         latitude: t[0],
-        longitude: t[1]
+        longitude: t[1],
       };
     }));
   }
@@ -92,12 +92,12 @@ class MapApi {
   //open google map for navigation
 
   static googleMapNavigate(source, destination) {
-    let url = "";
+    let url = '';
     url = `http://maps.google.com/maps?saddr=${source.latitude},${source.longitude}&daddr=${destination.latitude},${destination.longitude}`;
     // console.log('URL ', url);
     Linking.canOpenURL(url).then(supported => {
       if (!supported) {
-        console.log("Error", url); //eslint-disable-line
+        console.log('Error', url); //eslint-disable-line
       } else {
         Linking.openURL(url);
       }
@@ -106,7 +106,7 @@ class MapApi {
 
   // this function will calculate distance from source to destination
 
-  static calculateDistance(source, destination, unit = "N") {
+  static calculateDistance(source, destination, unit = 'N') {
     //'K' is kilometers
     //'N' is nautical miles
     let radlat1 = (Math.PI * source.lat) / 180;
@@ -119,10 +119,10 @@ class MapApi {
     dist = Math.acos(dist);
     dist = (dist * 180) / Math.PI;
     dist = dist * 60 * 1.1515;
-    if (unit == "K") {
+    if (unit == 'K') {
       dist = dist * 1.609344;
     }
-    if (unit == "N") {
+    if (unit == 'N') {
       dist = dist * 0.8684;
     }
     return dist.toFixed(1);
@@ -153,21 +153,19 @@ class MapApi {
       navigator.geolocation.getCurrentPosition(
         position => {
           // console.log("position",position);
-          let { latitude, longitude, heading } = position.coords;
-          this.getRegionForCoordinates([{ latitude, longitude }]).then(
-            region => {
-              region.angle = heading;
-              resolve(region);
-            }
-          );
+          let {latitude, longitude, heading} = position.coords;
+          this.getRegionForCoordinates([{latitude, longitude}]).then(region => {
+            region.angle = heading;
+            resolve(region);
+          });
         },
         error => {
-          console.log("error on getting current position", error);
+          console.log('error on getting current position', error);
           reject(error);
         },
         {
-          enableHighAccuracy: false
-        }
+          enableHighAccuracy: false,
+        },
       );
     });
   }
@@ -185,7 +183,7 @@ class MapApi {
                 resolve(res);
               })
               .catch(error => reject(error));
-          })
+          }),
         );
       }
     }
@@ -197,7 +195,7 @@ class MapApi {
   static getRoutePoints(Routes) {
     return new Promise((resolve, reject) => {
       if (!Routes.length) {
-        reject("Empty lat long array");
+        reject('Empty lat long array');
       }
       this.getInBetweenRoutePoints(Routes)
         .then(res => {
@@ -222,11 +220,11 @@ class MapApi {
 
     return new Promise((resolve, reject) => {
       if (!points.length) {
-        reject("empty lat long array");
+        reject('empty lat long array');
       }
       let minX, maxX, minY, maxY;
-      const window = Dimensions.get("window");
-      const { width, height } = window;
+      const window = Dimensions.get('window');
+      const {width, height} = window;
       const ASPECT_RATIO = width / height;
       const LATITUDE_DELTA = 0.005; //Very high zoom level
       const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
@@ -256,7 +254,7 @@ class MapApi {
           latitude: midX,
           longitude: midY,
           latitudeDelta: deltaX,
-          longitudeDelta: deltaY
+          longitudeDelta: deltaY,
         });
       } catch (e) {
         reject(e);
@@ -270,14 +268,12 @@ class MapApi {
     return new Promise((resolve, reject) => {
       navigator.geolocation.watchPosition(
         position => {
-          const { latitude, longitude, heading } = position.coords;
-          this.getRegionForCoordinates([{ latitude, longitude }]).then(
-            region => {
-              region.angle = heading;
-              console.log("watcher", region);
-              resolve(region);
-            }
-          );
+          const {latitude, longitude, heading} = position.coords;
+          this.getRegionForCoordinates([{latitude, longitude}]).then(region => {
+            region.angle = heading;
+            console.log('watcher', region);
+            resolve(region);
+          });
         },
         error => reject(error),
         // { enableHighAccuracy: false, distanceFilter: 0.1 }
@@ -285,8 +281,8 @@ class MapApi {
           enableHighAccuracy: true,
           timeout: 20000,
           maximumAge: 1000,
-          distanceFilter: 10
-        }
+          distanceFilter: 10,
+        },
       );
     });
   }
@@ -294,11 +290,11 @@ class MapApi {
   static getCenterCordinates(latLong) {
     return new Promise((resolve, reject) => {
       if (!latLong.length) {
-        reject("empty lat long array");
+        reject('empty lat long array');
       }
       this.getRegionForCoordinates(latLong)
         .then(res => {
-          let { latitudeDelta, longitudeDelta } = res;
+          let {latitudeDelta, longitudeDelta} = res;
           let num_coords = latLong.length;
           let X = 0.0;
           let Y = 0.0;
@@ -323,7 +319,7 @@ class MapApi {
           let lat = Math.atan2(Z, hyp);
           let obj = {
             latitude: (lat * 180) / Math.PI,
-            longitude: (lon * 180) / Math.PI
+            longitude: (lon * 180) / Math.PI,
           };
           obj.latitudeDelta = latitudeDelta;
           obj.longitudeDelta = longitudeDelta;

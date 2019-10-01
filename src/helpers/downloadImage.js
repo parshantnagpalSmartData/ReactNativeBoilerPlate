@@ -1,4 +1,4 @@
-import { Platform } from "react-native";
+import {Platform} from "react-native";
 import RNFetchBlob from "rn-fetch-blob";
 import PermissionApi from "./Permissions";
 
@@ -15,7 +15,7 @@ export const downloadPermissions = (url, cb) => {
 export const downloadImage = (url, cb) => {
   var ext = extention(url);
   ext = "." + ext[0];
-  const { config } = RNFetchBlob;
+  const {config} = RNFetchBlob;
   // if (Platform.OS == "ios") {
   //   PictureDir = fs.dirs.DocumentDir;
   // } else {
@@ -24,7 +24,7 @@ export const downloadImage = (url, cb) => {
   let options = {
     fileCache: true,
     // path: PictureDir + datePath + "/botImage" + ext,
-    appendExt: ext
+    appendExt: ext,
     // addAndroidDownloads: {
     //     useDownloadManager: true,
     //     notification: true,

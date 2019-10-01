@@ -4,27 +4,26 @@
  * @date: 9.Oct.2018
  * @author: Suraj Sanwal
  * */
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   Modal,
-  Platform,
   Dimensions,
-  ScrollView
+  ScrollView,
 } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import _ from "lodash";
 
 import Constants from "../../constants";
 import * as AppAction from "../../actions";
 import FloatingInput from "../../components/common/FloatingInput";
 
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import AuthButton from "../../components/common/AuthButton";
 import Icon from "../../components/common/Icon";
 import Regex from "../../helpers/Regex";
@@ -46,27 +45,27 @@ class SignUpCustom extends Component {
       firstNameError: "",
       lastNameError: "",
       phoneError: "",
-      termsModal: false
+      termsModal: false,
     };
   }
 
   showPassword = () => {
     this.setState({
-      hidePassword: !this.state.hidePassword
+      hidePassword: !this.state.hidePassword,
     });
   };
 
   SignUp = () => {
-    const { firstName, lastName, phone, email, password } = this.state;
+    const {firstName, lastName, phone, email, password} = this.state;
     if (_.isEmpty(firstName.trim())) {
       this.setState({
-        firstNameError: "First name is required"
+        firstNameError: "First name is required",
       });
       return;
     }
     if (_.isEmpty(lastName.trim())) {
       this.setState({
-        lastNameError: "Last name is required"
+        lastNameError: "Last name is required",
       });
       return;
     }
@@ -91,21 +90,21 @@ class SignUpCustom extends Component {
 
     if (_.isEmpty(email.trim())) {
       this.setState({
-        emailError: "Email is required"
+        emailError: "Email is required",
       });
       return;
     }
 
     if (!Regex.validateEmail(email.trim())) {
       this.setState({
-        emailError: "Invalid Email format"
+        emailError: "Invalid Email format",
       });
       return;
     }
 
     if (_.isEmpty(password.trim())) {
       this.setState({
-        passwordError: "Password is required"
+        passwordError: "Password is required",
       });
       return;
     }
@@ -117,9 +116,9 @@ class SignUpCustom extends Component {
         lastName,
         phone,
         email: emailValue,
-        password
+        password,
       },
-      this.props.componentId
+      this.props.componentId,
     );
   };
 
@@ -139,30 +138,28 @@ class SignUpCustom extends Component {
       passwordError,
       phoneError,
       firstNameError,
-      lastNameError
+      lastNameError,
     } = this.state;
     let {
-      loader: { signupLoader }
+      loader: {signupLoader},
     } = this.props;
     return (
       <View style={styles.container}>
         <Modal
           style={{
-            backgroundColor: "green"
+            backgroundColor: "green",
           }}
           animationType="slide"
           transparent={true}
-          visible={this.state.termsModal}
-        >
+          visible={this.state.termsModal}>
           <View
             style={{
               backgroundColor: Constants.Colors.AuthYellow,
               flex: 1,
               justifyContent: "center",
 
-              alignItems: "center"
-            }}
-          >
+              alignItems: "center",
+            }}>
             <View
               style={{
                 backgroundColor: "white",
@@ -171,17 +168,15 @@ class SignUpCustom extends Component {
                 justifyContent: "center",
                 alignItems: "center",
                 padding: 20,
-                borderRadius: 20
-              }}
-            >
+                borderRadius: 20,
+              }}>
               <ScrollView>
                 <View>
                   <Text>privacy and policy</Text>
                 </View>
               </ScrollView>
               <TouchableOpacity
-                onPress={() => this.setState({ termsModal: false })}
-              >
+                onPress={() => this.setState({termsModal: false})}>
                 <View
                   style={{
                     margin: 10,
@@ -189,10 +184,9 @@ class SignUpCustom extends Component {
                     width: WINDOW_WIDTH / 2.5,
                     padding: 15,
                     alignItems: "center",
-                    borderRadius: 20
-                  }}
-                >
-                  <Text style={{ color: "white" }}>Close</Text>
+                    borderRadius: 20,
+                  }}>
+                  <Text style={{color: "white"}}>Close</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -205,10 +199,9 @@ class SignUpCustom extends Component {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={
             Dimensions.get("window").height > 800
-              ? { flex: 1, marginTop: moderateScale(40) }
+              ? {flex: 1, marginTop: moderateScale(40)}
               : {}
-          }
-        >
+          }>
           <View style={styles.signInView}>
             <Text style={styles.signInText}>Sign up now</Text>
           </View>
@@ -221,7 +214,7 @@ class SignUpCustom extends Component {
                 label={"First Name"}
                 value={firstName}
                 onChangeText={firstName => {
-                  this.setState({ firstName, firstNameError: "" });
+                  this.setState({firstName, firstNameError: ""});
                 }}
                 onSubmitEditing={() => {
                   this.focusNext("lastName");
@@ -236,7 +229,7 @@ class SignUpCustom extends Component {
                 label={"Last Name"}
                 value={lastName}
                 onChangeText={lastName => {
-                  this.setState({ lastName, lastNameError: "" });
+                  this.setState({lastName, lastNameError: ""});
                 }}
                 onSubmitEditing={() => {
                   this.focusNext("phone");
@@ -251,7 +244,7 @@ class SignUpCustom extends Component {
               label={"Phone Number"}
               value={phone}
               onChangeText={phone => {
-                this.setState({ phone, phoneError: "" });
+                this.setState({phone, phoneError: ""});
               }}
               onSubmitEditing={() => {
                 this.focusNext("email");
@@ -267,7 +260,7 @@ class SignUpCustom extends Component {
               autoCapitalize={"none"}
               value={email}
               onChangeText={email => {
-                this.setState({ email, emailError: "" });
+                this.setState({email, emailError: ""});
               }}
               onSubmitEditing={() => {
                 this.focusNext("password");
@@ -283,7 +276,7 @@ class SignUpCustom extends Component {
               autoCapitalize={"none"}
               value={password}
               onChangeText={password => {
-                this.setState({ password, passwordError: "" });
+                this.setState({password, passwordError: ""});
               }}
               icon={
                 <Icon name={!hidePassword ? "eye" : "eye-slash"} size={20} />
@@ -297,17 +290,16 @@ class SignUpCustom extends Component {
               error={passwordError}
             />
           </View>
-          <View style={{ padding: moderateScale(10) }} />
+          <View style={{padding: moderateScale(10)}} />
 
           <View style={styles.forgotView}>
             <Text style={styles.forgotTextBlack}>
               {"By signing up you agree to"}{" "}
               {/* <Text style={styles.forgotText}>Ajivar</Text> {"'s"} */}
             </Text>
-            <View style={{ flexDirection: "row" }}>
+            <View style={{flexDirection: "row"}}>
               <TouchableOpacity
-                onPress={() => this.setState({ termsModal: true })}
-              >
+                onPress={() => this.setState({termsModal: true})}>
                 <Text style={styles.forgotText}>Terms of Service</Text>
               </TouchableOpacity>
               <Text style={styles.forgotTextBlack}>and</Text>
@@ -331,10 +323,9 @@ class SignUpCustom extends Component {
               onPress={() =>
                 this.props.AppAction.pushToParticularScreen(
                   this.props.componentId,
-                  "SignIn"
+                  "SignIn",
                 )
-              }
-            >
+              }>
               <Text style={styles.signUpText}>
                 Already have an account - Sign in here
               </Text>
@@ -349,69 +340,69 @@ class SignUpCustom extends Component {
 const mapStateToProps = state => ({
   user: state.user,
   app: state.app,
-  loader: state.loader
+  loader: state.loader,
 });
 const mapDispatchToProps = dispatch => ({
-  AppAction: bindActionCreators(AppAction, dispatch)
+  AppAction: bindActionCreators(AppAction, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(SignUpCustom);
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: Constants.Colors.AuthYellow },
+  container: {flex: 1, backgroundColor: Constants.Colors.AuthYellow},
   scrollStyle: {
-    flex: 1
+    flex: 1,
   },
   signUpButtonStyle: {
-    backgroundColor : 'red',
+    backgroundColor: "red",
     width: moderateScale(140),
-    height: moderateScale(40)
+    height: moderateScale(40),
   },
 
   gradientStyle: {
-    borderRadius: moderateScale(20)
+    borderRadius: moderateScale(20),
   },
   textStyle: {
     textAlign: "center",
     fontFamily: "Charter",
     fontWeight: "bold",
-    fontSize: moderateScale(18)
+    fontSize: moderateScale(18),
   },
   paddingInputText: {
-    paddingHorizontal: moderateScale(20)
+    paddingHorizontal: moderateScale(20),
   },
   forgotView: {
     justifyContent: "center",
     alignItems: "center",
 
     marginTop: moderateScale(10),
-    marginHorizontal: moderateScale(20)
+    marginHorizontal: moderateScale(20),
   },
   inputWrapper: {
     borderBottomWidth: moderateScale(1),
     borderBottomColor: Constants.Colors.Gray,
     fontFamily: "Charter",
     fontWeight: "normal",
-    height: moderateScale(45)
+    height: moderateScale(45),
   },
   stylesAuthContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: moderateScale(10)
+    marginTop: moderateScale(10),
   },
   nameField: {
-    width: Constants.BaseStyle.DEVICE_WIDTH * 0.43
+    width: Constants.BaseStyle.DEVICE_WIDTH * 0.43,
   },
 
-  marginRightName: { marginRight: Constants.BaseStyle.DEVICE_WIDTH * 0.02 },
+  marginRightName: {marginRight: Constants.BaseStyle.DEVICE_WIDTH * 0.02},
 
-  marginLeftName: { marginLeft: Constants.BaseStyle.DEVICE_WIDTH * 0.02 },
+  marginLeftName: {marginLeft: Constants.BaseStyle.DEVICE_WIDTH * 0.02},
 
   nameContainer: {
-    flexDirection: "row"
+    flexDirection: "row",
   },
   signUpView: {
     backgroundColor: "white",
@@ -420,7 +411,7 @@ const styles = StyleSheet.create({
     borderWidth: moderateScale(1),
     paddingVertical: moderateScale(4),
     marginTop: moderateScale(25),
-    marginHorizontal: moderateScale(1)
+    marginHorizontal: moderateScale(1),
   },
 
   signUpButton: {
@@ -434,12 +425,12 @@ const styles = StyleSheet.create({
       : moderateScale(19),
     color: "gray",
     // fontFamily: "Charter",
-    textAlign: "center"
+    textAlign: "center",
   },
 
   forgotButton: {
     paddingTop: moderateScale(5),
-    paddingBottom: moderateScale(20)
+    paddingBottom: moderateScale(20),
   },
 
   signInText: {
@@ -453,7 +444,7 @@ const styles = StyleSheet.create({
   signInView: {
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: moderateScale(20)
+    marginVertical: moderateScale(20),
   },
   forgotText: {
     color: Constants.Colors.Black,
@@ -462,7 +453,7 @@ const styles = StyleSheet.create({
       : moderateScale(15),
     // fontFamily: "Charter",
 
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   forgotTextBlack: {
     fontSize: Constants.BaseStyle.isIphoneX
@@ -473,5 +464,5 @@ const styles = StyleSheet.create({
       : moderateScale(2),
     // fontFamily: "Charter"
     // fontWeight: "normal"
-  }
+  },
 });

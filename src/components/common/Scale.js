@@ -11,11 +11,11 @@ import {
   Image,
   StyleSheet,
   Platform,
-  Dimensions
+  Dimensions,
 } from "react-native";
-var { width } = Dimensions.get("window");
-import { moderateScale, verticalScale } from "../../helpers/ResponsiveFonts";
-import { TouchableOpacity } from "react-native-ui-lib";
+var {width} = Dimensions.get("window");
+import {moderateScale, verticalScale} from "../../helpers/ResponsiveFonts";
+import {TouchableOpacity} from "react-native-ui-lib";
 import Triangle from "react-native-triangle";
 import constants from "../../constants";
 
@@ -32,7 +32,7 @@ const selectedOptionPosition = {
     width: moderateScale(150),
     arrowDirection: "flex-start",
     marginLeft: moderateScale(8),
-    marginRight: moderateScale(0)
+    marginRight: moderateScale(0),
   },
   "1": {
     value: "2",
@@ -46,7 +46,7 @@ const selectedOptionPosition = {
     width: moderateScale(100),
     arrowDirection: "center",
     marginLeft: moderateScale(0),
-    marginRight: moderateScale(0)
+    marginRight: moderateScale(0),
   },
   "2": {
     value: "3",
@@ -60,7 +60,7 @@ const selectedOptionPosition = {
     width: moderateScale(100),
     arrowDirection: "center",
     marginLeft: moderateScale(0),
-    marginRight: moderateScale(0)
+    marginRight: moderateScale(0),
   },
   "3": {
     value: "4",
@@ -74,7 +74,7 @@ const selectedOptionPosition = {
     width: moderateScale(90),
     arrowDirection: "center",
     marginLeft: moderateScale(0),
-    marginRight: moderateScale(0)
+    marginRight: moderateScale(0),
   },
   "4": {
     value: "5",
@@ -88,8 +88,8 @@ const selectedOptionPosition = {
     width: moderateScale(130),
     arrowDirection: "flex-end",
     marginLeft: moderateScale(0),
-    marginRight: moderateScale(8)
-  }
+    marginRight: moderateScale(8),
+  },
 };
 
 const selectedOptionPosition2 = {
@@ -103,7 +103,7 @@ const selectedOptionPosition2 = {
     width: moderateScale(100),
     arrowDirection: "center",
     marginLeft: moderateScale(8),
-    marginRight: moderateScale(0)
+    marginRight: moderateScale(0),
   },
   "1": {
     pos:
@@ -115,7 +115,7 @@ const selectedOptionPosition2 = {
     width: moderateScale(100),
     arrowDirection: "center",
     marginLeft: moderateScale(0),
-    marginRight: moderateScale(0)
+    marginRight: moderateScale(0),
   },
   "2": {
     pos:
@@ -127,7 +127,7 @@ const selectedOptionPosition2 = {
     width: moderateScale(110),
     arrowDirection: "center",
     marginLeft: moderateScale(0),
-    marginRight: moderateScale(0)
+    marginRight: moderateScale(0),
   },
   "3": {
     pos:
@@ -139,16 +139,16 @@ const selectedOptionPosition2 = {
     width: moderateScale(100),
     arrowDirection: "flex-end",
     marginRight: moderateScale(0),
-    marginLeft: moderateScale(75)
-  }
+    marginLeft: moderateScale(75),
+  },
 };
 class Scale extends React.Component {
   constructor(props) {
     super(props);
-    let { options } = this.props;
+    let {options} = this.props;
     this.state = {
       selectedOption: options.length == 4 ? "1" : "2",
-      hidden: false
+      hidden: false,
     };
   }
 
@@ -158,14 +158,13 @@ class Scale extends React.Component {
     // }, 3000);
   }
   lineIcon = () => {
-    let { options } = this.props;
+    let {options} = this.props;
     return (
       <View
         style={{
           alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
+          justifyContent: "center",
+        }}>
         <Image
           source={require("../../assets/icons/minus-symbol.png")}
           style={{
@@ -175,15 +174,15 @@ class Scale extends React.Component {
                 ? moderateScale(80)
                 : constants.BaseStyle.DEVICE_WIDTH > 330
                 ? moderateScale(60)
-                : moderateScale(51)
+                : moderateScale(51),
           }}
         />
       </View>
     );
   };
   scale = widthLine => {
-    const { scaleView } = styles;
-    let { options } = this.props;
+    const {scaleView} = styles;
+    let {options} = this.props;
 
     return (
       <View style={scaleView}>
@@ -202,11 +201,10 @@ class Scale extends React.Component {
                       ? moderateScale(80)
                       : moderateScale(70)
                     : moderateScale(20),
-                alignItems: "flex-start"
+                alignItems: "flex-start",
                 // borderBottomWidth: moderateScale(2),
                 // borderBottomColor: constants.Colors.Primary
-              }}
-            >
+              }}>
               {this.radioIcon(index.toString(), widthLine, isLast, item)}
 
               {/* {options.lenght > index ? this.lineIcon() : null} */}
@@ -223,7 +221,7 @@ class Scale extends React.Component {
       trigger: this.props.trigger,
       heightData: this.props.heightData,
       message: action.title,
-      stepId: this.props.step.id
+      stepId: this.props.step.id,
     });
   };
 
@@ -234,9 +232,9 @@ class Scale extends React.Component {
     width,
     arrowDirection,
     marginLeft,
-    marginRight
+    marginRight,
   ) => {
-    let { options } = this.props;
+    let {options} = this.props;
     return (
       <TouchableOpacity
         style={{
@@ -256,24 +254,22 @@ class Scale extends React.Component {
           position: "absolute",
           ...Platform.select({
             android: {
-              zIndex: 999
-            }
-          })
+              zIndex: 999,
+            },
+          }),
         }}
         onPress={() => {
-          this.handleBot({ value, title });
-        }}
-      >
+          this.handleBot({value, title});
+        }}>
         <View
           style={{
             backgroundColor: "#00b3b7",
             padding: 10,
             borderRadius: 10,
             width: width,
-            alignItems: "center"
-          }}
-        >
-          <Text style={{ color: "#fff" }}>{title}</Text>
+            alignItems: "center",
+          }}>
+          <Text style={{color: "#fff"}}>{title}</Text>
         </View>
         <View
           style={{
@@ -281,9 +277,8 @@ class Scale extends React.Component {
             backgroundColor: "transparent",
             alignItems: arrowDirection,
             marginLeft: marginLeft,
-            marginRight: marginRight
-          }}
-        >
+            marginRight: marginRight,
+          }}>
           <Triangle
             width={10}
             height={10}
@@ -295,28 +290,26 @@ class Scale extends React.Component {
     );
   };
   radioIcon = (action, width, isLast) => {
-    let { selectedOption } = this.state;
+    let {selectedOption} = this.state;
     return (
       <View
         style={{
           width: width,
           flexDirection: "row",
-          justifyContent: "flex-start"
-        }}
-      >
+          justifyContent: "flex-start",
+        }}>
         <TouchableOpacity
           style={{
             width: moderateScale(20),
-            height: moderateScale(20)
+            height: moderateScale(20),
           }}
           onPress={() => {
-            this.setState({ selectedOption: action });
-          }}
-        >
+            this.setState({selectedOption: action});
+          }}>
           {action === selectedOption ? (
             <Image
               source={require("../../assets/icons/radio-on-button.png")}
-              style={{ height: moderateScale(20), width: moderateScale(20) }}
+              style={{height: moderateScale(20), width: moderateScale(20)}}
             />
           ) : (
             <View
@@ -325,7 +318,7 @@ class Scale extends React.Component {
                 width: moderateScale(20),
                 borderRadius: moderateScale(100),
                 borderColor: constants.Colors.White,
-                borderWidth: moderateScale(2)
+                borderWidth: moderateScale(2),
               }}
             />
           )}
@@ -335,15 +328,15 @@ class Scale extends React.Component {
     );
   };
   render() {
-    let { options } = this.props;
-    let { anchorText } = styles;
-    let { selectedOption, hidden } = this.state;
+    let {options} = this.props;
+    let {anchorText} = styles;
+    let {selectedOption, hidden} = this.state;
     let {
       pos,
       width,
       arrowDirection,
       marginLeft,
-      marginRight
+      marginRight,
     } = selectedOptionPosition[selectedOption];
     if (options.length === 4) {
       pos = selectedOptionPosition2[selectedOption].pos;
@@ -363,18 +356,16 @@ class Scale extends React.Component {
           style={{
             height: moderateScale(100),
             justifyContent: "flex-end",
-            paddingVertical: moderateScale(20)
+            paddingVertical: moderateScale(20),
             // position: "absolute",
             // top: constants.BaseStyle.DEVICE_HEIGHT * 0.23
-          }}
-        >
+          }}>
           <View
             style={{
               ...Platform.select({
-                ios: { zIndex: 999 }
-              })
-            }}
-          >
+                ios: {zIndex: 999},
+              }),
+            }}>
             {this.floatingButton(
               options[selectedOption].value,
               options[selectedOption].label,
@@ -382,7 +373,7 @@ class Scale extends React.Component {
               width,
               arrowDirection,
               marginLeft,
-              marginRight
+              marginRight,
             )}
           </View>
           {/* <View style={{ flex: 1, backgroundColor:'yellow' }}> */}
@@ -391,10 +382,9 @@ class Scale extends React.Component {
               onPress={() => {
                 this.handleBot({
                   value: options[0].value,
-                  title: options[0].label
+                  title: options[0].label,
                 });
-              }}
-            >
+              }}>
               <Text style={[styles.textWidth, styles.textAlignLeft]}>
                 {options[0].label}
               </Text>
@@ -403,10 +393,9 @@ class Scale extends React.Component {
               onPress={() => {
                 this.handleBot({
                   value: options[options.length - 1].value,
-                  title: options[options.length - 1].label
+                  title: options[options.length - 1].label,
                 });
-              }}
-            >
+              }}>
               <Text style={[styles.textWidth, styles.textAlignRight]}>
                 {options[options.length - 1].label}
               </Text>
@@ -425,22 +414,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
-    padding: moderateScale(15)
+    padding: moderateScale(15),
   },
   textWidth: {
     width: moderateScale(70),
     fontSize: moderateScale(12),
-    color: "#ffffff"
+    color: "#ffffff",
   },
-  textAlignLeft: { textAlign: "left" },
-  textAlignRight: { textAlign: "right" },
+  textAlignLeft: {textAlign: "left"},
+  textAlignRight: {textAlign: "right"},
   scaleView: {
     // flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: moderateScale(10)
-  }
+    paddingHorizontal: moderateScale(10),
+  },
 });
 
 export default Scale;

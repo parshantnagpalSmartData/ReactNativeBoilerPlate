@@ -1,6 +1,6 @@
 import Fabric from "react-native-fabric";
 
-var { Crashlytics } = Fabric;
+var {Crashlytics} = Fabric;
 
 Crashlytics.setUserName("Ajivar");
 

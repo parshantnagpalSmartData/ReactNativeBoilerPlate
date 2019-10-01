@@ -35,38 +35,38 @@
 "use-strict";
 var Fonts = {
   LatoSemibold: {
-    fontFamily: "Lato-Semibold"
+    fontFamily: "Lato-Semibold",
   },
   TitilliumWebBold: {
-    fontFamily: "TitilliumWeb-Bold"
+    fontFamily: "TitilliumWeb-Bold",
   },
   TitilliumWebBoldItalic: {
-    fontFamily: "TitilliumWeb-BoldItalic"
+    fontFamily: "TitilliumWeb-BoldItalic",
   },
   TitilliumWebExtraLight: {
-    fontFamily: "TitilliumWeb-ExtraLight"
+    fontFamily: "TitilliumWeb-ExtraLight",
   },
   TitilliumWebExtraLightItalic: {
-    fontFamily: "TitilliumWeb-ExtraLightItalic"
+    fontFamily: "TitilliumWeb-ExtraLightItalic",
   },
   TitilliumWebItalic: {
-    fontFamily: "TitilliumWeb-Italic"
+    fontFamily: "TitilliumWeb-Italic",
   },
   TitilliumWebLight: {
-    fontFamily: "TitilliumWeb-Light"
+    fontFamily: "TitilliumWeb-Light",
   },
   TitilliumWebLightItalic: {
-    fontFamily: "TitilliumWeb-LightItalic"
+    fontFamily: "TitilliumWeb-LightItalic",
   },
   TitilliumWebRegular: {
-    fontFamily: "TitilliumWeb-Regular"
+    fontFamily: "TitilliumWeb-Regular",
   },
   TitilliumWebSemiBold: {
-    fontFamily: "TitilliumWeb-SemiBold"
+    fontFamily: "TitilliumWeb-SemiBold",
   },
   TitilliumWebSemiBoldItalic: {
-    fontFamily: "TitilliumWeb-SemiBoldItalic"
-  }
+    fontFamily: "TitilliumWeb-SemiBoldItalic",
+  },
 };
 
 module.exports = Fonts;

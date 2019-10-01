@@ -1,0 +1,12 @@
+//ignoring the folder
+/package.json
+/package-lock.json
+/dist/**
+/amplify/**
+/web/**
+/**/*.json
+/modified_modules/**
+api-7968909421174899649-44879-220d84692a48.json
+/__tests__/**
+/ios/**
+/android/**

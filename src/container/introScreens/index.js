@@ -1,17 +1,11 @@
-import React, { Component } from "react";
-import {
-  View,
-  StyleSheet,
-  ImageBackground,
-  Text,
-  Platform
-} from "react-native";
+import React, {Component} from "react";
+import {View, StyleSheet, Text, Platform} from "react-native";
 
 import * as AppAction from "../../actions";
 import AppIntroSlider from "react-native-app-intro-slider";
-import { connect } from "react-redux";
-import { moderateScale } from "../../helpers/ResponsiveFonts";
-import { bindActionCreators } from "redux";
+import {connect} from "react-redux";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
+import {bindActionCreators} from "redux";
 
 import Constants from "../../constants";
 import CustomButton from "../../components/common/CustomButton";
@@ -20,64 +14,60 @@ import IntroView from "./IntroView";
 
 const slides = [
   {
-    key: "welcome"
+    key: "welcome",
   },
   {
-    key: "about"
+    key: "about",
   },
   {
-    key: "learning"
+    key: "learning",
   },
   {
-    key: "developer"
+    key: "developer",
   },
   {
-    key: "privacyPolicy"
-  }
+    key: "privacyPolicy",
+  },
 ];
 
 const SliderWrapper = props => (
-  <View style={{ ...styles.container, backgroundColor: props.bgColor }}>
+  <View style={{...styles.container, backgroundColor: props.bgColor}}>
     {/* <SafeView /> */}
 
-      <View style={{ flex: 1 }}>
-        <View style={{ flex: 0.83 }}>{props.children}</View>
-            <View style={{ alignItems : 'center' }}>
-            <CustomButton
-              onPress={() => {
-                props.onButtonPress();
-              }}
-              style={styles.CustomButton}
-            >
-              <View style={styles.ButtonContainerStartHere}>
-                <Text style={styles.textContainer}>{props.buttonName}</Text>
-                {/* <IconRight
+    <View style={{flex: 1}}>
+      <View style={{flex: 0.83}}>{props.children}</View>
+      <View style={{alignItems: "center"}}>
+        <CustomButton
+          onPress={() => {
+            props.onButtonPress();
+          }}
+          style={styles.CustomButton}>
+          <View style={styles.ButtonContainerStartHere}>
+            <Text style={styles.textContainer}>{props.buttonName}</Text>
+            {/* <IconRight
                   name="arrow-right"
                   style={{ alignSelf: "center", marginLeft: moderateScale(5) }}
                   color={Constants.Colors.Black}
                   size={moderateScale(25)}
                 /> */}
-              </View>
-            </CustomButton>
+          </View>
+        </CustomButton>
 
-            {props.SignInbuttonFirstName && (
-              <CustomButton
-                onPress={() => {
-                  props.secondButtonPress();
-                }}
-                style={styles.CustomButton2}
-              >
-                <View style={styles.CustomButton2}>
-                  <Text style={styles.SignInbuttonFirstName}>
-                    {props.SignInbuttonFirstName}
-                  </Text>
-                </View>
-              </CustomButton>
-            )}
-              </View>
-        
+        {props.SignInbuttonFirstName && (
+          <CustomButton
+            onPress={() => {
+              props.secondButtonPress();
+            }}
+            style={styles.CustomButton2}>
+            <View style={styles.CustomButton2}>
+              <Text style={styles.SignInbuttonFirstName}>
+                {props.SignInbuttonFirstName}
+              </Text>
+            </View>
+          </CustomButton>
+        )}
       </View>
-
+    </View>
   </View>
 );
 
@@ -100,7 +90,6 @@ class AppIntro extends Component {
         <SliderWrapper
           title={props.key}
           bgColor={Constants.Colors.White}
-
           onButtonPress={() => this.goToSignUp("SignUp")}
           secondButtonPress={() => this.goToSignUp("SignIn")}
           SignInbuttonFirstName={
@@ -109,8 +98,7 @@ class AppIntro extends Component {
           SignInbuttonSignInName={
             Constants.Strings.IntroScreen1.SignInbuttonSignInName
           }
-          buttonName={Constants.Strings.IntroScreen.signUp}
-        >
+          buttonName={Constants.Strings.IntroScreen.signUp}>
           <IntroView
             HeaderText={Constants.Strings.IntroScreen1.HeaderText}
             subHeaderText1={Constants.Strings.IntroScreen1.SubHeadingText1}
@@ -131,8 +119,7 @@ class AppIntro extends Component {
             Constants.Strings.IntroScreen1.SignInbuttonSignInName
           }
           onButtonPress={() => this.goToSignUp("SignUp")}
-          buttonName={Constants.Strings.IntroScreen.signUp}
-        >
+          buttonName={Constants.Strings.IntroScreen.signUp}>
           <IntroView
             ImageName={Constants.Strings.IntroScreen2.ImageName}
             HeaderText={Constants.Strings.IntroScreen2.HeaderText}
@@ -154,8 +141,7 @@ class AppIntro extends Component {
             Constants.Strings.IntroScreen1.SignInbuttonSignInName
           }
           onButtonPress={() => this.goToSignUp("SignUp")}
-          buttonName={Constants.Strings.IntroScreen.signUp}
-        >
+          buttonName={Constants.Strings.IntroScreen.signUp}>
           <IntroView
             ImageName={Constants.Strings.IntroScreen3.ImageName}
             tickText={Constants.Strings.IntroScreen3.ImageName}
@@ -178,8 +164,7 @@ class AppIntro extends Component {
             Constants.Strings.IntroScreen1.SignInbuttonSignInName
           }
           onButtonPress={() => this.goToSignUp("SignUp")}
-          buttonName={Constants.Strings.IntroScreen.signUp}
-        >
+          buttonName={Constants.Strings.IntroScreen.signUp}>
           <IntroView
             ImageName={Constants.Strings.IntroScreen4.ImageName}
             tickText={Constants.Strings.IntroScreen4.ImageName}
@@ -202,8 +187,7 @@ class AppIntro extends Component {
             Constants.Strings.IntroScreen1.SignInbuttonSignInName
           }
           onButtonPress={() => this.goToSignUp("SignUp")}
-          buttonName={Constants.Strings.IntroScreen.signUp}
-        >
+          buttonName={Constants.Strings.IntroScreen.signUp}>
           <IntroView
             ImageName={Constants.Strings.IntroScreen5.ImageName}
             tickText={Constants.Strings.IntroScreen5.ImageName}
@@ -229,14 +213,14 @@ class AppIntro extends Component {
                 : Constants.BaseStyle.DEVICE_HEIGHT * 0.9
               : Constants.BaseStyle.DEVICE_HEIGHT > 700
               ? Constants.BaseStyle.DEVICE_HEIGHT * 0.92
-              : Constants.BaseStyle.DEVICE_HEIGHT * 0.91
+              : Constants.BaseStyle.DEVICE_HEIGHT * 0.91,
         }}
         showSkipButton={false}
         hideNextButton={true}
         hideDoneButton={true}
         hidePagination={false}
-        activeDotStyle={{ backgroundColor: Constants.Colors.DotRed }}
-        dotStyle={{ backgroundColor: Constants.Colors.InActiveDotRed }}
+        activeDotStyle={{backgroundColor: Constants.Colors.DotRed}}
+        dotStyle={{backgroundColor: Constants.Colors.InActiveDotRed}}
       />
     );
   }
@@ -244,29 +228,29 @@ class AppIntro extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  app: state.app
+  app: state.app,
 });
 const mapDispatchToProps = dispatch => ({
-  AppAction: bindActionCreators(AppAction, dispatch)
+  AppAction: bindActionCreators(AppAction, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AppIntro);
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: {flex: 1},
   gradientStyle: {
     borderRadius: moderateScale(15),
-    marginHorizontal: moderateScale(20)
+    marginHorizontal: moderateScale(20),
   },
   imageBackground: {
     // width: null,
     // height: null,
     // flex: 1
     width: Constants.BaseStyle.DEVICE_WIDTH,
-    height: Constants.BaseStyle.DEVICE_HEIGHT
+    height: Constants.BaseStyle.DEVICE_HEIGHT,
     // width: '100%',
     // height: '100%',
     // // flex: 1
@@ -279,13 +263,13 @@ const styles = StyleSheet.create({
     color: Constants.Colors.White,
     textAlign: "center",
     fontWeight: "bold",
-    fontFamily: "Charter"
+    fontFamily: "Charter",
   },
   SignInbuttonSignInName: {
     fontSize: moderateScale(17),
     fontWeight: "500",
     color: Constants.Colors.White,
-    textAlign: "center"
+    textAlign: "center",
   },
   // textStyle: {
   //   textAlign: "center",
@@ -296,19 +280,19 @@ const styles = StyleSheet.create({
     margin: moderateScale(10),
     fontWeight: "500",
     color: Constants.Colors.White,
-    textAlign: "center"
+    textAlign: "center",
   },
   signUpButtonStyle: {
     width: moderateScale(150),
-    backgroundColor: Constants.Colors.White
+    backgroundColor: Constants.Colors.White,
   },
   buttonStyle: {
     width: Constants.BaseStyle.DEVICE_WIDTH * 0.3,
     borderRadius: moderateScale(10),
-    backgroundColor: Constants.Colors.navyButtonColor
+    backgroundColor: Constants.Colors.navyButtonColor,
   },
   CustomButton: {
-    width: moderateScale(100)
+    width: moderateScale(100),
   },
   ButtonContainerStartHere: {
     backgroundColor: Constants.Colors.White,
@@ -325,15 +309,15 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(30),
     ...(Constants.BaseStyle.DEVICE_WIDTH > 350 &&
       Constants.BaseStyle.DEVICE_HEIGHT < 600 && {
-        marginTop: moderateScale(20)
-      })
+        marginTop: moderateScale(20),
+      }),
   },
   textContainer: {
     fontSize: moderateScale(16),
     color: Constants.Colors.Black,
     alignSelf: "center",
     fontWeight: "bold",
-    fontFamily: "Charter"
+    fontFamily: "Charter",
   },
   CustomButton2: {
     marginTop: moderateScale(5),
@@ -346,6 +330,6 @@ const styles = StyleSheet.create({
     backgroundColor: Constants.Colors.NavyBlueColor,
     borderRadius: moderateScale(30),
     borderColor: Constants.Colors.Black,
-    borderWidth: moderateScale(1.5)
-  }
+    borderWidth: moderateScale(1.5),
+  },
 });

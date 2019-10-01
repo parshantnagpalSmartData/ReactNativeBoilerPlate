@@ -5,10 +5,10 @@ import {
   Image,
   Text,
   StyleSheet,
-  Platform
+  Platform,
 } from "react-native";
 
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import Constants from "../../constants";
 import PropsTypes from "prop-types";
 let tabs = [
@@ -23,7 +23,7 @@ let tabs = [
     // selectedTextColor: "black",
     selectedTextColor: "rgba(0,0,0,0.3)",
     // selectedIconColor: "black"
-    selectedIconColor: "rgba(255,255,255,0.3)"
+    selectedIconColor: "rgba(255,255,255,0.3)",
   },
   {
     text: "Tab2",
@@ -35,7 +35,7 @@ let tabs = [
     // selectedTextColor: "black",
     selectedTextColor: "rgba(255,255,255,0.3)",
     // selectedIconColor: "black"
-    selectedIconColor: "rgba(243,169,4,0.3)"
+    selectedIconColor: "rgba(243,169,4,0.3)",
   },
   {
     color: "#ffffff",
@@ -48,7 +48,7 @@ let tabs = [
     icon:
       Platform.OS == "ios"
         ? Constants.Images.Tabs.botLogoAndroid
-        : Constants.Images.Tabs.botLogoAndroid
+        : Constants.Images.Tabs.botLogoAndroid,
   },
   {
     text: "Tab3",
@@ -61,7 +61,7 @@ let tabs = [
     selectedTextColor: "rgba(255,242,204,0.3)",
     // selectedTextColor: "black",
     // selectedIconColor: "black"
-    selectedIconColor: "rgba(255,255,255,0.3)"
+    selectedIconColor: "rgba(255,255,255,0.3)",
   },
   {
     text: "Tab4",
@@ -73,48 +73,44 @@ let tabs = [
     // selectedTextColor: "black",
     // selectedIconColor: "black"
     selectedTextColor: "rgba(255,255,255,0.3)",
-    selectedIconColor: "rgba(210,109,214,0.3)"
-  }
+    selectedIconColor: "rgba(210,109,214,0.3)",
+  },
 ];
 
 const Footer = props => {
-  let { backgroundColor, selected, onTabPress } = props;
+  let {backgroundColor, selected, onTabPress} = props;
 
   return (
-    <View style={[Styles.shadowProps, { justifyContent: "center" }]}>
+    <View style={[Styles.shadowProps, {justifyContent: "center"}]}>
       <View
         style={[
           Styles.container,
           {
             backgroundColor,
-            flexDirection: "row"
-          }
-        ]}
-      >
+            flexDirection: "row",
+          },
+        ]}>
         {tabs.map((item, index) => {
-          let { fontSize, text, icon, textColor, largeIcon } = item;
+          let {fontSize, text, icon, textColor, largeIcon} = item;
 
           return (
             <TouchableOpacity
               key={index}
               style={[
                 Styles.iconBtn,
-                { width: Constants.BaseStyle.DEVICE_WIDTH / tabs.length },
-                selected == index && !largeIcon && Styles.disabledItem
+                {width: Constants.BaseStyle.DEVICE_WIDTH / tabs.length},
+                selected == index && !largeIcon && Styles.disabledItem,
               ]}
               onPress={() => {
                 onTabPress(index);
-              }}
-            >
+              }}>
               <Image
                 source={icon}
                 resizeMethod={"resize"}
                 style={[Styles.headerLogo, largeIcon && Styles.biggerTab]}
               />
 
-              {text && (
-                <Text style={{ color: textColor, fontSize }}>{text}</Text>
-              )}
+              {text && <Text style={{color: textColor, fontSize}}>{text}</Text>}
             </TouchableOpacity>
           );
         })}
@@ -127,7 +123,7 @@ const Styles = StyleSheet.create({
   container: {
     paddingVertical: moderateScale(5),
     backgroundColor: "#FFFFFF",
-    justifyContent: "center"
+    justifyContent: "center",
     // shadowOffset: { width: 2, height: 2 },
     // shadowColor: "black",
     // shadowOpacity: 0.5,
@@ -138,7 +134,7 @@ const Styles = StyleSheet.create({
   },
   headerLogo: {
     height: Constants.BaseStyle.DEVICE_WIDTH * 0.08,
-    width: Constants.BaseStyle.DEVICE_WIDTH * 0.08
+    width: Constants.BaseStyle.DEVICE_WIDTH * 0.08,
   },
   biggerTab: {
     height: Constants.BaseStyle.DEVICE_WIDTH * 0.16,
@@ -146,35 +142,35 @@ const Styles = StyleSheet.create({
     marginBottom:
       Constants.BaseStyle.DEVICE_HEIGHT > 800
         ? moderateScale(17)
-        : moderateScale(10)
+        : moderateScale(10),
   },
   shadowProps: {
-    shadowOffset: { width: 2, height: 2 },
+    shadowOffset: {width: 2, height: 2},
     shadowColor: "black",
     shadowOpacity: 0.1,
     // shadowRadius: 2,
     backgroundColor: "#FFFFFF",
-    elevation: 3
+    elevation: 3,
     // borderWidth:1
   },
   iconBtn: {
     height: moderateScale(40),
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   header: {
     justifyContent: "center",
     alignItems: "center",
     fontWeight: "bold",
     height: moderateScale(40),
-    width: Constants.BaseStyle.DEVICE_WIDTH - moderateScale(135)
+    width: Constants.BaseStyle.DEVICE_WIDTH - moderateScale(135),
   },
   headerText: {
     // ...Constants.Fonts.TitilliumWebSemiBold,
     color: Constants.Colors.Black,
     fontSize: moderateScale(21),
     textAlign: "center",
-    textAlignVertical: "center"
+    textAlignVertical: "center",
   },
   searchBox: {
     borderColor: Constants.Colors.transparent,
@@ -185,25 +181,25 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     height: moderateScale(40),
     flexDirection: "row",
-    width: Constants.BaseStyle.DEVICE_WIDTH / 1.4
+    width: Constants.BaseStyle.DEVICE_WIDTH / 1.4,
   },
   inputStyle: {
     color: Constants.Colors.Primary,
     flex: 1,
     paddingHorizontal: moderateScale(5),
     // ...Constants.Fonts.TitilliumWebRegular,
-    fontSize: moderateScale(17)
+    fontSize: moderateScale(17),
   },
   skip: {
     color: Constants.Colors.gray,
     paddingHorizontal: moderateScale(5),
     // ...Constants.Fonts.TitilliumWebRegular,
     fontSize: moderateScale(16),
-    textAlign: "right"
+    textAlign: "right",
   },
   disabledItem: {
-    opacity: 0.5
-  }
+    opacity: 0.5,
+  },
 });
 
 /*
@@ -213,7 +209,7 @@ Footer.propsTypes = {
   centerImage: PropsTypes.bool,
   onTabPress: PropsTypes.func,
   backgroundColor: PropsTypes.string,
-  selected: PropsTypes.number
+  selected: PropsTypes.number,
 };
 /*
 Default props from Button 
@@ -222,7 +218,7 @@ Footer.defaultProps = {
   centerImage: true,
   onTabPress: () => {},
   backgroundColor: "#ffffff",
-  selected: 2
+  selected: 2,
 };
 
 export default Footer;

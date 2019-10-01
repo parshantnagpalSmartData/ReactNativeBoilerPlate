@@ -10,10 +10,10 @@ import {
   TouchableOpacity,
   Image,
   ActivityIndicator,
-  StyleSheet
+  StyleSheet,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import Constants from "../../constants";
 
 const Button = props => {
@@ -23,24 +23,22 @@ const Button = props => {
     gradientColors,
     loading,
     opacity,
-    disabled
+    disabled,
   } = props;
   return (
     <TouchableOpacity
       style={[Styles.buttonContainer, buttonStyle]}
       onPress={onPress}
       activeOpacity={opacity}
-      disabled={disabled}
-    >
+      disabled={disabled}>
       <LinearGradient
         colors={
           gradientColors || [
             Constants.Colors.Primary,
-            Constants.Colors.Secondary
+            Constants.Colors.Secondary,
           ]
         }
-        style={Styles.gradientStyle}
-      >
+        style={Styles.gradientStyle}>
         {loading ? (
           <ActivityIndicator size="small" color={Constants.Colors.White} />
         ) : (
@@ -65,7 +63,7 @@ const Styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    padding: moderateScale(20)
+    padding: moderateScale(20),
   },
   buttonText: {
     ...Constants.Fonts.SemiBold,
@@ -73,6 +71,6 @@ const Styles = StyleSheet.create({
     fontWeight: "bold",
     color: Constants.Colors.Yellow,
     textAlignVertical: "center",
-    paddingHorizontal: moderateScale(5)
-  }
+    paddingHorizontal: moderateScale(5),
+  },
 });

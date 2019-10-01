@@ -10,20 +10,19 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   View,
-  Platform
+  Platform,
 } from "react-native";
 import PropsTypes from "prop-types";
 
 const CustomButton = props => {
-  let { disabled, onPress, buttonStyle } = props;
+  let {disabled, onPress, buttonStyle} = props;
 
   if (Platform.OS == "ios") {
     return (
       <TouchableOpacity
         style={buttonStyle}
         disabled={disabled}
-        onPress={onPress}
-      >
+        onPress={onPress}>
         {props.children}
       </TouchableOpacity>
     );
@@ -32,8 +31,7 @@ const CustomButton = props => {
       <TouchableNativeFeedback
         activeOpacity={0.9}
         disabled={disabled}
-        onPress={onPress}
-      >
+        onPress={onPress}>
         <View style={buttonStyle}>{props.children}</View>
       </TouchableNativeFeedback>
     );
@@ -44,9 +42,9 @@ export default CustomButton;
 CustomButton.propsTypes = {
   onPress: PropsTypes.func.isRequired,
   disabled: PropsTypes.bool,
-  buttonStyle: PropsTypes.object
+  buttonStyle: PropsTypes.object,
 };
 CustomButton.defaultProps = {
   disabled: false,
-  buttonStyle: {}
+  buttonStyle: {},
 };

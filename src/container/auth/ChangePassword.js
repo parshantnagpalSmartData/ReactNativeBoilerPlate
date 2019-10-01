@@ -4,17 +4,17 @@
  * @date: 9.Oct.2018
  * @author: Suraj Sanwal
  * */
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 // import { bindActionCreators } from "redux";
-import { View, Text, StyleSheet, Platform } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {View, Text, StyleSheet, Platform} from "react-native";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import Icon from "../../components/common/Icon";
 import Constants from "../../constants";
 import * as AppAction from "../../actions";
 import FloatingInput from "../../components/common/FloatingInput";
 
-import { moderateScale } from "../../helpers/ResponsiveFonts";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 import AuthButton from "../../components/common/AuthButton";
 
 class ChangePassword extends Component {
@@ -28,7 +28,7 @@ class ChangePassword extends Component {
       confirmPassword: "",
       hideOldPassword: true,
       hideNewPassword: true,
-      hideConfirmPassword: true
+      hideConfirmPassword: true,
     };
   }
 
@@ -40,24 +40,24 @@ class ChangePassword extends Component {
     switch (index) {
       case 0:
         this.setState({
-          hideOldPassword: !this.state.hideOldPassword
+          hideOldPassword: !this.state.hideOldPassword,
         });
         break;
       case 1:
         this.setState({
-          hideNewPassword: !this.state.hideNewPassword
+          hideNewPassword: !this.state.hideNewPassword,
         });
         break;
       case 2:
         this.setState({
-          hideConfirmPassword: !this.state.hideConfirmPassword
+          hideConfirmPassword: !this.state.hideConfirmPassword,
         });
         break;
     }
   };
 
   changePassword = () => {
-    const { confirmPassword, password, oldPassword } = this.state;
+    const {confirmPassword, password, oldPassword} = this.state;
 
     if (!confirmPassword && !password && !oldPassword) {
       return;
@@ -84,7 +84,7 @@ class ChangePassword extends Component {
       oldPassword,
       hideOldPassword,
       hideNewPassword,
-      hideConfirmPassword
+      hideConfirmPassword,
     } = this.state;
     return (
       <View style={styles.container}>
@@ -93,8 +93,7 @@ class ChangePassword extends Component {
           style={styles.scrollStyle}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ flex: 1 }}
-        >
+          contentContainerStyle={{flex: 1}}>
           <View style={styles.signInView}>
             <Text style={styles.signInText}>Change Password</Text>
           </View>
@@ -103,14 +102,14 @@ class ChangePassword extends Component {
               Please enter your old password and new password.
             </Text>
           </View>
-          <View style={{ flex: 1 }}>
+          <View style={{flex: 1}}>
             <FloatingInput
               ref={ref => (this.email = ref)}
               inputWrapper={styles.inputWrapper}
               label={"Old password"}
               value={oldPassword}
               onChangeText={oldPassword => {
-                this.setState({ oldPassword });
+                this.setState({oldPassword});
               }}
               icon={
                 <Icon name={!hideOldPassword ? "eye" : "eye-slash"} size={20} />
@@ -126,7 +125,7 @@ class ChangePassword extends Component {
               label={"New Password"}
               value={password}
               onChangeText={password => {
-                this.setState({ password });
+                this.setState({password});
               }}
               icon={
                 <Icon name={!hideNewPassword ? "eye" : "eye-slash"} size={20} />
@@ -142,7 +141,7 @@ class ChangePassword extends Component {
               label={"Confirm Password"}
               value={confirmPassword}
               onChangeText={confirmPassword => {
-                this.setState({ confirmPassword });
+                this.setState({confirmPassword});
               }}
               icon={
                 <Icon
@@ -171,55 +170,55 @@ class ChangePassword extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  app: state.app
+  app: state.app,
 });
 const mapDispatchToProps = dispatch => {
   return {
     changePassword: (old, newPass) =>
-      dispatch(AppAction.changePassword(old, newPass))
+      dispatch(AppAction.changePassword(old, newPass)),
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ChangePassword);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: moderateScale(15),
-    backgroundColor: Constants.Colors.AuthYellow
+    backgroundColor: Constants.Colors.AuthYellow,
   },
   scrollStyle: {
-    flex: 1
+    flex: 1,
   },
   signUpButtonStyle: {
     width: moderateScale(160),
     alignSelf: "center",
     marginTop: moderateScale(30),
-    height: moderateScale(40)
+    height: moderateScale(40),
   },
 
   gradientStyle: {
-    borderRadius: moderateScale(20)
+    borderRadius: moderateScale(20),
   },
   textStyle: {
     textAlign: "center",
     fontFamily: "Charter",
     fontWeight: "bold",
-    fontSize: moderateScale(18)
+    fontSize: moderateScale(18),
   },
   paddingInputText: {
-    paddingHorizontal: moderateScale(20)
+    paddingHorizontal: moderateScale(20),
   },
   stylesAuthContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: moderateScale(35)
+    marginTop: moderateScale(35),
   },
 
-  forgotView: { justifyContent: "flex-start", alignItems: "flex-start" },
+  forgotView: {justifyContent: "flex-start", alignItems: "flex-start"},
   signUpView: {
     backgroundColor: "white",
     width: Constants.BaseStyle.DEVICE_WIDTH - moderateScale(2),
@@ -227,13 +226,13 @@ const styles = StyleSheet.create({
     borderWidth: moderateScale(1),
     paddingVertical: moderateScale(5),
     marginVertical: moderateScale(35),
-    marginHorizontal: moderateScale(1)
+    marginHorizontal: moderateScale(1),
   },
   inputWrapper: {
     borderBottomWidth: moderateScale(1),
     borderBottomColor: Constants.Colors.Gray,
     fontFamily: "Charter",
-    height: moderateScale(48)
+    height: moderateScale(48),
   },
   signUpButton: {
     // margin: moderateScale(0),
@@ -244,46 +243,46 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(21),
     color: "gray",
     fontFamily: "Cochin",
-    textAlign: "center"
+    textAlign: "center",
   },
 
   forgotButton: {
     paddingTop: moderateScale(5),
-    paddingBottom: moderateScale(20)
+    paddingBottom: moderateScale(20),
   },
   signInView: {
     justifyContent: "center",
     alignItems: "center",
-    padding: moderateScale(30)
+    padding: moderateScale(30),
   },
 
   signInText: {
     fontSize: moderateScale(30),
     color: Constants.Colors.Black,
     fontWeight: Platform.OS == "ios" ? "bold" : "normal",
-    fontFamily: "Cochin-Bold"
+    fontFamily: "Cochin-Bold",
   },
   signInInSubContainerText: {
     color: "gray",
     fontFamily: "Charter",
-    fontSize: moderateScale(20)
+    fontSize: moderateScale(20),
   },
 
   signInSubContainerView: {
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    paddingBottom: moderateScale(15)
+    paddingBottom: moderateScale(15),
   },
   forgotText: {
     color: Constants.Colors.Gray,
     fontFamily: "Charter",
     fontSize: moderateScale(20),
-    textAlign: "center"
+    textAlign: "center",
   },
   forgotTextBlack: {
     fontSize: moderateScale(18),
     paddingHorizontal: moderateScale(5),
     fontFamily: "Charter",
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });
