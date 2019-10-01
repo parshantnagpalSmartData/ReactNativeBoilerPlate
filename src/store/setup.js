@@ -51,8 +51,10 @@ export default function setup() {
     // console.log("newstore", store.getState().app.root);
     if (store.getState().user.isLoggedIn) {
       goHome();
+    } else if (store.getState().user.isIntroScreenWatched) {
+      goToAuth("SignUp");
     } else {
-      goToAuth();
+      goToAuth("AppIntro");
     }
     if (Platform.OS == "android") {
       SplashScreen.hide();

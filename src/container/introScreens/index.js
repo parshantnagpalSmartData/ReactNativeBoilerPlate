@@ -81,6 +81,7 @@ class AppIntro extends Component {
   };
 
   goToSignUp = page => {
+    this.props.AppAction.isIntroScreensWatched();
     this.props.AppAction.pushToParticularScreen(this.props.componentId, page);
   };
 

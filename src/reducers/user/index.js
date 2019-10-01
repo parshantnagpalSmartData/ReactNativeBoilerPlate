@@ -8,6 +8,7 @@ Date : 11 Sept 2018
 import * as Types from "../../actionTypes";
 const initialState = {
   isLoggedIn: false,
+  isIntroScreenWatched: false,
   userData: null,
   botImage: null,
   botSwitch: false,
@@ -25,6 +26,8 @@ const initialState = {
 
 const user = (state = initialState, action) => {
   switch (action.type) {
+    case Types.IS_INTROSCREEN_WATHCED:
+      return {...state, isIntroScreenWatched: true};
     case Types.LOGIN_SUCCESS:
       return {
         ...state,

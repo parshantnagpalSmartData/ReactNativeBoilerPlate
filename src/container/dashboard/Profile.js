@@ -9,7 +9,6 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import {goToAuth} from "../../config/navigation";
 import {connect} from "react-redux";
 import Modal from "react-native-modal";
 import RNFetchBlob from "rn-fetch-blob";
@@ -162,11 +161,6 @@ class Profile extends React.Component {
     this.setState({
       hidePassword: !this.state.hidePassword,
     });
-  };
-
-  logout = () => {
-    this.props.logOut();
-    goToAuth();
   };
 
   changeBotImage() {
@@ -455,9 +449,6 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logOut: () => {
-      dispatch(AppAction.logOut());
-    },
     getUserBotImage: data => {
       dispatch(AppAction.getUserBotImage(data));
     },

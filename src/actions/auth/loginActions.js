@@ -8,6 +8,13 @@ import {goHome, goToAuth} from "../../config/navigation";
 // import { Navigation } from "react-native-navigation";
 // import { handleLoader } from "../app";
 // import Constants from '../../constants';
+
+
+export const isIntroScreensWatched = () => {
+  return dispatch => {
+    dispatch({type: types.IS_INTROSCREEN_WATHCED});
+  };
+};
 //eslint-disable-next-line
 export const loginUser = (username, password, componentId) => {
   return dispatch => {
@@ -336,7 +343,7 @@ export const registerUser = (user, componentId) => {
 
 export const logOut = () => {
   return dispatch => {
-    goToAuth();
+    goToAuth("SignUp");
     dispatch({
       type: types.LOGOUT,
     });

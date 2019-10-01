@@ -297,7 +297,7 @@ const tabs = [
     },
   },
 ];
-export const goToAuth = () =>
+export const goToAuth = screen =>
   Navigation.setRoot({
     root: {
       stack: {
@@ -305,7 +305,7 @@ export const goToAuth = () =>
         children: [
           {
             component: {
-              name: "AppIntro",
+              name: screen,
               passProps: {
                 text: "React Native",
               },
