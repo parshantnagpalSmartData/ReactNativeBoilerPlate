@@ -7,6 +7,7 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.facebook.react.ReactNativeHost;
@@ -17,7 +18,8 @@ import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
-
+// react-native-webview
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 import java.util.List;
 import java.util.Arrays;
 // @react-native-community/async-storage
@@ -58,7 +60,8 @@ public class MainApplication extends NavigationApplication {
                                     new RNFirebaseNotificationsPackage(),
                                     new RNFirebaseMessagingPackage(),
                                     new SplashScreenReactPackage(),
-                                    new VectorIconsPackage()
+                                    new VectorIconsPackage(),
+                                    new RNCWebViewPackage()
                         // eg. new VectorIconsPackage()
                             );
         }

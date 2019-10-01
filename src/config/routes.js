@@ -24,8 +24,6 @@ import EnterOtpScreen from "../container/auth/EnterOtpScreen";
 
 import EditProfile from "../container/auth/EditProfile";
 
-import NavBar from "../components/navBar";
-import CustomLeft from "../components/customLeft";
 import Institution from "../container/auth/Institutions";
 import InstitutionCode from "../container/auth/InstitutionsCode";
 // import EmailVerification from "../container/auth/EmailVarification";
@@ -258,16 +256,7 @@ export const registerScreens = store => {
     Provider,
     store,
   );
-  Navigation.registerComponent(
-    "NavBar",
-    () => WrapScreen(NavBar, store),
-    () => NavBar,
-  );
-  Navigation.registerComponent(
-    "CustomButton",
-    () => WrapScreen(CustomLeft, store),
-    () => CustomLeft,
-  );
+
   // Navigation.registerComponent(
   //   'EmailVerification',
   //   () =>

@@ -34,6 +34,8 @@ target 'ProposalBuilder' do
   pod 'Firebase/Messaging', '~> 6.3.0'
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   post_install do |installer|
     rnfirebase = installer.pods_project.targets.find { |target| target.name == 'RNFirebase' }
     rnfirebase.build_configurations.each do |config|
@@ -42,20 +44,7 @@ target 'ProposalBuilder' do
   end
 
 
-  target 'ProposalBuilderTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+ 
 
   use_native_modules!
-end
-
-target 'ProposalBuilder-tvOS' do
-  # Pods for ProposalBuilder-tvOS
-
-  target 'ProposalBuilder-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end

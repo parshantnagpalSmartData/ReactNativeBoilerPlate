@@ -4,7 +4,8 @@ Filename : WebView.js
 Description : "Contains the webView file"
 */
 import React from "react";
-import {WebView, View, StyleSheet} from "react-native";
+import {View, StyleSheet} from "react-native";
+import WebView from "react-native-webview";
 
 class WebViewComp extends React.Component {
   render() {
