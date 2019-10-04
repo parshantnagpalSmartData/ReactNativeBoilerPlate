@@ -6,8 +6,8 @@
 
 "use-strict";
 
-import {Platform} from "react-native";
-import Dimensions from "Dimensions";
+import {Platform , Dimensions} from "react-native";
+
 
 // Precalculate Device Dimensions for better performance
 const x = Dimensions.get("window").width;
