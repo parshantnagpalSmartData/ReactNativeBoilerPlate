@@ -1,8 +1,3 @@
-// import RestClient from './helper/RestClient';
-/*
-Api for registeration of rider
-*/
-//import { goToAuth } from "../../config/navigation";
 import * as Types from "../../actionTypes";
 
 export const login = () => ({

@@ -2,7 +2,7 @@
  * @file: SignIn.js
  * @description: Contains the SignIn Container.
  * @date: 9.Oct.2018
- * @author: Suraj Sanwal
+ * @author: Parshant Nagpal
  * */
 import React, {Component} from "react";
 import {connect} from "react-redux";

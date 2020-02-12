@@ -24,8 +24,6 @@ import EnterOtpScreen from "../container/auth/EnterOtpScreen";
 
 import EditProfile from "../container/auth/EditProfile";
 
-import Institution from "../container/auth/Institutions";
-import InstitutionCode from "../container/auth/InstitutionsCode";
 // import EmailVerification from "../container/auth/EmailVarification";
 
 //Dashboard Imports
@@ -217,17 +215,7 @@ export const registerScreens = store => {
       }),
     () => ConfirmPassword,
   );
-  Navigation.registerComponent(
-    "Institution",
-    () =>
-      WrapScreen(Institution, store, {
-        disableHeader: false,
-        auth: true,
-        hideDrawer: true,
-        title: "Institution",
-      }),
-    () => Institution,
-  );
+
   Navigation.registerComponent(
     "EditProfile",
     () =>
@@ -239,17 +227,7 @@ export const registerScreens = store => {
       }),
     () => EditProfile,
   );
-  Navigation.registerComponent(
-    "InstitutionCode",
-    () =>
-      WrapScreen(InstitutionCode, store, {
-        disableHeader: false,
-        auth: true,
-        hideDrawer: true,
-        title: "Institution Code",
-      }),
-    () => InstitutionCode,
-  );
+
   Navigation.registerComponentWithRedux(
     "SideMenu",
     () => SideMenu,
