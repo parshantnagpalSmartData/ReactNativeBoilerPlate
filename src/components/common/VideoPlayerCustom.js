@@ -4,7 +4,7 @@
  * Description : "Conatins the custom Video package module"
  */
 /* eslint-disable */
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import {
   Platform,
   StyleSheet,
@@ -20,19 +20,19 @@ import {
   TouchableWithoutFeedback,
   Image,
   BackHandler,
-} from 'react-native';
+} from "react-native";
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import IconEntypo from 'react-native-vector-icons/Entypo';
-import Video from 'react-native-video';
-import {Slider} from 'react-native-elements';
-import PropsTypes from 'prop-types';
-var {height, width} = Dimensions.get('window');
-import AnimatedHideView from 'react-native-animated-hide-view';
-import isEqual from 'lodash/isEqual';
-import Constants from '../../constants';
-import Events from '../../utilities/Events';
-import {moderateScale} from '../../helpers/ResponsiveFonts';
+import Icon from "react-native-vector-icons/MaterialIcons";
+import IconEntypo from "react-native-vector-icons/Entypo";
+import Video from "react-native-video";
+import {Slider} from "react-native-elements";
+import PropsTypes from "prop-types";
+var {height, width} = Dimensions.get("window");
+import AnimatedHideView from "react-native-animated-hide-view";
+import isEqual from "lodash/isEqual";
+import Constants from "../../constants";
+import Events from "../../utilities/Events";
+import {moderateScale} from "../../helpers/ResponsiveFonts";
 
 class VideoPlayer extends Component {
   constructor(props) {
@@ -68,17 +68,17 @@ class VideoPlayer extends Component {
       // spinValue: new Animated.Value(0),
       rotate: false,
       spin: null,
-      clearId: '',
-      clearId1: '',
+      clearId: "",
+      clearId1: "",
       defaultMuted,
       posterImage,
     };
   }
   componentDidMount() {
-    Events.on('VideoSoundDisable', this.VideoSoundDisable);
+    Events.on("VideoSoundDisable", this.VideoSoundDisable);
   }
   componentWillUnmount() {
-    Events.removeListener('VideoSoundDisable', this.VideoSoundDisable);
+    Events.removeListener("VideoSoundDisable", this.VideoSoundDisable);
   }
 
   handleBackButtonClick() {
@@ -86,10 +86,10 @@ class VideoPlayer extends Component {
   }
 
   componentWillMount() {
-    if (Platform.OS === '')
+    if (Platform.OS === "")
       this.setState({
         statusBarHeight:
-          Platform.OS === 'android' ? StatusBar.currentHeight : 20,
+          Platform.OS === "android" ? StatusBar.currentHeight : 20,
       });
     // StatusBar.setHidden(true);
   }
@@ -167,7 +167,7 @@ class VideoPlayer extends Component {
   }
 
   onSlidingChange(value) {
-    console.log('valuevaluevalue', value);
+    console.log("valuevaluevalue", value);
     let newPosition = value * this.state.songDuration;
     this.refs.audio.seek(newPosition);
     this.setState({currentTime: newPosition});
@@ -175,7 +175,7 @@ class VideoPlayer extends Component {
   }
 
   onSlidingComplete() {
-    console.log('this.state.currentTime');
+    console.log("this.state.currentTime");
     this.refs.audio.seek(this.state.currentTime);
     this.setState({sliding: false});
   }
@@ -218,7 +218,7 @@ class VideoPlayer extends Component {
             easing: Easing.linear,
           }).start();
 
-          console.log('this.state.songDuration', this.state.songDuration);
+          console.log("this.state.songDuration", this.state.songDuration);
           // this.refs.audio.seek(this.state.songDuration)
         }
       },
@@ -232,7 +232,7 @@ class VideoPlayer extends Component {
       songPercentage: 0,
       onEnd: true,
     });
-    Events.emit('videoCompleteWatch');
+    Events.emit("videoCompleteWatch");
   }
 
   toggleForward() {
@@ -341,7 +341,7 @@ class VideoPlayer extends Component {
                   {formattedTime(this.state.currentTime)}
                 </Text>
                 <Text style={styles.VideotimeTxt}>
-                  -{' '}
+                  -{" "}
                   {formattedTime(
                     this.state.songDuration - this.state.currentTime,
                   )}
@@ -352,15 +352,15 @@ class VideoPlayer extends Component {
               style={{
                 width:
                   width -
-                  (Platform.OS == 'ios'
+                  (Platform.OS == "ios"
                     ? width > 800
                       ? width * 0.075
                       : width * 0.08
                     : width * 0.08),
-                flexDirection: 'row',
-                backgroundColor: '#222',
-                alignItems: 'center',
-                justifyContent: 'center',
+                flexDirection: "row",
+                backgroundColor: "#222",
+                alignItems: "center",
+                justifyContent: "center",
               }}>
               <Animated.View style={[styles.vCntrlBtn]}>
                 <TouchableOpacity onPress={this.toggleVolume.bind(this)}>
@@ -510,11 +510,11 @@ class VideoPlayer extends Component {
         <View
           style={{
             width: 60,
-            alignSelf: 'flex-start',
-            justifyContent: 'space-around',
-            alignItems: 'center',
+            alignSelf: "flex-start",
+            justifyContent: "space-around",
+            alignItems: "center",
             height: height,
-            position: 'relative',
+            position: "relative",
             zIndex: 99,
           }}>
           <Animated.View style={[styles.vCntrlBtn, styles.vCntrlBtnFull]}>
@@ -560,7 +560,7 @@ class VideoPlayer extends Component {
               {formattedTime(this.state.currentTime)}
             </Text>
             <Text style={styles.VideotimeTxt}>
-              -{' '}
+              -{" "}
               {formattedTime(this.state.songDuration - this.state.currentTime)}
             </Text>
           </View>
@@ -595,11 +595,11 @@ class VideoPlayer extends Component {
       {thumbnailLinks} = this.props;
     const spin = this.state.spinValue.interpolate({
       inputRange: [0, 1],
-      outputRange: ['-90deg', '0deg'],
+      outputRange: ["-90deg", "0deg"],
     });
     const spin1 = this.state.spinValue.interpolate({
       inputRange: [0, 1],
-      outputRange: ['0deg', '90deg'],
+      outputRange: ["0deg", "90deg"],
     });
     let songPercentage;
     if (this.state.songDuration !== undefined) {
@@ -651,7 +651,7 @@ class VideoPlayer extends Component {
                 fullscreen={true}
                 paused={!this.state.playing}
                 selectedVideoTrack={{
-                  type: 'resolution',
+                  type: "resolution",
                   value: 480,
                 }}
                 onFullscreenPlayerDidPresent={this.onFullscreenPlayerDidPresent.bind(
@@ -688,8 +688,8 @@ class VideoPlayer extends Component {
                   source={{
                     uri: thumbnailLinks,
                   }}
-                  resizeMethod={'resize'}
-                  resizeMode={'contain'}
+                  resizeMethod={"resize"}
+                  resizeMode={"contain"}
                   style={styles.posterImage}
                 />
               )}
@@ -701,7 +701,7 @@ class VideoPlayer extends Component {
                   }}>
                   <Image
                     source={Constants.Images.playButton}
-                    resizeMode={'contain'}
+                    resizeMode={"contain"}
                     style={styles.playButtonHeight}
                   />
                   {/* <IconEntypo name="sound-mute" size={26} color="#999" /> */}
@@ -718,35 +718,35 @@ class VideoPlayer extends Component {
 }
 
 const styles = StyleSheet.create({
-  ActivityIndicator: {position: 'absolute'},
+  ActivityIndicator: {position: "absolute"},
   muteButton: {
-    position: 'absolute',
+    position: "absolute",
     right: moderateScale(20),
     bottom: moderateScale(10),
   },
   playButton: {
-    position: 'absolute',
+    position: "absolute",
     right: Constants.BaseStyle.DEVICE_WIDTH * 0.35,
     bottom: Constants.BaseStyle.DEVICE_WIDTH * 0.28,
   },
   vCntrlBtn: {
     width: 44,
     height: 44,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginHorizontal: 10,
     marginBottom: 4,
   },
   vCntrlBtnFull: {
     transform: [
       {
-        rotateZ: '90deg',
+        rotateZ: "90deg",
       },
     ],
     zIndex: 1000,
   },
   posterImage: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     left: 0,
     height: width * 0.7,
@@ -757,9 +757,9 @@ const styles = StyleSheet.create({
     width: width * 0.2,
   },
   view: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
   },
   video: {
     height: width * 0.7,
@@ -773,14 +773,14 @@ const styles = StyleSheet.create({
   },
   container: {
     // flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   topViewStyle: {
-    transform: [{rotateZ: '90deg'}],
+    transform: [{rotateZ: "90deg"}],
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     height: width,
     width: height,
   },
@@ -794,7 +794,7 @@ const styles = StyleSheet.create({
     width: width,
   },
   headerClose: {
-    position: 'absolute',
+    position: "absolute",
     top: 10,
     left: 0,
     paddingTop: 10,
@@ -803,9 +803,9 @@ const styles = StyleSheet.create({
     paddingRight: 20,
   },
   headerText: {
-    color: '#FFF',
+    color: "#FFF",
     fontSize: 18,
-    textAlign: 'center',
+    textAlign: "center",
   },
   songImage: {
     marginBottom: 20,
@@ -813,40 +813,40 @@ const styles = StyleSheet.create({
   songTitle: {
     marginRight: 20,
     marginLeft: 20,
-    color: 'white',
-    fontFamily: 'Helvetica Neue',
+    color: "white",
+    fontFamily: "Helvetica Neue",
     marginBottom: 10,
     marginTop: 13,
     fontSize: 19,
   },
   albumTitle: {
-    color: '#BBB',
-    fontFamily: 'Helvetica Neue',
+    color: "#BBB",
+    fontFamily: "Helvetica Neue",
     fontSize: 14,
     marginBottom: 20,
   },
   play: {},
   playFull: {
-    transform: [{rotateZ: '90deg'}],
+    transform: [{rotateZ: "90deg"}],
   },
 
   playRotate: {
-    transform: [{rotateZ: '90deg'}],
+    transform: [{rotateZ: "90deg"}],
   },
 
   controls: {
     width: width - 30,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     bottom: 0,
     zIndex: 99,
   },
 
   controlsFull: {
-    alignSelf: 'flex-start',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0,0,0,0.8)',
-    alignItems: 'center',
-    position: 'absolute',
+    alignSelf: "flex-start",
+    justifyContent: "center",
+    backgroundColor: "rgba(0,0,0,0.8)",
+    alignItems: "center",
+    position: "absolute",
 
     width: 120,
   },
@@ -855,13 +855,13 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
     // backgroundColor: "rgba(0,0,0,0.8)",
     // alignItems: "center",
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
   },
 
   controlsFullscreen: {
-    position: 'absolute',
-    flexDirection: 'row',
+    position: "absolute",
+    flexDirection: "row",
   },
   back: {
     marginTop: 22,
@@ -881,33 +881,33 @@ const styles = StyleSheet.create({
   volume: {},
 
   volumeFull: {
-    transform: [{rotateZ: '90deg'}],
+    transform: [{rotateZ: "90deg"}],
   },
   volumeRotate: {
     marginTop: 26,
-    transform: [{rotateZ: '90deg'}],
+    transform: [{rotateZ: "90deg"}],
   },
   sliderContainer: {
     width:
       width -
-      (Platform.OS == 'ios'
+      (Platform.OS == "ios"
         ? width > 800
           ? width * 0.075
           : width * 0.08
         : width * 0.08),
-    backgroundColor: '#222',
+    backgroundColor: "#222",
     paddingHorizontal: 10,
     paddingTop: 5,
   },
   sliderContainerFull: {
-    position: 'absolute',
+    position: "absolute",
     paddingHorizontal: 90,
     width: height,
 
     // backgroundColor: 'rgba(0,0,0,0.6)',
     transform: [
       {
-        rotateZ: '90deg',
+        rotateZ: "90deg",
       },
       {
         translateY: -20,
@@ -921,21 +921,21 @@ const styles = StyleSheet.create({
   },
   sliderContainerFullInner: {},
   timeInfo: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   VideotimeTxt: {
     fontSize: 12,
-    color: '#aaa',
+    color: "#aaa",
   },
   time: {
-    color: '#FFF',
+    color: "#FFF",
     flex: 1,
     fontSize: 10,
   },
   timeRight: {
-    color: '#FFF',
-    textAlign: 'right',
+    color: "#FFF",
+    textAlign: "right",
     flex: 1,
     fontSize: 10,
   },
@@ -943,19 +943,19 @@ const styles = StyleSheet.create({
     // height : 100
     transform: [
       {
-        rotateZ: '0deg',
+        rotateZ: "0deg",
       },
     ],
   },
   sliderTrack: {
     height: 3,
-    backgroundColor: '#444',
+    backgroundColor: "#444",
   },
   sliderThumb: {
     marginBottom: 50,
     width: 14,
     height: 14,
-    backgroundColor: '#aaa',
+    backgroundColor: "#aaa",
     borderRadius: 7,
   },
 });
@@ -973,7 +973,7 @@ function formattedTime(timeInSeconds) {
   let seconds = timeInSeconds - minutes * 60;
 
   if (isNaN(minutes) || isNaN(seconds)) {
-    return '';
+    return "";
   } else {
     return `${withLeadingZero(minutes)}:${withLeadingZero(seconds.toFixed(0))}`;
   }
@@ -989,9 +989,9 @@ function formatTime(second) {
   }
   // 补零
   let zero = function(v) {
-    return v >> 0 < 10 ? '0' + v : v;
+    return v >> 0 < 10 ? "0" + v : v;
   };
-  return [zero(h), zero(i), zero(s)].join(':');
+  return [zero(h), zero(i), zero(s)].join(":");
 }
 
 /*
@@ -1011,7 +1011,7 @@ VideoPlayer.defaultProps = {
   defaultMuted: true,
   playing: true,
   posterImage: false,
-  thumbnailLinks: '',
+  thumbnailLinks: "",
   videoPercentage: () => {},
 };
 

@@ -5,18 +5,18 @@
  * @author:Parshant Nagpal
  * */
 /* eslint-disable */
-import {Platform} from 'react-native';
-import firebase from 'react-native-firebase';
+import {Platform} from "react-native";
+import firebase from "react-native-firebase";
 // eslint-disable-next-line no-console
-import type {Notification, NotificationOpen} from 'react-native-firebase';
-import {setFcmDeviceToken} from '../actions/user';
+import type {Notification, NotificationOpen} from "react-native-firebase";
+import {setFcmDeviceToken} from "../actions/user";
 /*
 Get the Fcm token of the device
 */
 const getToken = async store => {
   const fcmToken = await firebase.messaging().getToken();
   if (fcmToken) {
-    console.log('fcmToken', fcmToken);
+    console.log("fcmToken", fcmToken);
     store.dispatch(setFcmDeviceToken(fcmToken));
   } else {
     // user doesn't have a device token yet
@@ -30,19 +30,19 @@ export const listeners = () => {
   this.notificationDisplayedListener = firebase
     .notifications()
     .onNotificationDisplayed(notification => {
-      console.log('onNotificationDisplayed', notification);
+      console.log("onNotificationDisplayed", notification);
     });
   this.notificationListener = firebase
     .notifications()
     .onNotification(notification => {
       // When app is in forground  and push come immedialtely show (Without Touch)
-      console.log('onNotification', notification);
+      console.log("onNotification", notification);
     });
   this.notificationOpenedListener = firebase
     .notifications()
     .onNotificationOpened((notificationOpen: NotificationOpen) => {
       //when app is in background (not killed ) tapping on the push notification call that
-      console.log('notificationOpen', notificationOpen);
+      console.log("notificationOpen", notificationOpen);
     });
 };
 /*
@@ -54,7 +54,7 @@ const getInitialNotification = async () => {
     .getInitialNotification();
   if (notificationOpen) {
     //When the app is killed and tapping on the push will call this function
-    console.log('getInitialNotification', notificationOpen);
+    console.log("getInitialNotification", notificationOpen);
   }
 };
 /**
@@ -101,7 +101,7 @@ export const removeListeners = () => {
  It loads the fcm
  */
 export const pushNotifificationInit = async store => {
-  if (Platform.OS === 'ios') {
+  if (Platform.OS === "ios") {
     checkPermission(store);
   } else {
     trigerAllEvents(store);

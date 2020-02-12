@@ -1,7 +1,6 @@
 import * as types from "../../actionTypes";
 
 import {goHome, goToAuth} from "../../config/navigation";
-
 export const isIntroScreensWatched = () => {
   return dispatch => {
     dispatch({type: types.IS_INTROSCREEN_WATHCED});
@@ -14,7 +13,6 @@ export const loginUser = (username, password, componentId) => {
     goHome();
   };
 };
-
 export const registerUser = (user, componentId) => {
   //eslint-disable-line
   return dispatch => {
@@ -22,7 +20,6 @@ export const registerUser = (user, componentId) => {
     goHome();
   };
 };
-
 export const logOut = () => {
   return dispatch => {
     goToAuth("SignUp");

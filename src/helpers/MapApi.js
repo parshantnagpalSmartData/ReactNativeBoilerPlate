@@ -6,34 +6,34 @@
  */
 /* eslint-disable */
 
-('use strict');
-import Geocoder from 'react-native-geocoding';
-import Idx from './Idx';
-import {Linking} from 'react-native';
-import Constants from '../constants';
-import {Dimensions} from 'react-native';
-import TimerMixin from 'react-timer-mixin';
-import reactMixin from 'react-mixin';
-import promise from '../store/promise';
+("use strict");
+import Geocoder from "react-native-geocoding";
+import Idx from "./Idx";
+import {Linking} from "react-native";
+import Constants from "../constants";
+import {Dimensions} from "react-native";
+import TimerMixin from "react-timer-mixin";
+import reactMixin from "react-mixin";
+import promise from "../store/promise";
 
 class MapApi {
   static getDirections(source, destination) {
     return new Promise((resolve, reject) => {
       let directionsUrl =
-        'https://maps.googleapis.com/maps/api/directions/json?origin=' +
+        "https://maps.googleapis.com/maps/api/directions/json?origin=" +
         source.latitude +
-        ',' +
+        "," +
         source.longitude +
-        '&destination=' +
+        "&destination=" +
         destination.latitude +
-        ',' +
+        "," +
         destination.longitude +
-        '&key=' +
+        "&key=" +
         Constants.DevKeys.GoogleAPIKey;
       fetch(directionsUrl)
         .then(response => response.json())
         .then(responseJson => {
-          if (responseJson.status === 'OK') {
+          if (responseJson.status === "OK") {
             if (
               responseJson.routes.length &&
               Idx(responseJson, _ => _.routes[0].legs[0].steps)
@@ -48,7 +48,7 @@ class MapApi {
           }
         })
         .catch(error => {
-          console.log('location error', error);
+          console.log("location error", error);
           reject(error);
         });
     });
@@ -92,12 +92,12 @@ class MapApi {
   //open google map for navigation
 
   static googleMapNavigate(source, destination) {
-    let url = '';
+    let url = "";
     url = `http://maps.google.com/maps?saddr=${source.latitude},${source.longitude}&daddr=${destination.latitude},${destination.longitude}`;
     // console.log('URL ', url);
     Linking.canOpenURL(url).then(supported => {
       if (!supported) {
-        console.log('Error', url); //eslint-disable-line
+        console.log("Error", url); //eslint-disable-line
       } else {
         Linking.openURL(url);
       }
@@ -106,7 +106,7 @@ class MapApi {
 
   // this function will calculate distance from source to destination
 
-  static calculateDistance(source, destination, unit = 'N') {
+  static calculateDistance(source, destination, unit = "N") {
     //'K' is kilometers
     //'N' is nautical miles
     let radlat1 = (Math.PI * source.lat) / 180;
@@ -119,10 +119,10 @@ class MapApi {
     dist = Math.acos(dist);
     dist = (dist * 180) / Math.PI;
     dist = dist * 60 * 1.1515;
-    if (unit == 'K') {
+    if (unit == "K") {
       dist = dist * 1.609344;
     }
-    if (unit == 'N') {
+    if (unit == "N") {
       dist = dist * 0.8684;
     }
     return dist.toFixed(1);
@@ -160,7 +160,7 @@ class MapApi {
           });
         },
         error => {
-          console.log('error on getting current position', error);
+          console.log("error on getting current position", error);
           reject(error);
         },
         {
@@ -195,7 +195,7 @@ class MapApi {
   static getRoutePoints(Routes) {
     return new Promise((resolve, reject) => {
       if (!Routes.length) {
-        reject('Empty lat long array');
+        reject("Empty lat long array");
       }
       this.getInBetweenRoutePoints(Routes)
         .then(res => {
@@ -220,10 +220,10 @@ class MapApi {
 
     return new Promise((resolve, reject) => {
       if (!points.length) {
-        reject('empty lat long array');
+        reject("empty lat long array");
       }
       let minX, maxX, minY, maxY;
-      const window = Dimensions.get('window');
+      const window = Dimensions.get("window");
       const {width, height} = window;
       const ASPECT_RATIO = width / height;
       const LATITUDE_DELTA = 0.005; //Very high zoom level
@@ -271,7 +271,7 @@ class MapApi {
           const {latitude, longitude, heading} = position.coords;
           this.getRegionForCoordinates([{latitude, longitude}]).then(region => {
             region.angle = heading;
-            console.log('watcher', region);
+            console.log("watcher", region);
             resolve(region);
           });
         },
@@ -290,7 +290,7 @@ class MapApi {
   static getCenterCordinates(latLong) {
     return new Promise((resolve, reject) => {
       if (!latLong.length) {
-        reject('empty lat long array');
+        reject("empty lat long array");
       }
       this.getRegionForCoordinates(latLong)
         .then(res => {

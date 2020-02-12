@@ -10,7 +10,7 @@
  * @providesModule idx
  */
 
-'use strict'; // eslint-disable-line strict
+"use strict"; // eslint-disable-line strict
 
 /**
  * Traverses properties on objects and arrays. If an intermediate property is
@@ -92,7 +92,7 @@ function isUndefinedPropertyAccessError({message}: TypeError): boolean {
  */
 // eslint-disable-next-line no-new-func, flowtype/no-weak-types
 const getInvalidPropertyAccessErrorPattern: any = new Function(
-  '$object$',
+  "$object$",
   `
   try {
     $object$.$property$;

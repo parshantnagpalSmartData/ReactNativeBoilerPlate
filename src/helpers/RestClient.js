@@ -6,11 +6,11 @@
  * */
 /* eslint-disable */
 
-'use strict';
+"use strict";
 
-import Connection from '../config/Connection';
-import {NetInfo, Alert, Platform} from 'react-native';
-import Constants from '../constants';
+import Connection from "../config/Connection";
+import {NetInfo, Alert, Platform} from "react-native";
+import Constants from "../constants";
 class RestClient {
   static isConnected() {
     let context = this;
@@ -19,7 +19,7 @@ class RestClient {
       //   fulfill(true);
       // }
       NetInfo.isConnected.fetch().then(isConnected => {
-        console.log('isConnectedisConnected', isConnected);
+        console.log("isConnectedisConnected", isConnected);
         if (isConnected) fulfill(isConnected);
         else {
           reject(isConnected);
@@ -27,9 +27,9 @@ class RestClient {
       });
     });
   }
-  static restCall(url, params, token = null, type = 'POST') {
+  static restCall(url, params, token = null, type = "POST") {
     let context = this;
-    console.log(type, ' call', url, params, token);
+    console.log(type, " call", url, params, token);
     return new Promise(function(fulfill, reject) {
       context
         .isConnected()
@@ -38,19 +38,19 @@ class RestClient {
             method: type,
             timeout: 1000 * 1 * 60,
             headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
+              Accept: "application/json",
+              "Content-Type": "application/json",
               // "Cache-Control": "no-cache",
               Authorization: token,
             },
             body: JSON.stringify(params),
           })
             .then(response => {
-              console.log('responseresponse', response);
+              console.log("responseresponse", response);
               return response.text();
             })
             .then(responseText => {
-              console.log('POST responseText*****', responseText);
+              console.log("POST responseText*****", responseText);
               if (responseText) {
                 fulfill(JSON.parse(responseText));
               } else {
@@ -61,42 +61,42 @@ class RestClient {
               fulfill({
                 message: Constants.AppConstants.Error.internetConnectivity,
               });
-              console.warn('eroro', error);
+              console.warn("eroro", error);
             });
         })
         .catch(error => {
-          console.log('eroro ********* ', error);
+          console.log("eroro ********* ", error);
           fulfill({
-            message: 'Please check your internet connectivity.',
+            message: "Please check your internet connectivity.",
           });
         });
     });
   }
   static getCall(url, token = null) {
     let context = this;
-    console.log('get call', url, token);
+    console.log("get call", url, token);
     return new Promise(function(fulfill, reject) {
       context
         .isConnected()
         .then(() => {
           fetch(url, {
-            method: 'GET',
+            method: "GET",
             timeout: 1000 * 1 * 60,
             headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
+              Accept: "application/json",
+              "Content-Type": "application/json",
               // "Cache-Control": "no-cache",
               Authorization: token,
             },
           })
             .then(response => {
-              if (response._bodyInit == '') {
+              if (response._bodyInit == "") {
                 return response._bodyInit;
               }
               return response.text();
             })
             .then(responseText => {
-              console.log('responseTextresponseText', responseText);
+              console.log("responseTextresponseText", responseText);
               // fulfill(responseText);
               if (responseText) {
                 fulfill(JSON.parse(responseText));
@@ -108,30 +108,30 @@ class RestClient {
               fulfill({
                 message: Constants.AppConstants.Error.internetConnectivity,
               });
-              console.warn('eroro', error);
+              console.warn("eroro", error);
             });
         })
         .catch(error => {
-          console.log('eroro ********* ', error);
+          console.log("eroro ********* ", error);
           fulfill({
-            message: 'Please check your internet connectivity.',
+            message: "Please check your internet connectivity.",
           });
         });
     });
   }
   static delCall(url, body, token = null) {
     let context = this;
-    console.log('delete call', url, token);
+    console.log("delete call", url, token);
     return new Promise(function(fulfill, reject) {
       context
         .isConnected()
         .then(() => {
           fetch(url, {
-            method: 'Delete',
+            method: "Delete",
             timeout: 1000 * 1 * 60,
             headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
+              Accept: "application/json",
+              "Content-Type": "application/json",
               // "Cache-Control": "no-cache",
               Authorization: token,
             },
@@ -141,41 +141,41 @@ class RestClient {
               return response.text();
             })
             .then(responseText => {
-              console.log('Del responseText*****', responseText);
+              console.log("Del responseText*****", responseText);
               fulfill(JSON.parse(responseText));
             })
             .catch(error => {
               fulfill({
                 message: Constants.AppConstants.Error.internetConnectivity,
               });
-              console.warn('eroro', error);
+              console.warn("eroro", error);
             });
         })
         .catch(error => {
-          console.log('eroro ********* ', error);
+          console.log("eroro ********* ", error);
           fulfill({
-            message: 'Please check your internet connectivity.',
+            message: "Please check your internet connectivity.",
           });
         });
     });
   }
   static post(url, params, deviceToken = null, deviceType = null) {
     let context = this;
-    console.log('login details->', url, params, deviceToken, deviceType);
+    console.log("login details->", url, params, deviceToken, deviceType);
     return new Promise(function(fulfill, reject) {
       context
         .isConnected()
         .then(() => {
-          console.log('url=> ', url, ' requestObject=> ', params);
+          console.log("url=> ", url, " requestObject=> ", params);
           fetch(url, {
-            method: 'POST',
+            method: "POST",
             timeout: 1000 * 1 * 60,
             headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
+              Accept: "application/json",
+              "Content-Type": "application/json",
               // "Cache-Control": "no-cache",
-              'device-type': deviceType,
-              'device-token': deviceToken,
+              "device-type": deviceType,
+              "device-token": deviceToken,
             },
             body: JSON.stringify(params),
           })
@@ -183,7 +183,7 @@ class RestClient {
               return response.text();
             })
             .then(responseText => {
-              console.log('POST responseText*****', responseText);
+              console.log("POST responseText*****", responseText);
               fulfill(JSON.parse(responseText));
             })
             .catch(error => {
@@ -191,13 +191,13 @@ class RestClient {
               fulfill({
                 message: Constants.AppConstants.Error.internetConnectivity,
               });
-              console.warn('eroro', error);
+              console.warn("eroro", error);
             });
         })
         .catch(error => {
-          console.log('eroro ********* ', error);
+          console.log("eroro ********* ", error);
           fulfill({
-            message: 'Please check your internet connectivity.',
+            message: "Please check your internet connectivity.",
           });
         });
     });

@@ -1,8 +1,8 @@
 /*
   eslint-disable
 */
-import * as types from '../../actionTypes';
-import {Navigation} from 'react-native-navigation';
+import * as types from "../../actionTypes";
+import {Navigation} from "react-native-navigation";
 
 export const pushToParticularScreen = (
   componentId,
@@ -22,7 +22,7 @@ export const pushToParticularScreen = (
             },
           },
           layout: {
-            orientation: ['portrait'],
+            orientation: ["portrait"],
           },
         },
       },
@@ -38,7 +38,7 @@ export const pushToParticularScreenBottomTabs = (
 ) => {
   return dispatch => {
     console.log(
-      'pushToParticularScreenBottomTabs',
+      "pushToParticularScreenBottomTabs",
       componentId,
       screenNAme,
       passProps,
@@ -60,7 +60,7 @@ export const pushToParticularScreenBottomTabs = (
             drawBehind: true,
           },
           layout: {
-            orientation: ['portrait'],
+            orientation: ["portrait"],
           },
         },
       },
@@ -96,7 +96,7 @@ export const pushToParticularScreenWithoutBottomTabs = (
             drawBehind: true,
           },
           layout: {
-            orientation: ['portrait'],
+            orientation: ["portrait"],
           },
         },
       },
@@ -126,11 +126,11 @@ export const resetTo = (screen, componentId) => {
         options: {
           topBar: {
             title: {
-              text: 'Home',
+              text: "Home",
             },
           },
           layout: {
-            orientation: ['portrait'],
+            orientation: ["portrait"],
           },
         },
       },
@@ -179,7 +179,7 @@ export const setScrenStack = (componentId, screen, visible) => {
         options: {
           topBar: {
             title: {
-              text: 'Home',
+              text: "Home",
             },
           },
           bottomTabs: {
@@ -187,7 +187,7 @@ export const setScrenStack = (componentId, screen, visible) => {
             drawBehind: true,
           },
           layout: {
-            orientation: ['portrait'],
+            orientation: ["portrait"],
           },
         },
       },

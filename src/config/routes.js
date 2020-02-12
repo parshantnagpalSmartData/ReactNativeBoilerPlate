@@ -57,12 +57,12 @@ const WrapScreen = (ReduxScreen, store, headerProps) => props => (
       <View
         style={{
           flex: 1,
-          position: 'absolute',
+          position: "absolute",
           top: 0,
-          height: '100%',
-          width: '100%',
+          height: "100%",
+          width: "100%",
         }}>
-        <Image source={background} style={{height: '100%', width: '100%'}} />
+        <Image source={background} style={{height: "100%", width: "100%"}} />
       </View>
       <View style={{flex: 1, zIndex: 99}}>
         {!headerProps.disableHeader ? (
@@ -70,7 +70,7 @@ const WrapScreen = (ReduxScreen, store, headerProps) => props => (
             title={headerProps.title}
             hideBack={headerProps.hideBack}
             hideDrawer={headerProps.hideDrawer}
-            color={headerProps.color || '#fff'}
+            color={headerProps.color || "#fff"}
             rightIcon={headerProps.rightIcon}
             onRightPress={headerProps.onRightPress}
             rightText={headerProps.rightText}
@@ -98,11 +98,11 @@ const WrapScreen = (ReduxScreen, store, headerProps) => props => (
         <Loading />
         {headerProps.enableTabs ? (
           <Footer
-            backgroundColor={'#537591'}
+            backgroundColor={"#537591"}
             title={headerProps.title}
             hideBack={headerProps.hideBack}
             hideDrawer={headerProps.hideDrawer}
-            color={headerProps.color || '#fff'}
+            color={headerProps.color || "#fff"}
             rightIcon={headerProps.rightIcon}
             onRightPress={headerProps.onRightPress}
             rightText={headerProps.rightText}

@@ -5,7 +5,7 @@
  * */
 /* eslint-disable */
 
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
@@ -13,12 +13,12 @@ import {
   StyleSheet,
   Platform,
   Dimensions,
-} from 'react-native';
-var {width} = Dimensions.get('window');
-import {moderateScale, verticalScale} from '../../helpers/ResponsiveFonts';
-import {TouchableOpacity} from 'react-native-ui-lib';
-import Triangle from 'react-native-triangle';
-import constants from '../../constants';
+} from "react-native";
+var {width} = Dimensions.get("window");
+import {moderateScale, verticalScale} from "../../helpers/ResponsiveFonts";
+import {TouchableOpacity} from "react-native-ui-lib";
+import Triangle from "react-native-triangle";
+import constants from "../../constants";
 
 class RatingScale extends React.Component {
   constructor(props) {
@@ -40,11 +40,11 @@ class RatingScale extends React.Component {
     return (
       <View
         style={{
-          alignItems: 'center',
-          justifyContent: 'center',
+          alignItems: "center",
+          justifyContent: "center",
         }}>
         <Image
-          source={require('../../assets/icons/minus-symbol-black.png')}
+          source={require("../../assets/icons/minus-symbol-black.png")}
           style={{
             height: moderateScale(2),
             width:
@@ -79,7 +79,7 @@ class RatingScale extends React.Component {
                       ? moderateScale(80)
                       : moderateScale(70)
                     : moderateScale(20),
-                alignItems: 'flex-start',
+                alignItems: "flex-start",
                 // borderBottomWidth: moderateScale(2),
                 // borderBottomColor: constants.Colors.Primary
               }}>
@@ -118,17 +118,17 @@ class RatingScale extends React.Component {
           marginLeft: pos,
           top:
             options.length == 4
-              ? Platform.OS == 'ios'
+              ? Platform.OS == "ios"
                 ? constants.BaseStyle.DEVICE_WIDTH > 330
                   ? moderateScale(3)
                   : moderateScale(0)
                 : moderateScale(0)
-              : Platform.OS == 'ios'
+              : Platform.OS == "ios"
               ? width > 330
                 ? moderateScale(16)
                 : moderateScale(14)
               : verticalScale(16),
-          position: 'absolute',
+          position: "absolute",
           ...Platform.select({
             android: {
               zIndex: 999,
@@ -140,18 +140,18 @@ class RatingScale extends React.Component {
         }}>
         <View
           style={{
-            backgroundColor: '#00b3b7',
+            backgroundColor: "#00b3b7",
             padding: 10,
             borderRadius: 10,
             width: width,
-            alignItems: 'center',
+            alignItems: "center",
           }}>
-          <Text style={{color: '#fff'}}>{title}</Text>
+          <Text style={{color: "#fff"}}>{title}</Text>
         </View>
         <View
           style={{
             flex: 1,
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
             alignItems: arrowDirection,
             marginLeft: marginLeft,
             marginRight: marginRight,
@@ -159,8 +159,8 @@ class RatingScale extends React.Component {
           <Triangle
             width={10}
             height={10}
-            color={'#000000'}
-            direction={'down'}
+            color={"#000000"}
+            direction={"down"}
           />
         </View>
       </TouchableOpacity>
@@ -172,8 +172,8 @@ class RatingScale extends React.Component {
       <View
         style={{
           width: width,
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
+          flexDirection: "row",
+          justifyContent: "flex-start",
         }}>
         <TouchableOpacity
           style={{
@@ -186,7 +186,7 @@ class RatingScale extends React.Component {
           }}>
           {action === selectedOption ? (
             <Image
-              source={require('../../assets/icons/radio-on-button-black.png')}
+              source={require("../../assets/icons/radio-on-button-black.png")}
               style={{height: moderateScale(20), width: moderateScale(20)}}
             />
           ) : (
@@ -227,7 +227,7 @@ class RatingScale extends React.Component {
         <View
           style={{
             height: moderateScale(100),
-            justifyContent: 'flex-end',
+            justifyContent: "flex-end",
             paddingVertical: moderateScale(20),
             // position: "absolute",
             // top: constants.BaseStyle.DEVICE_HEIGHT * 0.23
@@ -271,19 +271,19 @@ class RatingScale extends React.Component {
 }
 const styles = StyleSheet.create({
   anchorText: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
     padding: moderateScale(15),
   },
   textWidth: {width: moderateScale(90), fontSize: moderateScale(12)},
-  textAlignLeft: {textAlign: 'left'},
-  textAlignRight: {textAlign: 'right'},
+  textAlignLeft: {textAlign: "left"},
+  textAlignRight: {textAlign: "right"},
   scaleView: {
     // flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: moderateScale(10),
   },
 });
