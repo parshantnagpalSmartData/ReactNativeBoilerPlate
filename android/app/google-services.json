@@ -1,35 +1,42 @@
 {
   "project_info": {
-    "project_number": "913558565768",
-    "firebase_url": "https://proposalbuilder-aa504.firebaseio.com",
-    "project_id": "proposalbuilder-aa504",
-    "storage_bucket": "proposalbuilder-aa504.appspot.com"
+    "project_number": "322697617970",
+    "firebase_url": "https://reactnativeboilerplate-cebeb.firebaseio.com",
+    "project_id": "reactnativeboilerplate-cebeb",
+    "storage_bucket": "reactnativeboilerplate-cebeb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:913558565768:android:5dc1946717970a96e4403d",
+        "mobilesdk_app_id": "1:322697617970:android:63e247a8d124eae1a3d22b",
         "android_client_info": {
-          "package_name": "com.proposalbuilder"
+          "package_name": "com.reactnativeboilerplate"
         }
       },
       "oauth_client": [
         {
-          "client_id": "913558565768-5ghisgt0vlb3ted23pn4a3of98atg1ei.apps.googleusercontent.com",
+          "client_id": "322697617970-aep0ra7ppf54nepn5s134kojc98i7kbg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAXl-T-b6flqeNoIYurXcx8u4etuMReNxw"
+          "current_key": "AIzaSyCcw_hPppMWjzobA2ZAZSeeaS8G90NUiv8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "913558565768-5ghisgt0vlb3ted23pn4a3of98atg1ei.apps.googleusercontent.com",
+              "client_id": "322697617970-aep0ra7ppf54nepn5s134kojc98i7kbg.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "322697617970-sgnjpu7jp911jrdcrl65510r50kdmj12.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.reactnativeboilerplate"
+              }
             }
           ]
         }

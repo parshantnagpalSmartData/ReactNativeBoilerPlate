@@ -1,4 +1,4 @@
-package com.proposalbuilder;
+package com.reactnativeboilerplate;
 
 import android.app.Application;
 import android.content.Context;
@@ -19,7 +19,7 @@ import com.reactnativenavigation.react.ReactGateway;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 // react-native-webview
-import com.reactnativecommunity.webview.RNCWebViewPackage;
+//import com.reactnativecommunity.webview.RNCWebVieReactApplicationwPackage;
 import java.util.List;
 import java.util.Arrays;
 // @react-native-community/async-storage
@@ -30,6 +30,7 @@ import io.invertase.firebase.RNFirebasePackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 // react-native-vector-icons
 import com.oblador.vectoricons.VectorIconsPackage;
+import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 
 
 public class MainApplication extends NavigationApplication {
@@ -61,7 +62,8 @@ public class MainApplication extends NavigationApplication {
                                     new RNFirebaseMessagingPackage(),
                                     new SplashScreenReactPackage(),
                                     new VectorIconsPackage(),
-                                    new RNCWebViewPackage()
+                                    new RNCWebViewPackage(),
+                                    new RNFirebaseCrashlyticsPackage()
                         // eg. new VectorIconsPackage()
                             );
         }

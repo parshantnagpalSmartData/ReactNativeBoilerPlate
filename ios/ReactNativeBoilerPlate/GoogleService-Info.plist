@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>747163832116-u0us12bmamsqjvn3s435dclo13t3leog.apps.googleusercontent.com</string>
+	<string>322697617970-sgnjpu7jp911jrdcrl65510r50kdmj12.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.747163832116-u0us12bmamsqjvn3s435dclo13t3leog</string>
+	<string>com.googleusercontent.apps.322697617970-sgnjpu7jp911jrdcrl65510r50kdmj12</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCDW4-riWXVnrh3Dtbpz9ZdDPPgmHkHsk0</string>
+	<string>AIzaSyAub6gNtk10ByuEmxiWbBRz0o56kJ1fpn4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>747163832116</string>
+	<string>322697617970</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.ajivar.AjiTest</string>
+	<string>com.reactnativeboilerplate</string>
 	<key>PROJECT_ID</key>
-	<string>ajivar-4f65d</string>
+	<string>reactnativeboilerplate-cebeb</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ajivar-4f65d.appspot.com</string>
+	<string>reactnativeboilerplate-cebeb.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:747163832116:ios:fbad3c6ff313ed44</string>
+	<string>1:322697617970:ios:09a92f309f5bd436a3d22b</string>
 	<key>DATABASE_URL</key>
-	<string>https://ajivar-4f65d.firebaseio.com</string>
+	<string>https://reactnativeboilerplate-cebeb.firebaseio.com</string>
 </dict>
 </plist>
