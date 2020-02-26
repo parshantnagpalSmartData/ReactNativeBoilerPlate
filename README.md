@@ -1,4 +1,4 @@
-# ReactNative BoilerPlate with redux, react-native navigation V3 and react-native-firebase
+# ReactNative BoilerPlate with redux, react-native navigation V4 and react-native-firebase
 
 # Editor 
  	Parshant Nagpal
@@ -19,12 +19,12 @@
 # Dependencies 
     "@react-native-community/async-storage": "^1.6.1",
     "eventemitter4": "^0.2.4",
-    "react": "16.8.6",
-    "react-native": "0.60.5",
+    "react": "16.9.0",
+    "react-native": "0.61.5",
     "react-native-app-intro-slider": "^3.0.0",
     "react-native-firebase": "^5.5.6",
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
-    "react-native-navigation": "3.2.0",
+    "react-native-navigation": "^4.8.4",
     "react-native-splash-screen": "^3.2.0",
     "react-native-vector-icons": "^6.6.0",
     "react-native-webview": "^7.4.0",
